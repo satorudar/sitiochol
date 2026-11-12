@@ -1,0 +1,5887 @@
+/* =========================================================
+
+   CH'OLES DE TABASCO
+
+   REDISEÑO VISUAL - IDENTIDAD GRÁFICA CH'OL
+
+   VERSIÓN FINAL
+
+   ========================================================= */
+
+
+
+
+
+/* =========================
+
+   FUENTES
+
+   ========================= */
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&family=Poppins:wght@400;500;600;700;800&family=Roboto:wght@700&family=Skranji:wght@700&display=swap');
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+
+
+
+
+
+/* =========================
+
+   VARIABLES
+
+   ========================= */
+
+
+
+:root {
+
+
+
+    --chol-rosa: #d81b60;
+
+    --chol-morado: #7b1fa2;
+
+    --chol-amarillo: #fbc02d;
+
+    --chol-verde: #388e3c;
+
+    --chol-turquesa: #00acc1;
+
+
+
+    --chol-crema: #f7f0e3;
+
+    --chol-marfil: #fffaf1;
+
+    --chol-arena: #eadcc7;
+
+    --chol-cafe: #5a4635;
+
+    --chol-azul: #183f4a;
+
+
+
+    --chol-fondo: #0e171b;
+
+    --chol-fondo-2: #16272e;
+
+
+
+    --chol-texto: #292929;
+
+    --chol-texto-menu: #2c3e50;
+
+
+
+    --sombra-suave:
+
+        0 8px 25px rgba(0, 0, 0, .15);
+
+
+
+    --sombra-media:
+
+        0 15px 35px rgba(0, 0, 0, .30);
+
+}
+
+
+
+
+
+/* =========================================================
+
+   RESET GENERAL
+
+   ========================================================= */
+
+
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+    text-decoration: none;
+
+    list-style: none;
+
+}
+
+
+
+html {
+
+    scroll-behavior: smooth;
+
+}
+
+
+
+body {
+
+
+
+    margin: 0;
+
+    padding: 0;
+
+
+
+    font-family: "Poppins", sans-serif;
+
+
+
+    line-height: 1.6;
+
+
+
+    background:
+
+        linear-gradient(
+
+            180deg,
+
+            var(--chol-fondo),
+
+            var(--chol-fondo-2)
+
+        );
+
+
+
+    color: #e0e0e0;
+
+
+
+    overflow-x: hidden;
+
+}
+
+
+
+
+
+/* =========================================================
+
+   BARRA GEOMÉTRICA SUPERIOR
+
+   ========================================================= */
+
+
+
+.header::before {
+
+
+
+    content: "";
+
+
+
+    position: fixed;
+
+
+
+    top: 0;
+
+    left: 245px;
+
+    right: 0;
+
+
+
+    height: 34px;
+
+
+
+    z-index: 999;
+
+
+
+    background-color: var(--chol-morado);
+
+
+
+    background-image:
+
+
+
+        linear-gradient(
+
+            135deg,
+
+            transparent 25%,
+
+            rgba(251, 192, 45, .95) 25%,
+
+            rgba(251, 192, 45, .95) 50%,
+
+            transparent 50%
+
+        ),
+
+
+
+        linear-gradient(
+
+            45deg,
+
+            transparent 25%,
+
+            rgba(0, 172, 193, .95) 25%,
+
+            rgba(0, 172, 193, .95) 50%,
+
+            transparent 50%
+
+        ),
+
+
+
+        linear-gradient(
+
+            135deg,
+
+            transparent 50%,
+
+            rgba(56, 142, 60, .95) 50%,
+
+            rgba(56, 142, 60, .95) 75%,
+
+            transparent 75%
+
+        ),
+
+
+
+        linear-gradient(
+
+            45deg,
+
+            transparent 50%,
+
+            rgba(216, 27, 96, .95) 50%,
+
+            rgba(216, 27, 96, .95) 75%,
+
+            transparent 75%
+
+        );
+
+
+
+    background-size: 32px 32px;
+
+
+
+    box-shadow:
+
+        0 3px 8px rgba(0,0,0,.25);
+
+}
+
+
+
+
+
+/* =========================================================
+
+   BARRA LATERAL
+
+   ========================================================= */
+
+
+
+.navbar {
+
+
+
+    position: fixed;
+
+
+
+    top: 0;
+
+    left: 0;
+
+
+
+    width: 245px;
+
+    height: 100vh;
+
+
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+
+
+    padding: 15px 12px;
+
+
+
+    background:
+
+        linear-gradient(
+
+            180deg,
+
+            #fffaf2 0%,
+
+            #f7efe2 100%
+
+        );
+
+
+
+    box-shadow:
+
+        4px 0 18px rgba(0,0,0,.25);
+
+
+
+    border-right:
+
+        1px solid var(--chol-arena);
+
+
+
+    z-index: 1000;
+
+
+
+    overflow-y: auto;
+
+    overflow-x: hidden;
+
+}
+
+
+
+
+
+/* Franja multicolor lateral */
+
+
+
+.navbar::after {
+
+
+
+    content: "";
+
+
+
+    position: absolute;
+
+
+
+    top: 0;
+
+    right: 0;
+
+
+
+    width: 6px;
+
+    height: 100%;
+
+
+
+    background:
+
+        repeating-linear-gradient(
+
+            135deg,
+
+            var(--chol-rosa) 0 12px,
+
+            var(--chol-amarillo) 12px 24px,
+
+            var(--chol-verde) 24px 36px,
+
+            var(--chol-turquesa) 36px 48px,
+
+            var(--chol-morado) 48px 60px
+
+        );
+
+
+
+    opacity: .9;
+
+}
+
+
+
+
+
+/* =========================================================
+
+   LOGO
+
+   ========================================================= */
+
+
+
+.logo {
+
+
+
+    width: 100%;
+
+
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+
+
+    margin-bottom: 15px;
+
+
+
+    padding:
+
+        10px
+
+        5px
+
+        20px
+
+        5px;
+
+
+
+    position: relative;
+
+}
+
+
+
+
+
+.logo::after {
+
+
+
+    content: "";
+
+
+
+    position: absolute;
+
+
+
+    bottom: 0;
+
+
+
+    left: 10%;
+
+    right: 10%;
+
+
+
+    height: 6px;
+
+
+
+    background:
+
+        linear-gradient(
+
+            135deg,
+
+            transparent 7px,
+
+            var(--chol-rosa) 7px,
+
+            var(--chol-rosa) 14px,
+
+
+
+            transparent 14px,
+
+            transparent 21px,
+
+
+
+            var(--chol-amarillo) 21px,
+
+            var(--chol-amarillo) 28px,
+
+
+
+            transparent 28px,
+
+            transparent 35px,
+
+
+
+            var(--chol-verde) 35px,
+
+            var(--chol-verde) 42px,
+
+
+
+            transparent 42px,
+
+            transparent 49px,
+
+
+
+            var(--chol-turquesa) 49px,
+
+            var(--chol-turquesa) 56px,
+
+
+
+            transparent 56px
+
+        );
+
+
+
+    border-radius: 5px;
+
+}
+
+
+
+
+
+.logo img {
+
+
+
+    width: 100%;
+
+
+
+    max-width: 160px;
+
+    max-height: 140px;
+
+
+
+    height: auto;
+
+
+
+    object-fit: contain;
+
+
+
+    display: block;
+
+
+
+    transition:
+
+        transform .3s ease;
+
+}
+
+
+
+
+
+.logo img:hover {
+
+
+
+    transform:
+
+        scale(1.05);
+
+}
+
+
+
+
+
+/* =========================================================
+
+   MENÚ
+
+   ========================================================= */
+
+
+
+.menu {
+
+
+
+    width: 100%;
+
+
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+
+
+
+.menu > li {
+
+
+
+    width: 100%;
+
+
+
+    position: relative;
+
+
+
+    padding:
+
+        10px
+
+        8px;
+
+
+
+    margin-bottom: 6px;
+
+
+
+    color:
+
+        var(--chol-texto-menu);
+
+
+
+    font-family:
+
+        "Skranji",
+
+        sans-serif;
+
+
+
+    font-size: 17px;
+
+
+
+    cursor: pointer;
+
+
+
+    border-radius: 8px;
+
+
+
+    transition:
+
+        background .3s ease,
+
+        color .3s ease,
+
+        transform .3s ease;
+
+}
+
+
+
+
+
+/* Rombo */
+
+
+
+.menu > li::before {
+
+
+
+    content: "";
+
+
+
+    position: absolute;
+
+
+
+    left: 0;
+
+    top: 18px;
+
+
+
+    width: 6px;
+
+    height: 6px;
+
+
+
+    background:
+
+        var(--chol-turquesa);
+
+
+
+    transform:
+
+        rotate(45deg);
+
+
+
+    opacity: 0;
+
+
+
+    transition:
+
+        .3s ease;
+
+}
+
+
+
+
+
+.menu > li:hover {
+
+
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+            rgba(216,27,96,.08),
+
+            rgba(123,31,162,.04)
+
+        );
+
+
+
+    color:
+
+        var(--chol-rosa);
+
+
+
+    transform:
+
+        translateX(3px);
+
+}
+
+
+
+
+
+.menu > li:hover::before {
+
+
+
+    opacity: 1;
+
+}
+
+
+
+
+
+.menu h6 {
+
+
+
+    margin-top: 2px;
+
+
+
+    font-family:
+
+        "Poppins",
+
+        sans-serif;
+
+
+
+    color:
+
+        #756b63;
+
+
+
+    font-size: 11px;
+
+
+
+    font-weight: 500;
+
+}
+
+
+
+
+
+.menu > li:hover h6 {
+
+
+
+    color:
+
+        var(--chol-morado);
+
+}
+
+
+
+
+
+/* =========================================================
+
+   SEPARADORES DEL MENÚ
+
+   ========================================================= */
+
+
+
+.menu > li:not(:last-child)::after {
+
+
+
+    content:
+
+        "◇  ◆  ◇";
+
+
+
+    position: absolute;
+
+
+
+    left: 0;
+
+
+
+    bottom: -5px;
+
+
+
+    width: 100%;
+
+
+
+    height: 13px;
+
+
+
+    text-align: center;
+
+
+
+    font-family:
+
+        Arial,
+
+        sans-serif;
+
+
+
+    font-size: 8px;
+
+
+
+    letter-spacing: 3px;
+
+
+
+    line-height: 10px;
+
+
+
+    color:
+
+        var(--chol-turquesa);
+
+
+
+    border-bottom:
+
+        2px solid transparent;
+
+
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+
+
+            var(--chol-rosa) 0%,
+
+            var(--chol-rosa) 20%,
+
+
+
+            var(--chol-morado) 20%,
+
+            var(--chol-morado) 40%,
+
+
+
+            var(--chol-amarillo) 40%,
+
+            var(--chol-amarillo) 60%,
+
+
+
+            var(--chol-verde) 60%,
+
+            var(--chol-verde) 80%,
+
+
+
+            var(--chol-turquesa) 80%,
+
+            var(--chol-turquesa) 100%
+
+
+
+        )
+
+        bottom /
+
+        100% 2px
+
+        no-repeat;
+
+
+
+    pointer-events: none;
+
+}
+
+
+
+
+
+/* =========================================================
+
+   SUBMENÚ
+
+   ========================================================= */
+
+
+
+.submenu {
+
+
+
+    position: relative;
+
+}
+
+
+
+
+
+.submenu-content {
+
+
+
+    display: none;
+
+
+
+    position: relative;
+
+
+
+    width: 100%;
+
+
+
+    margin-top: 5px;
+
+
+
+    padding: 6px 0;
+
+
+
+    background:
+
+        #fffaf3;
+
+
+
+    border-left:
+
+        3px solid
+
+        var(--chol-turquesa);
+
+
+
+    border-radius: 4px;
+
+
+
+    box-shadow:
+
+        inset
+
+        0 0 12px
+
+        rgba(0,0,0,.03);
+
+
+
+    z-index: 20;
+
+}
+
+
+
+
+
+/* Mostrar al pasar el cursor */
+
+
+
+.submenu:hover .submenu-content {
+
+
+
+    display: block;
+
+}
+
+
+
+
+
+.menu li a {
+
+
+
+    display: block;
+
+
+
+    padding:
+
+        7px 10px;
+
+
+
+    color:
+
+        #4d4d4d;
+
+
+
+    font-size:
+
+        13px;
+
+
+
+    transition:
+
+        .25s ease;
+
+}
+
+
+
+
+
+.menu li a:hover {
+
+
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+            rgba(0,172,193,.10),
+
+            transparent
+
+        );
+
+
+
+    color:
+
+        var(--chol-rosa);
+
+
+
+    padding-left:
+
+        15px;
+
+}
+
+
+
+
+
+/* =========================================================
+
+   SCROLLBAR DEL MENÚ
+
+   ========================================================= */
+
+
+
+.navbar::-webkit-scrollbar {
+
+
+
+    width: 5px;
+
+}
+
+
+
+
+
+.navbar::-webkit-scrollbar-track {
+
+
+
+    background:
+
+        #eee4d6;
+
+}
+
+
+
+
+
+.navbar::-webkit-scrollbar-thumb {
+
+
+
+    background:
+
+        var(--chol-turquesa);
+
+
+
+    border-radius:
+
+        10px;
+
+}
+
+
+
+
+
+/* =========================================================
+
+   HEADER / PORTADA
+
+   ========================================================= */
+
+
+
+.header {
+
+
+
+    min-height: 100vh;
+
+
+
+    margin-left:
+
+        245px;
+
+
+
+    width:
+
+        calc(100% - 245px);
+
+
+
+    padding-top:
+
+        34px;
+
+
+
+    position:
+
+        relative;
+
+
+
+    background-repeat:
+
+        no-repeat;
+
+
+
+    background-size:
+
+        cover;
+
+
+
+    background-position:
+
+        center;
+
+
+
+    animation:
+
+        backgroundAnimation
+
+        12s infinite;
+
+}
+
+
+
+
+
+@keyframes backgroundAnimation {
+
+
+
+    0%, 25% {
+
+
+
+        background-image:
+
+
+
+            linear-gradient(
+
+                135deg,
+
+                rgba(0,0,0,.45),
+
+                rgba(24,63,74,.35)
+
+            ),
+
+
+
+            url('../img/1.jpeg');
+
+    }
+
+
+
+
+
+    50% {
+
+
+
+        background-image:
+
+
+
+            linear-gradient(
+
+                135deg,
+
+                rgba(0,0,0,.45),
+
+                rgba(24,63,74,.35)
+
+            ),
+
+
+
+            url('../img/3.jpeg');
+
+    }
+
+
+
+
+
+    75% {
+
+
+
+        background-image:
+
+
+
+            linear-gradient(
+
+                135deg,
+
+                rgba(0,0,0,.45),
+
+                rgba(24,63,74,.35)
+
+            ),
+
+
+
+            url('../img/4.jpeg');
+
+    }
+
+
+
+
+
+    100% {
+
+
+
+        background-image:
+
+
+
+            linear-gradient(
+
+                135deg,
+
+                rgba(0,0,0,.45),
+
+                rgba(24,63,74,.35)
+
+            ),
+
+
+
+            url('../img/5.jpeg');
+
+    }
+
+}
+
+
+
+
+
+/* =========================================================
+
+   CONTENIDO DE PORTADA
+
+   ========================================================= */
+
+
+
+.header-content {
+
+
+
+    position:
+
+        relative;
+
+}
+
+
+
+
+
+/* Logo transparente de fondo */
+
+
+
+.header-content::after {
+
+
+
+    content:
+
+        "";
+
+
+
+    position:
+
+        absolute;
+
+
+
+    top:
+
+        50%;
+
+
+
+    left:
+
+        50%;
+
+
+
+    width:
+
+        min(380px,45%);
+
+
+
+    height:
+
+        300px;
+
+
+
+    transform:
+
+        translate(-50%,-50%);
+
+
+
+    background:
+
+        url('../img/logo2.webp')
+
+        center /
+
+        contain
+
+        no-repeat;
+
+
+
+    opacity:
+
+        .13;
+
+
+
+    pointer-events:
+
+        none;
+
+
+
+    z-index:
+
+        1;
+
+}
+
+
+
+
+
+.header-img {
+
+
+
+    color:
+
+        #fff;
+
+
+
+    padding:
+
+        60px 30px;
+
+
+
+    text-align:
+
+        center;
+
+
+
+    position:
+
+        relative;
+
+}
+
+
+
+
+
+.header-img::before {
+
+
+
+    content:
+
+        "";
+
+
+
+    position:
+
+        absolute;
+
+
+
+    top:
+
+        35px;
+
+
+
+    left:
+
+        5%;
+
+
+
+    right:
+
+        5%;
+
+
+
+    bottom:
+
+        35px;
+
+
+
+    border:
+
+        3px solid
+
+        rgba(255,255,255,.75);
+
+
+
+    pointer-events:
+
+        none;
+
+}
+
+
+
+
+
+.header-img::after {
+
+
+
+    content:
+
+        "◆     ◆     ◆";
+
+
+
+    position:
+
+        absolute;
+
+
+
+    bottom:
+
+        42px;
+
+
+
+    left:
+
+        50%;
+
+
+
+    transform:
+
+        translateX(-50%);
+
+
+
+    color:
+
+        var(--chol-amarillo);
+
+
+
+    font-size:
+
+        17px;
+
+
+
+    letter-spacing:
+
+        12px;
+
+}
+
+
+
+
+
+/* =========================================================
+
+   TÍTULO PRINCIPAL
+
+   ========================================================= */
+
+
+
+.header-img h1 {
+
+
+
+    font-size:
+
+        clamp(45px,5.5vw,70px);
+
+
+
+    color:
+
+        var(--chol-amarillo);
+
+
+
+    font-family:
+
+        "Bebas Neue",
+
+        sans-serif;
+
+
+
+    letter-spacing:
+
+        6px;
+
+
+
+    margin-top:
+
+        20px;
+
+
+
+    text-shadow:
+
+        3px 3px 0 rgba(0,0,0,.35),
+
+        0 5px 18px rgba(0,0,0,.3);
+
+
+
+    position:
+
+        relative;
+
+
+
+    z-index:
+
+        3;
+
+}
+
+
+
+
+
+/* =========================================================
+
+   SUBTÍTULO
+
+   ========================================================= */
+
+
+
+.header-img h2 {
+
+
+
+    font-size:
+
+        clamp(30px,4vw,50px);
+
+
+
+    color:
+
+        #fff;
+
+
+
+    font-family:
+
+        "Kaushan Script",
+
+        cursive;
+
+
+
+    margin:
+
+        25px 0 20px;
+
+
+
+    text-shadow:
+
+        2px 3px 7px rgba(0,0,0,.55);
+
+
+
+    position:
+
+        relative;
+
+
+
+    z-index:
+
+        3;
+
+}
+
+
+
+
+
+/* =========================================================
+
+   TEXTO DE INICIO
+
+   ========================================================= */
+
+
+
+.textohome {
+
+
+
+    background:
+
+        rgba(31,25,20,.78);
+
+
+
+    border:
+
+        2px solid
+
+        var(--chol-turquesa);
+
+
+
+    padding:
+
+        25px 30px;
+
+
+
+    border-radius:
+
+        6px;
+
+
+
+    margin:
+
+        20px auto;
+
+
+
+    max-width:
+
+        850px;
+
+
+
+    position:
+
+        relative;
+
+
+
+    z-index:
+
+        3;
+
+
+
+    box-shadow:
+
+        0 10px 35px
+
+        rgba(0,0,0,.3);
+
+}
+
+
+
+
+
+.textohome::before {
+
+
+
+    content:
+
+        "";
+
+
+
+    position:
+
+        absolute;
+
+
+
+    top:
+
+        -7px;
+
+
+
+    left:
+
+        20%;
+
+
+
+    right:
+
+        20%;
+
+
+
+    height:
+
+        7px;
+
+
+
+    background:
+
+        repeating-linear-gradient(
+
+            90deg,
+
+
+
+            var(--chol-rosa) 0 20px,
+
+            var(--chol-amarillo) 20px 40px,
+
+            var(--chol-verde) 40px 60px,
+
+            var(--chol-turquesa) 60px 80px,
+
+            var(--chol-morado) 80px 100px
+
+        );
+
+}
+
+
+
+
+
+.header-img p {
+
+
+
+    font-size:
+
+        18px;
+
+
+
+    line-height:
+
+        1.8;
+
+
+
+    position:
+
+        relative;
+
+
+
+    z-index:
+
+        3;
+
+}
+
+
+
+
+
+/* =========================================================
+
+   SECCIONES GENERALES
+
+   ========================================================= */
+
+
+
+.historiaenraizada,
+
+.uneteanosotros,
+
+.galeria,
+
+.contenido-con-mapa {
+
+
+
+    margin-left:
+
+        245px;
+
+
+
+    width:
+
+        calc(100% - 245px);
+
+
+
+    padding:
+
+        55px 35px;
+
+
+
+    position:
+
+        relative;
+
+}
+
+
+
+
+
+/* =========================================================
+
+   FRANJA SUPERIOR DE SECCIONES
+
+   ========================================================= */
+
+
+
+.historiaenraizada::before,
+
+.uneteanosotros::before,
+
+.galeria::before,
+
+.contenido-con-mapa::before {
+
+
+
+    content:
+
+        "";
+
+
+
+    position:
+
+        absolute;
+
+
+
+    top:
+
+        0;
+
+
+
+    left:
+
+        30px;
+
+
+
+    right:
+
+        30px;
+
+
+
+    height:
+
+        8px;
+
+
+
+    background:
+
+        repeating-linear-gradient(
+
+            135deg,
+
+
+
+            var(--chol-rosa) 0 14px,
+
+            var(--chol-amarillo) 14px 28px,
+
+            var(--chol-verde) 28px 42px,
+
+            var(--chol-turquesa) 42px 56px,
+
+            var(--chol-morado) 56px 70px
+
+        );
+
+}
+
+
+
+
+
+/* =========================================================
+
+   HISTORIA
+
+   ========================================================= */
+
+
+
+.historiaenraizada {
+
+
+
+    background:
+
+        linear-gradient(
+
+            180deg,
+
+            #102127 0%,
+
+            #162c33 100%
+
+        );
+
+}
+
+
+
+
+
+.historiaenraizada h1,
+
+.historiaenraizada h2 {
+
+
+
+    color:
+
+        var(--chol-amarillo);
+
+}
+
+
+
+
+
+.historiaenraizada p {
+
+
+
+    color:
+
+        #e0e0e0;
+
+
+
+    line-height:
+
+        1.8;
+
+}
+
+
+
+
+
+/* =========================================================
+
+   IMÁGENES DE CONTENIDO
+
+   ========================================================= */
+
+
+
+.historiaenraizada img,
+
+.uneteanosotros img,
+
+.contenido-con-mapa img {
+
+
+
+    max-width:
+
+        700px;
+
+
+
+    width:
+
+        90%;
+
+
+
+    max-height:
+
+        480px;
+
+
+
+    object-fit:
+
+        contain;
+
+
+
+    background:
+
+        #000;
+
+
+
+    display:
+
+        block;
+
+
+
+    margin:
+
+        25px auto;
+
+
+
+    border-radius:
+
+        12px;
+
+
+
+    border:
+
+        4px solid
+
+        var(--chol-amarillo);
+
+
+
+    box-shadow:
+
+        var(--sombra-media);
+
+}
+
+
+
+
+
+/* =========================================================
+
+   CONTENEDOR DE TARJETAS
+
+   ========================================================= */
+
+
+
+.container {
+
+
+
+    width:
+
+        calc(100% - 245px);
+
+
+
+    margin-left:
+
+        245px;
+
+
+
+    display:
+
+        flex;
+
+
+
+    justify-content:
+
+        center;
+
+
+
+    align-items:
+
+        stretch;
+
+
+
+    padding:
+
+        60px 20px;
+
+
+
+    flex-wrap:
+
+        wrap;
+
+
+
+    position:
+
+        relative;
+
+
+
+    background:
+
+        linear-gradient(
+
+            180deg,
+
+            #0e171b 0%,
+
+            #18282e 100%
+
+        );
+
+}
+
+
+
+
+
+/* =========================================================
+
+   TARJETAS
+
+   ========================================================= */
+
+
+
+.container .card {
+
+
+
+    position:
+
+        relative;
+
+
+
+    width:
+
+        310px;
+
+
+
+    min-height:
+
+        480px;
+
+
+
+    margin:
+
+        15px;
+
+
+
+    background:
+
+        #ffffff;
+
+
+
+    border-radius:
+
+        8px;
+
+
+
+    box-shadow:
+
+        var(--sombra-media);
+
+
+
+    border:
+
+        1px solid
+
+        rgba(255,255,255,.1);
+
+
+
+    overflow:
+
+        hidden;
+
+
+
+    display:
+
+        flex;
+
+
+
+    flex-direction:
+
+        column;
+
+
+
+    transition:
+
+        transform .35s ease,
+
+        box-shadow .35s ease;
+
+}
+
+
+
+
+
+/* =========================================================
+
+   FRANJA MULTICOLOR DE LAS TARJETAS
+
+   ========================================================= */
+
+
+
+.container .card::before {
+
+
+
+    content:
+
+        "";
+
+
+
+    position:
+
+        absolute;
+
+
+
+    top:
+
+        0;
+
+
+
+    left:
+
+        0;
+
+
+
+    width:
+
+        100%;
+
+
+
+    height:
+
+        12px;
+
+
+
+    background:
+
+        repeating-linear-gradient(
+
+            135deg,
+
+
+
+            var(--chol-rosa) 0 18px,
+
+            var(--chol-amarillo) 18px 36px,
+
+            var(--chol-verde) 36px 54px,
+
+            var(--chol-turquesa) 54px 72px,
+
+            var(--chol-morado) 72px 90px
+
+        );
+
+
+
+    z-index:
+
+        4;
+
+}
+
+
+
+
+
+/* Rombo de tarjeta */
+
+
+
+.container .card::after {
+
+
+
+    content:
+
+        "◆";
+
+
+
+    position:
+
+        absolute;
+
+
+
+    right:
+
+        17px;
+
+
+
+    top:
+
+        22px;
+
+
+
+    color:
+
+        var(--chol-rosa);
+
+
+
+    font-size:
+
+        22px;
+
+
+
+    opacity:
+
+        .75;
+
+
+
+    z-index:
+
+        5;
+
+}
+
+
+
+
+
+/* Hover de tarjeta */
+
+
+
+.container .card:hover {
+
+
+
+    transform:
+
+        translateY(-10px);
+
+
+
+    box-shadow:
+
+        0 20px 40px
+
+        rgba(0,0,0,.5);
+
+}
+
+
+
+
+
+/* =========================================================
+
+   CONTENIDO DE TARJETA
+
+   ========================================================= */
+
+
+
+.container .card .targeta {
+
+
+
+    padding:
+
+        32px 22px 22px;
+
+
+
+    height:
+
+        100%;
+
+
+
+    display:
+
+        flex;
+
+
+
+    flex-direction:
+
+        column;
+
+
+
+    justify-content:
+
+        space-between;
+
+
+
+    position:
+
+        relative;
+
+
+
+    z-index:
+
+        2;
+
+}
+
+
+
+
+
+.container .card .targeta .content {
+
+
+
+    position:
+
+        relative;
+
+
+
+    z-index:
+
+        10;
+
+
+
+    display:
+
+        flex;
+
+
+
+    flex-direction:
+
+        column;
+
+
+
+    height:
+
+        100%;
+
+}
+
+
+
+
+
+.container .card .targeta .content h3 {
+
+
+
+    font-size:
+
+        1.25em;
+
+
+
+    color:
+
+        var(--chol-morado);
+
+
+
+    margin-bottom:
+
+        14px;
+
+
+
+    line-height:
+
+        1.4;
+
+}
+
+
+
+
+
+.container .card .targeta .content p {
+
+
+
+    font-size:
+
+        14px;
+
+
+
+    color:
+
+        #4a4a4a;
+
+
+
+    text-align:
+
+        justify;
+
+
+
+    line-height:
+
+        1.7;
+
+
+
+    margin-bottom:
+
+        25px;
+
+}
+
+
+
+
+
+/* =========================================================
+
+   BOTÓN DE TRADUCCIÓN
+
+   ========================================================= */
+
+
+
+.container .card .targeta .content a {
+
+
+
+    display:
+
+        inline-block;
+
+
+
+    width:
+
+        fit-content;
+
+
+
+    margin-top:
+
+        auto;
+
+
+
+    padding:
+
+        9px 22px;
+
+
+
+    background:
+
+        var(--chol-rosa);
+
+
+
+    border-radius:
+
+        4px;
+
+
+
+    color:
+
+        #fff !important;
+
+
+
+    font-weight:
+
+        600;
+
+
+
+    position:
+
+        relative;
+
+
+
+    z-index:
+
+        20;
+
+
+
+    cursor:
+
+        pointer;
+
+
+
+    transition:
+
+        background .3s ease,
+
+        transform .3s ease;
+
+
+
+    box-shadow:
+
+        0 4px 10px
+
+        rgba(216,27,96,.20);
+
+}
+
+
+
+
+
+.container .card .targeta .content a:hover {
+
+
+
+    background:
+
+        var(--chol-turquesa);
+
+
+
+    color:
+
+        #fff !important;
+
+
+
+    transform:
+
+        translateY(-2px);
+
+}
+
+
+
+
+
+/* Contenido de traducción */
+
+
+
+.contenido1,
+
+.contenido2,
+
+.contenido3 {
+
+
+
+    position:
+
+        relative;
+
+
+
+    z-index:
+
+        10;
+
+}
+
+
+
+
+
+/* =========================================================
+
+   FRANJA INFERIOR DE TARJETAS
+
+   ========================================================= */
+
+
+
+.container .card .targeta::after {
+
+
+
+    content:
+
+        "";
+
+
+
+    display:
+
+        block;
+
+
+
+    width:
+
+        100%;
+
+
+
+    height:
+
+        5px;
+
+
+
+    margin-top:
+
+        18px;
+
+
+
+    border-radius:
+
+        5px;
+
+
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+
+
+            var(--chol-rosa) 0%,
+
+            var(--chol-rosa) 20%,
+
+
+
+            var(--chol-morado) 20%,
+
+            var(--chol-morado) 40%,
+
+
+
+            var(--chol-amarillo) 40%,
+
+            var(--chol-amarillo) 60%,
+
+
+
+            var(--chol-verde) 60%,
+
+            var(--chol-verde) 80%,
+
+
+
+            var(--chol-turquesa) 80%,
+
+            var(--chol-turquesa) 100%
+
+        );
+
+}
+
+
+
+
+
+/* =========================================================
+
+   UNETE A NOSOTROS
+
+   ========================================================= */
+
+
+
+.uneteanosotros {
+
+
+
+    background:
+
+        linear-gradient(
+
+            135deg,
+
+            #102127,
+
+            #172e35
+
+        );
+
+}
+
+
+
+
+
+.uneteanosotros h1,
+
+.uneteanosotros h2 {
+
+
+
+    color:
+
+        var(--chol-amarillo);
+
+}
+
+
+
+
+
+.uneteanosotros p {
+
+
+
+    color:
+
+        #e0e0e0;
+
+
+
+    line-height:
+
+        1.8;
+
+}
+
+
+
+
+
+.uneteanosotros img {
+
+
+
+    max-width:
+
+        300px;
+
+
+
+    height:
+
+        210px;
+
+
+
+    object-fit:
+
+        cover;
+
+
+
+    border:
+
+        5px solid
+
+        #fffaf2;
+
+
+
+    border-radius:
+
+        8px;
+
+
+
+    box-shadow:
+
+        var(--sombra-media);
+
+
+
+    transition:
+
+        transform .3s ease;
+
+}
+
+
+
+
+
+.uneteanosotros img:hover {
+
+
+
+    transform:
+
+        scale(1.02);
+
+}
+
+
+
+
+
+/* =========================================================
+
+   TÍTULOS GENERALES
+
+   ========================================================= */
+
+
+
+.h1chol {
+
+
+
+    font-family:
+
+        "Bebas Neue",
+
+        sans-serif;
+
+
+
+    font-size:
+
+        50px;
+
+
+
+    letter-spacing:
+
+        4px;
+
+
+
+    text-align:
+
+        center;
+
+
+
+    color:
+
+        #ffffff;
+
+
+
+    margin-bottom:
+
+        10px;
+
+
+
+    position:
+
+        relative;
+
+
+
+    z-index:
+
+        10;
+
+}
+
+
+
+
+
+.h1chol::after {
+
+
+
+    content:
+
+        "◆ ◆ ◆";
+
+
+
+    display:
+
+        block;
+
+
+
+    color:
+
+        var(--chol-turquesa);
+
+
+
+    font-size:
+
+        14px;
+
+
+
+    letter-spacing:
+
+        8px;
+
+
+
+    margin-top:
+
+        5px;
+
+}
+
+
+
+
+
+/* =========================================================
+
+   SUBTÍTULO DE FOTOGRAFÍAS
+
+   ========================================================= */
+
+
+
+.h11chol {
+
+
+
+    font-family:
+
+        "Kaushan Script",
+
+        cursive;
+
+
+
+    color:
+
+        var(--chol-rosa);
+
+
+
+    text-align:
+
+        center;
+
+
+
+    font-size:
+
+        28px;
+
+
+
+    margin:
+
+        5px auto 25px;
+
+
+
+    position:
+
+        relative;
+
+
+
+    z-index:
+
+        10;
+
+}
+
+
+
+
+
+/* =========================================================
+
+   GALERÍA
+
+   ========================================================= */
+
+
+
+.galeria {
+
+
+
+    min-height:
+
+        110vh;
+
+
+
+    display:
+
+        flex;
+
+
+
+    flex-direction:
+
+        column;
+
+
+
+    justify-content:
+
+        center;
+
+
+
+    align-items:
+
+        center;
+
+
+
+    background:
+
+        linear-gradient(
+
+            135deg,
+
+            rgba(0,0,0,.90),
+
+            rgba(14,23,27,.94)
+
+        ),
+
+        url('../img/4.jpeg');
+
+
+
+    background-size:
+
+        cover;
+
+
+
+    background-position:
+
+        center;
+
+
+
+    transform-style:
+
+        preserve-3d;
+
+
+
+    margin-bottom:
+
+        30px;
+
+
+
+    border-radius:
+
+        20px;
+
+
+
+    overflow:
+
+        hidden;
+
+
+
+    text-align:
+
+        center;
+
+}
+
+
+
+
+
+/* Título dentro de galería */
+
+
+
+.galeria .h1chol {
+
+
+
+    margin-bottom:
+
+        0;
+
+}
+
+
+
+
+
+/* Subtítulo fuera del carrusel */
+
+
+
+.galeria .h11chol {
+
+
+
+    display:
+
+        block;
+
+
+
+    width:
+
+        100%;
+
+
+
+    margin-top:
+
+        0;
+
+
+
+    margin-bottom:
+
+        25px;
+
+}
+
+
+
+
+
+/* =========================================================
+
+   CONTENEDOR DEL CARRUSEL
+
+   ========================================================= */
+
+
+
+.galeria .container {
+
+
+
+    width:
+
+        100%;
+
+
+
+    margin:
+
+        0;
+
+
+
+    padding:
+
+        20px 10px;
+
+
+
+    background:
+
+        transparent;
+
+
+
+    display:
+
+        flex;
+
+
+
+    justify-content:
+
+        center;
+
+
+
+    align-items:
+
+        center;
+
+
+
+    flex-wrap:
+
+        nowrap;
+
+
+
+    position:
+
+        relative;
+
+
+
+    overflow:
+
+        visible;
+
+
+
+    min-height:
+
+        520px;
+
+}
+
+
+
+
+
+/* =========================================================
+
+   CARRUSEL 3D ORIGINAL
+
+   ========================================================= */
+
+
+
+.box {
+
+
+
+    position:
+
+        relative;
+
+
+
+    width:
+
+        210px;
+
+
+
+    height:
+
+        250px;
+
+
+
+    transform-style:
+
+        preserve-3d;
+
+
+
+    transition:
+
+        1.5s;
+
+
+
+    transform:
+
+        perspective(1000px)
+
+        rotateY(0deg);
+
+
+
+    flex-shrink:
+
+        0;
+
+}
+
+
+
+
+
+/* Cada fotografía */
+
+
+
+.box span {
+
+
+
+    position:
+
+        absolute;
+
+
+
+    top:
+
+        0;
+
+
+
+    left:
+
+        0;
+
+
+
+    width:
+
+        100%;
+
+
+
+    height:
+
+        100%;
+
+
+
+    transform-origin:
+
+        center;
+
+
+
+    transform-style:
+
+        preserve-3d;
+
+
+
+    transform:
+
+        rotateY(
+
+            calc(var(--i) * 45deg)
+
+        )
+
+        translateZ(340px);
+
+
+
+    -webkit-box-reflect:
+
+        below 0px
+
+        linear-gradient(
+
+            transparent,
+
+            rgba(36,20,20,.267)
+
+        );
+
+}
+
+
+
+
+
+.box span img {
+
+
+
+    position:
+
+        absolute;
+
+
+
+    top:
+
+        0;
+
+
+
+    left:
+
+        0;
+
+
+
+    width:
+
+        100%;
+
+
+
+    height:
+
+        100%;
+
+
+
+    object-fit:
+
+        cover;
+
+
+
+    user-select:
+
+        none;
+
+
+
+    border-radius:
+
+        10px;
+
+
+
+    border:
+
+        3px solid
+
+        var(--chol-amarillo);
+
+
+
+    box-shadow:
+
+        0 10px 25px
+
+        rgba(0,0,0,.45);
+
+}
+
+
+
+
+
+/* =========================================================
+
+   BOTONES DEL CARRUSEL
+
+   ========================================================= */
+
+
+
+.btns {
+
+
+
+    position:
+
+        absolute;
+
+
+
+    bottom:
+
+        35px;
+
+
+
+    display:
+
+        flex;
+
+
+
+    gap:
+
+        30px;
+
+
+
+    justify-content:
+
+        center;
+
+
+
+    align-items:
+
+        center;
+
+
+
+    z-index:
+
+        50;
+
+}
+
+
+
+
+
+.btns .btn {
+
+
+
+    position:
+
+        relative;
+
+
+
+    width:
+
+        60px;
+
+
+
+    height:
+
+        60px;
+
+
+
+    border:
+
+        2px solid
+
+        #fff;
+
+
+
+    border-radius:
+
+        50%;
+
+
+
+    display:
+
+        flex;
+
+
+
+    justify-content:
+
+        center;
+
+
+
+    align-items:
+
+        center;
+
+
+
+    cursor:
+
+        pointer;
+
+
+
+    transition:
+
+        .3s ease;
+
+
+
+    background:
+
+        rgba(14,23,27,.55);
+
+}
+
+
+
+
+
+.btns .btn:hover {
+
+
+
+    background:
+
+        var(--chol-rosa);
+
+
+
+    border-color:
+
+        var(--chol-amarillo);
+
+
+
+    transform:
+
+        scale(1.08);
+
+}
+
+
+
+
+
+.btns .btn::before {
+
+
+
+    content:
+
+        '';
+
+
+
+    position:
+
+        absolute;
+
+
+
+    width:
+
+        15px;
+
+
+
+    height:
+
+        15px;
+
+
+
+    border-top:
+
+        3px solid
+
+        #fff;
+
+
+
+    border-right:
+
+        3px solid
+
+        #fff;
+
+
+
+    transform:
+
+        rotate(45deg)
+
+        translate(-2.5px,2.5px);
+
+}
+
+
+
+
+
+.btns .btn.prev::before {
+
+
+
+    transform:
+
+        rotate(225deg)
+
+        translate(-2.5px,2.5px);
+
+}
+
+
+
+
+
+/* =========================================================
+
+   MAPA + INFORMACIÓN
+
+   ========================================================= */
+
+
+
+.contenido-con-mapa {
+
+
+
+    display:
+
+        flex;
+
+
+
+    flex-wrap:
+
+        nowrap;
+
+
+
+    align-items:
+
+        center;
+
+
+
+    justify-content:
+
+        space-between;
+
+
+
+    gap:
+
+        40px;
+
+
+
+    background:
+
+        linear-gradient(
+
+            135deg,
+
+            #0e171b,
+
+            #16272e
+
+        );
+
+
+
+    color:
+
+        #ffffff;
+
+
+
+    padding-top:
+
+        65px;
+
+
+
+    padding-bottom:
+
+        80px;
+
+}
+
+
+
+
+
+/* =========================================================
+
+   MAPA IZQUIERDO
+
+   ========================================================= */
+
+
+
+\#map {
+
+
+
+    width:
+
+        58%;
+
+
+
+    min-height:
+
+        450px;
+
+
+
+    flex:
+
+        1 1 58%;
+
+
+
+    border:
+
+        5px solid
+
+        var(--chol-marfil);
+
+
+
+    outline:
+
+        3px solid
+
+        var(--chol-turquesa);
+
+
+
+    box-shadow:
+
+        var(--sombra-media);
+
+
+
+    border-radius:
+
+        8px;
+
+
+
+    overflow:
+
+        hidden;
+
+}
+
+
+
+
+
+/* =========================================================
+
+   INFORMACIÓN DERECHA
+
+   ========================================================= */
+
+
+
+.informacion {
+
+
+
+    width:
+
+        38%;
+
+
+
+    flex:
+
+        1 1 38%;
+
+
+
+    max-width:
+
+        500px;
+
+
+
+    padding:
+
+        30px;
+
+
+
+    background:
+
+        #fffaf1;
+
+
+
+    color:
+
+        #2c3e50;
+
+
+
+    border-radius:
+
+        8px;
+
+
+
+    border-left:
+
+        6px solid
+
+        var(--chol-rosa);
+
+
+
+    box-shadow:
+
+        var(--sombra-media);
+
+
+
+    position:
+
+        relative;
+
+}
+
+
+
+
+
+.informacion::before {
+
+
+
+    content:
+
+        "";
+
+
+
+    position:
+
+        absolute;
+
+
+
+    top:
+
+        0;
+
+
+
+    left:
+
+        0;
+
+
+
+    right:
+
+        0;
+
+
+
+    height:
+
+        7px;
+
+
+
+    background:
+
+        repeating-linear-gradient(
+
+            90deg,
+
+
+
+            var(--chol-rosa) 0 20px,
+
+            var(--chol-amarillo) 20px 40px,
+
+            var(--chol-verde) 40px 60px,
+
+            var(--chol-turquesa) 60px 80px,
+
+            var(--chol-morado) 80px 100px
+
+        );
+
+}
+
+
+
+
+
+.informacion h1,
+
+.informacion h2,
+
+.informacion h3 {
+
+
+
+    color:
+
+        var(--chol-morado);
+
+
+
+    margin-bottom:
+
+        12px;
+
+}
+
+
+
+
+
+.informacion p {
+
+
+
+    color:
+
+        #564d44;
+
+
+
+    line-height:
+
+        1.8;
+
+
+
+    margin-bottom:
+
+        10px;
+
+}
+
+
+
+
+
+/* =========================================================
+
+   FOOTER / CRÉDITOS
+
+   ========================================================= */
+
+
+
+/*
+
+   IMPORTANTE:
+
+   No modificamos footer.html ni footer.css.
+
+   Solo hacemos que el iframe tenga espacio suficiente
+
+   para mostrar completamente la sección de créditos.
+
+*/
+
+
+
+body > iframe {
+
+
+
+    width:
+
+        calc(100% - 245px);
+
+
+
+    margin-left:
+
+        245px;
+
+
+
+    height:
+
+        650px;
+
+
+
+    min-height:
+
+        650px;
+
+
+
+    border:
+
+        none;
+
+
+
+    display:
+
+        block;
+
+
+
+    overflow:
+
+        hidden;
+
+}
+
+
+
+
+
+/* =========================================================
+
+   BOTÓN SUBIR
+
+   ========================================================= */
+
+
+
+\#btnTop {
+
+
+
+    position:
+
+        fixed;
+
+
+
+    bottom:
+
+        20px;
+
+
+
+    right:
+
+        20px;
+
+
+
+    z-index:
+
+        1100;
+
+
+
+    background:
+
+        var(--chol-rosa);
+
+
+
+    color:
+
+        #fff;
+
+
+
+    width:
+
+        45px;
+
+
+
+    height:
+
+        45px;
+
+
+
+    border-radius:
+
+        5px;
+
+
+
+    border:
+
+        none;
+
+
+
+    cursor:
+
+        pointer;
+
+
+
+    font-size:
+
+        18px;
+
+
+
+    box-shadow:
+
+        0 5px 15px
+
+        rgba(0,0,0,.20);
+
+
+
+    transition:
+
+        background .3s ease,
+
+        transform .3s ease;
+
+}
+
+
+
+
+
+\#btnTop:hover {
+
+
+
+    background:
+
+        var(--chol-turquesa);
+
+
+
+    transform:
+
+        translateY(-4px);
+
+}
+
+
+
+
+
+/* =========================================================
+
+   SELECCIÓN DE TEXTO
+
+   ========================================================= */
+
+
+
+::selection {
+
+
+
+    background:
+
+        var(--chol-morado);
+
+
+
+    color:
+
+        white;
+
+}
+
+
+
+
+
+/* =========================================================
+
+   ANIMACIONES
+
+   ========================================================= */
+
+
+
+@keyframes aparecer {
+
+
+
+    from {
+
+
+
+        opacity:
+
+            0;
+
+
+
+        transform:
+
+            translateY(20px);
+
+    }
+
+
+
+    to {
+
+
+
+        opacity:
+
+            1;
+
+
+
+        transform:
+
+            translateY(0);
+
+    }
+
+}
+
+
+
+
+
+.card {
+
+
+
+    animation:
+
+        aparecer .6s ease both;
+
+}
+
+
+
+
+
+/* =========================================================
+
+   TABLETS
+
+   ========================================================= */
+
+
+
+@media only screen and (max-width: 991px) {
+
+
+
+    .navbar {
+
+
+
+        width:
+
+            210px;
+
+    }
+
+
+
+
+
+    .header::before {
+
+
+
+        left:
+
+            210px;
+
+    }
+
+
+
+
+
+    .header,
+
+    .container,
+
+    .historiaenraizada,
+
+    .uneteanosotros,
+
+    .galeria,
+
+    .contenido-con-mapa {
+
+
+
+        margin-left:
+
+            210px;
+
+
+
+        width:
+
+            calc(100% - 210px);
+
+    }
+
+
+
+
+
+    body > iframe {
+
+
+
+        margin-left:
+
+            210px;
+
+
+
+        width:
+
+            calc(100% - 210px);
+
+    }
+
+
+
+
+
+    .header-img h1 {
+
+
+
+        font-size:
+
+            58px;
+
+
+
+        letter-spacing:
+
+            5px;
+
+    }
+
+
+
+
+
+    .header-img h2 {
+
+
+
+        font-size:
+
+            40px;
+
+    }
+
+
+
+
+
+    /* Mapa todavía en dos columnas */
+
+
+
+    .contenido-con-mapa {
+
+
+
+        gap:
+
+            25px;
+
+    }
+
+
+
+
+
+    #map {
+
+
+
+        width:
+
+            55%;
+
+
+
+        flex-basis:
+
+            55%;
+
+    }
+
+
+
+
+
+    .informacion {
+
+
+
+        width:
+
+            42%;
+
+
+
+        flex-basis:
+
+            42%;
+
+
+
+        padding:
+
+            25px;
+
+    }
+
+
+
+
+
+    /* Carrusel */
+
+
+
+    .box {
+
+
+
+        width:
+
+            190px;
+
+
+
+        height:
+
+            230px;
+
+    }
+
+
+
+
+
+    .box span {
+
+
+
+        transform:
+
+            rotateY(
+
+                calc(var(--i) * 45deg)
+
+            )
+
+            translateZ(300px);
+
+    }
+
+}
+
+
+
+
+
+/* =========================================================
+
+   TABLETS PEQUEÑAS
+
+   ========================================================= */
+
+
+
+@media only screen and (max-width: 767px) {
+
+
+
+    .navbar {
+
+
+
+        width:
+
+            185px;
+
+
+
+        padding:
+
+            15px 8px;
+
+    }
+
+
+
+
+
+    .header::before {
+
+
+
+        left:
+
+            185px;
+
+
+
+        height:
+
+            28px;
+
+    }
+
+
+
+
+
+    .header,
+
+    .container,
+
+    .historiaenraizada,
+
+    .uneteanosotros,
+
+    .galeria,
+
+    .contenido-con-mapa {
+
+
+
+        margin-left:
+
+            185px;
+
+
+
+        width:
+
+            calc(100% - 185px);
+
+    }
+
+
+
+
+
+    body > iframe {
+
+
+
+        margin-left:
+
+            185px;
+
+
+
+        width:
+
+            calc(100% - 185px);
+
+
+
+        height:
+
+            600px;
+
+
+
+        min-height:
+
+            600px;
+
+    }
+
+
+
+
+
+    .header {
+
+
+
+        padding-top:
+
+            28px;
+
+    }
+
+
+
+
+
+    .header-img {
+
+
+
+        padding:
+
+            40px 20px;
+
+    }
+
+
+
+
+
+    .header-img::before {
+
+
+
+        top:
+
+            30px;
+
+
+
+        left:
+
+            4%;
+
+
+
+        right:
+
+            4%;
+
+
+
+        bottom:
+
+            30px;
+
+    }
+
+
+
+
+
+    .header-img h1 {
+
+
+
+        font-size:
+
+            46px;
+
+
+
+        letter-spacing:
+
+            3px;
+
+    }
+
+
+
+
+
+    .header-img h2 {
+
+
+
+        font-size:
+
+            32px;
+
+
+
+        margin:
+
+            30px 0 15px;
+
+    }
+
+
+
+
+
+    .header-img p {
+
+
+
+        font-size:
+
+            15px;
+
+    }
+
+
+
+
+
+    .textohome {
+
+
+
+        padding:
+
+            22px;
+
+    }
+
+
+
+
+
+    .historiaenraizada,
+
+    .uneteanosotros,
+
+    .galeria,
+
+    .contenido-con-mapa {
+
+
+
+        padding:
+
+            40px 20px;
+
+    }
+
+
+
+
+
+    .historiaenraizada::before,
+
+    .uneteanosotros::before,
+
+    .galeria::before,
+
+    .contenido-con-mapa::before {
+
+
+
+        left:
+
+            20px;
+
+
+
+        right:
+
+            20px;
+
+    }
+
+
+
+
+
+    .container {
+
+
+
+        padding:
+
+            40px 10px;
+
+    }
+
+
+
+
+
+    .container .card {
+
+
+
+        width:
+
+            90%;
+
+
+
+        margin:
+
+            15px auto;
+
+    }
+
+
+
+
+
+    .h1chol {
+
+
+
+        font-size:
+
+            40px;
+
+    }
+
+
+
+
+
+    .h11chol {
+
+
+
+        font-size:
+
+            24px;
+
+    }
+
+
+
+
+
+    /* En pantalla pequeña el mapa pasa arriba
+
+       y la información abajo */
+
+
+
+    .contenido-con-mapa {
+
+
+
+        flex-direction:
+
+            column;
+
+
+
+        flex-wrap:
+
+            wrap;
+
+    }
+
+
+
+
+
+    #map {
+
+
+
+        width:
+
+            100%;
+
+
+
+        flex:
+
+            1 1 100%;
+
+
+
+        min-height:
+
+            350px;
+
+    }
+
+
+
+
+
+    .informacion {
+
+
+
+        width:
+
+            100%;
+
+
+
+        max-width:
+
+            100%;
+
+
+
+        flex:
+
+            1 1 100%;
+
+    }
+
+
+
+
+
+    /* Carrusel */
+
+
+
+    .galeria .container {
+
+
+
+        min-height:
+
+            470px;
+
+
+
+        padding:
+
+            20px 5px;
+
+    }
+
+
+
+
+
+    .box {
+
+
+
+        width:
+
+            170px;
+
+
+
+        height:
+
+            215px;
+
+    }
+
+
+
+
+
+    .box span {
+
+
+
+        transform:
+
+            rotateY(
+
+                calc(var(--i) * 45deg)
+
+            )
+
+            translateZ(260px);
+
+    }
+
+
+
+
+
+    .btns {
+
+
+
+        bottom:
+
+            20px;
+
+    }
+
+}
+
+
+
+
+
+/* =========================================================
+
+   MÓVIL MUY PEQUEÑO
+
+   ========================================================= */
+
+
+
+@media only screen and (max-width: 480px) {
+
+
+
+    .navbar {
+
+
+
+        width:
+
+            165px;
+
+    }
+
+
+
+
+
+    .header::before {
+
+
+
+        left:
+
+            165px;
+
+    }
+
+
+
+
+
+    .header,
+
+    .container,
+
+    .historiaenraizada,
+
+    .uneteanosotros,
+
+    .galeria,
+
+    .contenido-con-mapa {
+
+
+
+        margin-left:
+
+            165px;
+
+
+
+        width:
+
+            calc(100% - 165px);
+
+    }
+
+
+
+
+
+    body > iframe {
+
+
+
+        margin-left:
+
+            165px;
+
+
+
+        width:
+
+            calc(100% - 165px);
+
+
+
+        height:
+
+            550px;
+
+
+
+        min-height:
+
+            550px;
+
+    }
+
+
+
+
+
+    .menu > li {
+
+
+
+        font-size:
+
+            15px;
+
+
+
+        padding:
+
+            10px 7px;
+
+    }
+
+
+
+
+
+    .menu h6 {
+
+
+
+        font-size:
+
+            9px;
+
+    }
+
+
+
+
+
+    .logo img {
+
+
+
+        width:
+
+            90px;
+
+    }
+
+
+
+
+
+    .header-img h1 {
+
+
+
+        font-size:
+
+            38px;
+
+    }
+
+
+
+
+
+    .header-img h2 {
+
+
+
+        font-size:
+
+            27px;
+
+    }
+
+
+
+
+
+    .textohome {
+
+
+
+        padding:
+
+            18px;
+
+    }
+
+
+
+
+
+    .header-img p {
+
+
+
+        font-size:
+
+            14px;
+
+    }
+
+
+
+
+
+    .container .card {
+
+
+
+        width:
+
+            95%;
+
+
+
+        min-height:
+
+            450px;
+
+    }
+
+
+
+
+
+    .h1chol {
+
+
+
+        font-size:
+
+            34px;
+
+    }
+
+
+
+
+
+    .h11chol {
+
+
+
+        font-size:
+
+            21px;
+
+    }
+
+
+
+
+
+    /* Carrusel pequeño */
+
+
+
+    .galeria .container {
+
+
+
+        min-height:
+
+            430px;
+
+
+
+        overflow:
+
+            visible;
+
+    }
+
+
+
+
+
+    .box {
+
+
+
+        width:
+
+            145px;
+
+
+
+        height:
+
+            190px;
+
+    }
+
+
+
+
+
+    .box span {
+
+
+
+        transform:
+
+            rotateY(
+
+                calc(var(--i) * 45deg)
+
+            )
+
+            translateZ(220px);
+
+    }
+
+
+
+
+
+    .btns .btn {
+
+
+
+        width:
+
+            50px;
+
+
+
+        height:
+
+            50px;
+
+    }
+    /* =========================================================
+   MENÚ MÓVIL DESPLEGABLE
+   AGREGADO SIN MODIFICAR LOS ESTILOS EXISTENTES
+   ========================================================= */
+
+/* Elementos del menú móvil ocultos en escritorio */
+
+.btn-menu-movil {
+    display: none;
+}
+
+.menu-overlay {
+    display: none;
+}
+
+
+/* =========================================================
+   MENÚ MÓVIL - TABLETS Y CELULARES
+   ========================================================= */
+
+@media only screen and (max-width: 767px) {
+
+    /* Botón hamburguesa */
+
+    .btn-menu-movil {
+
+        display: flex;
+
+        position: fixed;
+
+        top: 42px;
+        left: 12px;
+
+        width: 48px;
+        height: 48px;
+
+        justify-content: center;
+        align-items: center;
+
+        background:
+            linear-gradient(
+                135deg,
+                var(--chol-rosa),
+                var(--chol-morado)
+            );
+
+        color: #ffffff;
+
+        border: 2px solid var(--chol-amarillo);
+
+        border-radius: 8px;
+
+        font-size: 26px;
+
+        cursor: pointer;
+
+        z-index: 1300;
+
+        box-shadow:
+            0 4px 12px rgba(0,0,0,.35);
+
+    }
+
+
+    /* Fondo oscuro al abrir el menú */
+
+    .menu-overlay {
+
+        display: none;
+
+        position: fixed;
+
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        background:
+            rgba(0,0,0,.60);
+
+        z-index: 1100;
+
+    }
+
+
+    body.menu-abierto .menu-overlay {
+
+        display: block;
+
+    }
+
+
+    /* Barra lateral desplegable */
+
+    .navbar {
+
+        position: fixed;
+
+        top: 0;
+        left: 0;
+
+        width: min(290px, 85vw);
+
+        height: 100vh;
+        height: 100dvh;
+
+        transform: translateX(-105%);
+
+        transition:
+            transform .35s ease;
+
+        z-index: 1200;
+
+        overflow-y: auto;
+
+        padding: 15px 12px;
+
+    }
+
+
+    /* Mostrar menú */
+
+    body.menu-abierto .navbar {
+
+        transform: translateX(0);
+
+    }
+
+
+    /* Evitar desplazamiento de la página */
+
+    body.menu-abierto {
+
+        overflow: hidden;
+
+    }
+
+
+    /* Contenido ocupa todo el ancho */
+
+    .header,
+    .container,
+    .historiaenraizada,
+    .uneteanosotros,
+    .galeria,
+    .contenido-con-mapa {
+
+        margin-left: 0;
+
+        width: 100%;
+
+    }
+
+
+    /* Barra geométrica superior */
+
+    .header::before {
+
+        left: 0;
+
+    }
+
+
+    /* Espacio para el botón móvil */
+
+    .header-img {
+
+        padding-top: 95px;
+
+    }
+
+
+    /* Ajustes del submenú para pantallas táctiles */
+
+    .submenu:hover .submenu-content {
+
+        display: none;
+
+    }
+
+
+    .submenu.abierto > .submenu-content {
+
+        display: block;
+
+    }
+
+
+    /* Pie de página */
+
+    body > iframe {
+
+        margin-left: 0;
+
+        width: 100%;
+
+    }
+
+}
+
+
+/* =========================================================
+   AJUSTES PARA CELULARES PEQUEÑOS
+   ========================================================= */
+
+@media only screen and (max-width: 480px) {
+
+    .btn-menu-movil {
+
+        top: 38px;
+        left: 10px;
+
+        width: 44px;
+        height: 44px;
+
+        font-size: 23px;
+
+    }
+
+
+    .navbar {
+
+        width: min(275px, 85vw);
+
+    }
+
+}
+
+}

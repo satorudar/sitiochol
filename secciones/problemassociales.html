@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Identidad Lingüística Ch'ol</title>
+
+    <link rel="stylesheet" href="../css/seccion.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- BOTÓN DEL MENÚ MÓVIL -->
+    <button
+        id="btnMenuMovil"
+        class="btn-menu-movil"
+        type="button"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+        aria-controls="menuPrincipal"
+    >
+        <i class="fas fa-bars" aria-hidden="true"></i>
+    </button>
+
+    <!-- FONDO OSCURO DEL MENÚ -->
+    <div
+        id="menuOverlay"
+        class="menu-overlay"
+        aria-hidden="true"
+    ></div>
+
+    <header class="header">
+
+        <nav class="navbar" id="menuPrincipal">
+
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../img/logo.webp" alt="Logo">
+                </a>
+            </div>
+
+            <ul class="menu">
+
+                <li class="submenu">
+                    Oño’ty’añ <br>
+                    <h6>Historia</h6>
+
+                    <ul class="submenu-content">
+
+                        <li>
+                            <a href="../secciones/epocaprehispanica.html">
+                                Ijulelo’b ajmayajo’b
+                                <h6>(Epóca prehispanica)</h6>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="../secciones/nuevaespaña.html">
+                                Tsiji’b España
+                                <h6>(Nueva España)</h6>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="../secciones/llegadaatabasco.html">
+                                k’otyel tyi Tabasco
+                                <h6>(Llegada a Tabasco)</h6>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+
+
+                <li class="submenu">
+                    xCh’olo’b <br>
+                    wäle-ili <br>
+                    <h6>Choles de hoy</h6>
+
+                    <ul class="submenu-content">
+
+                        <li>
+                            <a href="../secciones/comunicacionytransporte.html">
+                                lakñämi’b yik’oty lakxänwi’
+                                <h6>(Comunicación y transporte)</h6>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="../secciones/educacion.html">
+                                Pästyä
+                                <h6>(Educación)</h6>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="../secciones/serviciospublicos.html">
+                                Laktyemk’älbal
+                                <h6>(Servicios públicos)</h6>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="../secciones/procesosproductivos.html">
+                                Chäbä yom p’ojlisätyel
+                                <h6>(Procesos productivos)</h6>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="../secciones/problemassociales.html">
+                                Iwolel chumtyäl
+                                <h6>(Problemas sociales)</h6>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+
+
+                <li class="submenu">
+                    Yujilel k’iñ<br>
+                    <h6>Festividades</h6>
+
+                    <ul class="submenu-content">
+
+                        <li>
+                            <a href="#">
+                                2 de Febrero
+                                <h5>(Dia de la Candelaria)</h5>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                Cambio de mayordomia
+                                <h5>(3 de mayo,santa cruz)</h5>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                24 de mayo
+                                <h5>(Dia de Maria Auxiliadora)</h5>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                1 y 2 de Novimbre
+                                <h5>(Dia de los muertos)</h5>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                12 de Diciembre
+                                <h5>(Virgen de Guadalupe)</h5>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                1 y 2 de Noviembre
+                                <h5>(Dia de los muertos)</h5>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+
+
+                <li class="submenu">
+                    Lajkämbal <br>
+                    tyi lakty'añ<br>
+                    <h6>Oralidad</h6>
+
+                    <ul class="submenu-content">
+
+                        <li>
+                            <a href="../secciones/cuentos.html">
+                                Lajkämbal tyi lakty'añ
+                                <h5>(Narraciones orales)</h5>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+
+
+                <li class="submenu">
+                    Uch’ibäl<br>
+                    <h6>Gastronomía</h6>
+
+                    <ul class="submenu-content">
+
+                        <li>
+                            <a href="gastronomia.html">
+                                Uch’ibäl tyi ichajp ichajplel
+                                <h6>(Platillos tipicos)</h6>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+
+
+                <li class="submenu">
+                    Lakty'añtyak<br>
+                    <h6>Vocabulario</h6>
+
+                    <ul class="submenu-content">
+
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-youtube"
+                                    style="color:#FF0000;">
+                                </i>
+                                Registro
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+
+
+                <li class="submenu">
+                    Ajsu’boñel
+                    <i class="fas fa-envelope"></i>
+                    <br>
+                    <h6>Contacto</h6>
+
+                    <ul class="submenu-content">
+
+                        <li>
+                            <a href="https://wa.me/529931353201?text=Hola%20estoy%20interesado%20en%20saber%20más"
+                                target="_blank">
+
+                                <i class="fab fa-whatsapp"
+                                    style="color:#25D366;">
+                                </i>
+
+                                WhatsApp
+
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a href="https://www.facebook.com/profile.php?id=61551605832940"
+                                target="_blank">
+
+                                <i class="fab fa-facebook"
+                                    style="color:#1877F2;">
+                                </i>
+
+                                Facebook
+
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a href="mailto:nuestralenguachol@gmail.com"
+                                target="_blank">
+
+                                <i class="fas fa-envelope"
+                                    style="color:#AEEEEE;">
+                                </i>
+
+                                Correo
+
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a href="https://www.youtube.com/channel/UCw1-uoYB_3AJOigaK3_pUdQ"
+                                target="_blank">
+
+                                <i class="fab fa-youtube"
+                                    style="color:#FF0000;">
+                                </i>
+
+                                YouTube
+
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+            </ul>
+
+        </nav>
+
+
+        <!-- =================================================
+             PORTADA / IMAGEN REPRESENTATIVA
+             ================================================= -->
+
+        <div class="header-content container">
+
+            <div class="header-text">
+
+                <img
+                    src="../img/problemassociales.jpeg"
+                    alt="Problemas sociales de la cultura Ch'ol"
+                    class="portada-seccion"
+                >
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+
+        <!-- =================================================
+             PARTE EN CH'OL
+             ================================================= -->
+
+        <div class="origen">
+
+            <div class="parte espanol">
+
+                <h2>Iwokolel lumaläl</h2>
+
+                <div class="prueva">
+
+                    <p>
+                        Jiñäch bajche’ wa’al kuxulob, ka’bä bajche’ yujilob chumtyäl kixtyañojob che’ bajche’ ity’añob tyi Méxicu li xch’olob yujilo’bä lak yokejty’añ chukuyob tyi municipio cha’añ Tabascu, jiñ ñoj wokolbä bajche’ chumulo’b k’älä che’ñak tyi tyejchi ichajpañob ichumli’ob, che’ bajche’ mi ñusak’iñob, chäch bajche pejtyelumtyak, ajpañ tsiki ik’otyayaj lix CH’olob cha’añ ñoj weñ mi’ mejlel utsaty ichumtyañob cha’añ lajal mi ipuko’b ibä chäbä año’b icha’añob.
+
+                        Jasäjach tyi k’elol bajche’ chumulob jiñi xchòlob, mik ña’tyañla bajche’ iwokolel bajche’ mi ñusaño’b k’iñ Tyi tyajleyob 55 xchumtyälob yujiyo’bä lakyokety’añ ojli año’ tyi Tacotalpa, Nacajuca, Balancán, Macuspana, Tenosique y Centro. Tyi’pejtyelel iliyob 25 ajchumtyälob año’bä tyi grupo “A” yi’k’oty ajchumtyälob ajch’olobä li 70 % o ñoj weñ tyemelob, yi’k’oty 30 lumalil año’bä tyi grupo “B”, yaba’li xchumtyälob mi’läk’ibä tyi 40% y 60%, ajpa añbä yaba’ mi ipäsob bajche’ chumälob yik’oty lakty’añob tyi lak chumli’b.
+
+                        Li ajchumtyälo’b ch’olo’bä wokolächbi bajche’ chumulo’b, wokolbi mi ityajo’b tyak’iñ kuxulo’bi chä’bätyak mi ipäk’ob tyi ilumo’b, bajche’: ixim, bu’ul, ch’ujm, yik’oty yañtyakb päk’äbäl, añ iwokolel chumtyal añ k’iñil añ chäkík’lel, oche’ mi iwa’tyä k’iñ mi yäsäyel ipä’bälelob che jiñi mach mej ichoñob y mach mej ilok’sañ cha’añ ik’uxob.
+
+                        yambä iwolokolel jiñi ajch’olob jiñäch bajche jiñi ibijlelo’b baki mi iñäme ik’axelob tyi troñel yiko´tyi imalil ilumal ma´añ jiñi xcarretere boñolbä bajeche’ xkaxlañob. Kome ma’añ utsaty pätyäl ibijlelob, ñoj wokol baki ityajob ik’ejlelob chä’bä yomob tyi tyojle.
+
+                        Li xcho´olob käla¨xtyobi iwokolelob mi iñusañob k’iñ ora, ma’añ bi icha’añob, jiñi kaxlañ k’ajk, che’ je’el bajche’ ja’, yik’oty iñämi’ tya’äl. Li käñtyisäñtyel wokolächbi je’el, mik ña’tyañla jiñi ñopjuñ, jiñäch muk’bä ijam lakpensal cha’añ mi ikolel lakña’tyi’bal, jiñi käñtyisäñtyel ma’añ mi iweñ k’otyel tyi ityojlelob xkolelob, mach pejtyelek mi ik’otyelob tyi ityojlel. Li käñtyisätyel tyi ityojlelob bi’tyalob muk’uxtyobi its’insaj k’otyel ibaj, mach mi che’ icha’añob bä jiñi ajse’e kolelobä. Jiñcha’añ ka’bäl machbä yujilob k’ejuñ tyi laklumal.
+
+                        Jiñi ajchumtyälob yujilo’bä lakty’añ CH´ol tyi Tabasku yikotyi añtyakbä ajchumtyälob yujilo’bä lakty’añ CH´ol weñ añ iwokolel ma´añ mi kotyiñtyelob che’ ma´añ chuki machbä melj icha’leñob jujunp’ej lum, ma´añ mi lok´ob tyi wenta che’weñ yomox kotyäñtyel tyi tyojlel x-etyelob tyi aña’tyä cha’añ mi mejel uts’aty mi yajñelob tyi chumtyäl tyi lumal.
+                    </p>
+
+
+                    <div class="img-container">
+
+                        <img
+                            src="../img/18galeria.jpg"
+                            alt="Identidad Lingüística Ch'ol"
+                        >
+
+                        <figcaption>
+                            I-yototy lak-ch'olob.
+                        </figcaption>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             PARTE EN ESPAÑOL
+             ================================================= -->
+
+        <div class="origen">
+
+            <div class="parte chol1">
+
+                <h2>Problemas sociales</h2>
+
+                <div class="prueva">
+
+                    <p>
+                        Dentro del vasto mosaico de la diversidad cultural y étnica de México, los Ch'oles, una comunidad indígena asentada en los municipios de Tabasco, se ven inmersos en una realidad marcada por una serie de problemas sociales que resuenan con profundidad en su cotidianidad. Estos desafíos, arraigados en su contexto histórico, cultural y geográfico, pintan un panorama que refleja la lucha de los Ch'oles por un futuro más equitativo y próspero.
+                        <br><br>
+
+                        Una mirada a la demografía de estas localidades indígenas revela la complejidad de su presencia. Se han identificado 55 localidades Ch'oles que cumplen con las características que definen a las poblaciones indígenas, y se distribuyen principalmente en municipios como Tacotalpa, Nacajuca, Balancán, Macuspana, Tenosique y Centro. Entre estas, 25 localidades del tipo A, con una población indígena que representa el 70% o más de la total, y 30 localidades del tipo B, donde la presencia indígena oscila entre el 40% y 60%, resaltan como espacios donde la identidad cultural y lingüística Ch'ol se entrelaza con la vida diaria.
+                        <br><br>
+
+                        Sin embargo, la vida en estas localidades no está exenta de desafíos. Desde el punto de vista socioeconómico, los Ch'oles enfrentan dificultades notorias en áreas cruciales de sus vidas. La agricultura de subsistencia emerge como una actividad esencial, siendo la principal fuente de obtención de alimentos básicos como maíz, frijol, calabaza y otros. Esta dependencia puede ser una fuente de fortaleza cultural, pero también presenta vulnerabilidades, ya que está sujeta a condiciones climáticas impredecibles y a limitaciones en la diversificación económica.
+                        <br><br>
+
+                        La accesibilidad es otro obstáculo que afecta a estas comunidades. Muchas localidades carecen de carreteras pavimentadas, lo que dificulta el acceso a servicios esenciales y oportunidades económicas fuera de sus confines. En esta realidad, la conectividad es más que un tema logístico; es una línea que define la separación entre oportunidad y marginación.
+                        <br><br>
+
+                        Los Ch'oles también enfrentan carencias en infraestructura básica. La falta de servicios públicos, como agua potable y drenaje, crea dificultades en su calidad de vida. Además, la educación se torna un reto. A pesar de ser una herramienta vital para el progreso, las políticas educativas insuficientes limitan la existencia de instalaciones educativas en las localidades indígenas. Aunque la educación básica está relativamente más disponible, los niveles superiores de educación enfrentan limitaciones significativas. Esto contribuye a altos niveles de analfabetismo y a un menor acceso a oportunidades educativas para la población Ch'ol.
+                        <br><br>
+
+                        Los Ch'oles en Tabasco, como muchas otras comunidades indígenas en México, enfrentan una serie de desafíos sociales que impactan directamente en su calidad de vida y oportunidades. Desde la dependencia en la agricultura de subsistencia hasta la falta de servicios públicos y oportunidades educativas limitadas, su realidad es un recordatorio de la urgente necesidad de abordar las inequidades y trabajar en colaboración para un futuro más inclusivo y justo.
+                    </p>
+
+
+                    <div class="img-container">
+
+                        <img
+                            src="../img/18galeria.jpg"
+                            alt="Identidad Lingüística Ch'ol"
+                        >
+
+                        <figcaption>
+                            Vivienda Ch'ol.
+                        </figcaption>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             BOTÓN DE TRADUCCIÓN
+             ================================================= -->
+
+        <button id="cambiarVista">
+            <i class="fas fa-language">Traducir</i>
+        </button>
+
+        <script src="../traducir.js"></script>
+
+
+        <!-- =================================================
+             BOTÓN VOLVER ARRIBA
+             ================================================= -->
+
+        <button id="btnTop" class="hidden">
+            <i class="fas fa-chevron-up"></i>
+        </button>
+
+        <script src="../arriba.js"></script>
+
+    </main>
+
+
+    <!-- =================================================
+         PIE DE PÁGINA
+         ================================================= -->
+
+    <iframe src="../footer.html"></iframe>
+
+    <!-- SCRIPT DEL MENÚ MÓVIL -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const botonMenu = document.getElementById("btnMenuMovil");
+        const menuOverlay = document.getElementById("menuOverlay");
+        const navbarMovil = document.getElementById("menuPrincipal");
+
+        if (!botonMenu || !menuOverlay || !navbarMovil) {
+            return;
+        }
+
+        const iconoMenu = botonMenu.querySelector("i");
+
+        function abrirMenu() {
+            document.body.classList.add("menu-abierto");
+
+            botonMenu.setAttribute("aria-expanded", "true");
+            botonMenu.setAttribute("aria-label", "Cerrar menú");
+            menuOverlay.setAttribute("aria-hidden", "false");
+
+            iconoMenu.classList.remove("fa-bars");
+            iconoMenu.classList.add("fa-xmark");
+        }
+
+        function cerrarMenu() {
+            document.body.classList.remove("menu-abierto");
+
+            botonMenu.setAttribute("aria-expanded", "false");
+            botonMenu.setAttribute("aria-label", "Abrir menú");
+            menuOverlay.setAttribute("aria-hidden", "true");
+
+            iconoMenu.classList.remove("fa-xmark");
+            iconoMenu.classList.add("fa-bars");
+
+            navbarMovil.querySelectorAll(".submenu.abierto")
+                .forEach(function (submenu) {
+                    submenu.classList.remove("abierto");
+                });
+        }
+
+        botonMenu.addEventListener("click", function () {
+            if (document.body.classList.contains("menu-abierto")) {
+                cerrarMenu();
+            } else {
+                abrirMenu();
+            }
+        });
+
+        menuOverlay.addEventListener("click", cerrarMenu);
+
+        navbarMovil.addEventListener("click", function (evento) {
+
+            const enlace = evento.target.closest("a");
+
+            if (enlace) {
+                cerrarMenu();
+                return;
+            }
+
+            const submenu = evento.target.closest("li.submenu");
+
+            if (
+                submenu &&
+                submenu.parentElement.classList.contains("menu") &&
+                window.innerWidth <= 767
+            ) {
+                evento.stopPropagation();
+                submenu.classList.toggle("abierto");
+            }
+        });
+
+        document.addEventListener("keydown", function (evento) {
+            if (evento.key === "Escape") {
+                cerrarMenu();
+            }
+        });
+
+        window.addEventListener("resize", function () {
+            if (window.innerWidth > 767) {
+                cerrarMenu();
+            }
+        });
+
+    });
+    </script>
+
+</body>
+
+</html>

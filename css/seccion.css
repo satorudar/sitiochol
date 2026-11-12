@@ -1,0 +1,1923 @@
+/* =========================================================
+   CH'OLES DE TABASCO
+   SECCIONES INTERNAS
+   DISEÑO: ÉPOCA PREHISPÁNICA / HISTORIA
+   ========================================================= */
+
+
+/* =========================================================
+   1. FUENTES
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&family=Poppins:wght@400;500;600;700;800&family=Roboto:wght@700&family=Skranji:wght@700&display=swap');
+
+
+/* =========================================================
+   2. VARIABLES DEL SITIO
+   ========================================================= */
+
+:root {
+    --chol-rosa: #d81b60;
+    --chol-morado: #7b1fa2;
+    --chol-amarillo: #fbc02d;
+    --chol-verde: #388e3c;
+    --chol-turquesa: #00acc1;
+    --chol-azul: #183f4a;
+    --chol-azul-oscuro: #081820;
+    --chol-azul-medio: #0d2731;
+    --chol-azul-claro: #214b58;
+    --chol-crema: #f7f0e3;
+    --chol-marfil: #fffaf1;
+    --chol-arena: #eadcc7;
+    --chol-texto: #20272a;
+    --chol-texto-claro: #e9f1f2;
+    --sombra-suave: 0 8px 25px rgba(0, 0, 0, 0.22);
+    --sombra-fuerte: 0 15px 40px rgba(0, 0, 0, 0.38);
+    --menu-width: 245px;
+}
+
+
+/* =========================================================
+   3. REINICIO GENERAL
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    line-height: 1.7;
+    color: var(--chol-texto-claro);
+    background:
+        radial-gradient(
+            circle at 80% 15%,
+            rgba(0, 172, 193, 0.10),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 20% 70%,
+            rgba(123, 31, 162, 0.10),
+            transparent 25%
+        ),
+        var(--chol-azul-oscuro);
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   4. BARRA LATERAL
+   ========================================================= */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--menu-width);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 22px 15px 30px;
+    background:
+        linear-gradient(
+            180deg,
+            #111a20 0%,
+            #0b151b 60%,
+            #091218 100%
+        );
+    border-right: 1px solid rgba(0, 172, 193, 0.45);
+    box-shadow:
+        8px 0 30px rgba(0, 0, 0, 0.35);
+    z-index: 3000;
+    overflow: visible;
+}
+
+/* Banda superior */
+
+.navbar::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background:
+        linear-gradient(
+            90deg,
+            var(--chol-rosa),
+            var(--chol-morado),
+            var(--chol-amarillo),
+            var(--chol-verde),
+            var(--chol-turquesa)
+        );
+}
+
+
+/* Decoración inferior */
+
+.navbar::after {
+    content: "◇ ◆ ◇ ◆ ◇";
+    position: absolute;
+    bottom: 18px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: var(--chol-turquesa);
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 5px;
+    opacity: 0.55;
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   5. LOGO
+   ========================================================= */
+
+.logo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.logo a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo img {
+    width: auto;
+    max-width: 125px;
+    height: auto;
+    display: block;
+    margin: 0 auto 12px;
+    filter:
+        drop-shadow(
+            0 5px 8px rgba(0, 0, 0, 0.45)
+        );
+    transition:
+        transform 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.05);
+}
+
+
+/* Banda multicolor */
+
+.logo::after {
+    content: "";
+    display: block;
+    width: 150px;
+    height: 6px;
+    background:
+        linear-gradient(
+            90deg,
+            var(--chol-rosa) 0 20%,
+            var(--chol-morado) 20% 40%,
+            var(--chol-amarillo) 40% 60%,
+            var(--chol-verde) 60% 80%,
+            var(--chol-turquesa) 80% 100%
+        );
+    border-radius: 10px;
+    box-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =========================================================
+   6. MENÚ PRINCIPAL
+   ========================================================= */
+
+.menu {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+.menu > li {
+    width: 100%;
+    position: relative;
+    padding: 10px 8px 14px;
+    font-family: "Skranji", cursive;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+    text-align: left;
+    transition:
+        background-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+/* Separadores geométricos */
+
+.menu > li:not(:last-child)::after {
+    content: "◇  ◆  ◇";
+    position: absolute;
+    left: 0;
+    bottom: 1px;
+    width: 100%;
+    text-align: center;
+    color: var(--chol-turquesa);
+    font-family: Arial, sans-serif;
+    font-size: 8px;
+    letter-spacing: 3px;
+    line-height: 8px;
+    border-bottom:
+        1px solid rgba(234, 220, 199, 0.25);
+    pointer-events: none;
+}
+
+
+/* Colores de los separadores */
+
+.menu > li:nth-child(1)::after {
+    color: var(--chol-rosa);
+}
+
+.menu > li:nth-child(2)::after {
+    color: var(--chol-turquesa);
+}
+
+.menu > li:nth-child(3)::after {
+    color: var(--chol-amarillo);
+}
+
+.menu > li:nth-child(4)::after {
+    color: var(--chol-verde);
+}
+
+.menu > li:nth-child(5)::after {
+    color: var(--chol-morado);
+}
+
+.menu > li:nth-child(6)::after {
+    color: var(--chol-turquesa);
+}
+
+.menu > li:nth-child(7)::after {
+    color: var(--chol-amarillo);
+}
+
+
+/* Hover */
+
+.menu > li:hover {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0, 172, 193, 0.14),
+            rgba(123, 31, 162, 0.10),
+            transparent
+        );
+    border-radius: 8px;
+}
+
+
+/* =========================================================
+   7. ENLACES DEL MENÚ
+   ========================================================= */
+
+.menu li a {
+    display: block;
+    color: #ffffff;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.35;
+    transition:
+        color 0.3s ease,
+        padding-left 0.3s ease;
+}
+
+.menu li a:hover {
+    color: var(--chol-amarillo);
+    padding-left: 4px;
+}
+
+
+/* =========================================================
+   8. SUBMENÚS
+   ========================================================= */
+
+.submenu {
+    position: relative;
+}
+
+.submenu-content {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: calc(100% + 2px);
+    width: 245px;
+    min-width: 245px;
+    margin: 0;
+    padding: 10px;
+    background:
+        linear-gradient(
+            145deg,
+            #101b21,
+            #172b33
+        );
+    border:
+        1px solid var(--chol-turquesa);
+    border-radius:
+        0 12px 12px 12px;
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.50);
+    z-index: 9999;
+}
+
+
+/* Mostrar al pasar el cursor */
+
+.submenu:hover > .submenu-content {
+    display: block;
+}
+
+
+/* Elementos */
+
+.submenu-content li {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Enlaces */
+
+.submenu-content li a {
+    display: block;
+    width: 100%;
+    padding: 10px 12px;
+    color: #ffffff;
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.35;
+    border-radius: 7px;
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        padding-left 0.25s ease;
+}
+
+
+/* Hover */
+
+.submenu-content li a:hover {
+    color: var(--chol-amarillo);
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0, 172, 193, 0.18),
+            rgba(123, 31, 162, 0.15)
+        );
+    padding-left: 17px;
+}
+
+
+/* Textos secundarios */
+
+.submenu-content h5,
+.submenu-content h6 {
+    display: block;
+    margin: 2px 0 0;
+    color: #cbd9dc;
+    font-family: "Poppins", sans-serif;
+    font-size: 9px;
+    font-weight: 400;
+    line-height: 1.25;
+}
+
+
+/* =========================================================
+   9. TEXTO AUXILIAR DEL MENÚ
+   ========================================================= */
+
+.menu h6 {
+    margin-top: 4px;
+    color: #d9e3e5;
+    font-family: "Poppins", sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: 0.5px;
+}
+
+.menu h6:hover {
+    color: var(--chol-turquesa);
+}
+
+
+/* =========================================================
+   10. CABECERA / PORTADA
+   ========================================================= */
+
+.header {
+    margin-left: var(--menu-width);
+    width: calc(100% - var(--menu-width));
+    height: auto;
+    min-height: 0;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(5, 19, 25, 0.97),
+            rgba(19, 58, 69, 0.88)
+        );
+    border-bottom:
+        1px solid rgba(0, 172, 193, 0.45);
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.28);
+}
+
+
+/* =========================================================
+   11. PATRÓN GEOMÉTRICO DE LA PORTADA
+   ========================================================= */
+
+.header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            135deg,
+            transparent 25%,
+            rgba(0, 172, 193, 0.07) 25%,
+            rgba(0, 172, 193, 0.07) 27%,
+            transparent 27%,
+            transparent 73%,
+            rgba(216, 27, 96, 0.06) 73%,
+            rgba(216, 27, 96, 0.06) 75%,
+            transparent 75%
+        );
+    opacity: 0.9;
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   12. BANDA SUPERIOR DE LA PORTADA
+   ========================================================= */
+
+.header::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 7px;
+    background:
+        linear-gradient(
+            90deg,
+            var(--chol-rosa),
+            var(--chol-morado),
+            var(--chol-amarillo),
+            var(--chol-verde),
+            var(--chol-turquesa)
+        );
+}
+
+
+/* =========================================================
+   13. CONTENEDOR DEL ENCABEZADO
+   ========================================================= */
+
+.header-content.container {
+    width: 100%;
+    max-width: none;
+    height: auto;
+    margin: 0;
+    padding: 7px 0 0;
+    display: block;
+    position: relative;
+    background: transparent;
+    z-index: 2;
+}
+
+
+/* =========================================================
+   14. DECORACIONES DE LA PORTADA
+   ========================================================= */
+
+.header-content.container::before,
+.header-content.container::after {
+    position: absolute;
+    color: var(--chol-amarillo);
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    letter-spacing: 5px;
+    opacity: 0.8;
+}
+
+.header-content.container::before {
+    content: "◇ ◆ ◇";
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.header-content.container::after {
+    content: "◇ ◆ ◇";
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+/* =========================================================
+   15. PORTADA CON IMAGEN
+   NUEVO FORMATO HORIZONTAL 1600 x 400 px
+   PROPORCIÓN 4:1
+   ========================================================= */
+
+.header-text {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: relative;
+    z-index: 3;
+    overflow: hidden;
+}
+
+.portada-seccion {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: none;
+    margin: 0 auto;
+    object-fit: contain;
+    object-position: center;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    transform: none;
+    aspect-ratio: 4 / 1;
+}
+
+.portada-seccion:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   15-B. PORTADAS NUEVAS
+   IMAGEN COMPLETA SIN RECORTE
+   ========================================================= */
+
+.seccion-hero {
+    position: absolute;
+    top: 7px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 7px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.seccion-hero-contenedor {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.seccion-hero-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: center;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   16. TÍTULO ANTIGUO DE LA PORTADA
+   ========================================================= */
+
+.header-txt {
+    width: 100%;
+    text-align: center;
+}
+
+.header-txt h1 {
+    margin: 0;
+    color: var(--chol-marfil);
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(38px, 5vw, 58px);
+    font-weight: 400;
+    letter-spacing: 6px;
+    line-height: 1;
+    text-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.65);
+}
+
+
+/* Línea debajo del título */
+
+.header-txt h1::after {
+    content: "";
+    display: block;
+    width: min(300px, 60%);
+    height: 3px;
+    margin: 12px auto 0;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--chol-turquesa),
+            var(--chol-amarillo),
+            var(--chol-rosa),
+            transparent
+        );
+    border-radius: 20px;
+}
+
+
+/* =========================================================
+   17. CONTENIDO PRINCIPAL
+   ========================================================= */
+
+main {
+    width: calc(100% - var(--menu-width));
+    margin-left: var(--menu-width);
+    padding:
+        55px
+        clamp(20px, 5vw, 70px)
+        80px;
+    position: relative;
+}
+
+
+/* =========================================================
+   18. SECCIONES
+   ========================================================= */
+
+.origen {
+    width: 100%;
+    max-width: 1250px;
+    margin:
+        0
+        auto
+        45px;
+    position: relative;
+}
+
+
+/* =========================================================
+   19. TÍTULOS DE CADA SECCIÓN
+   ========================================================= */
+
+.origen h2 {
+    position: relative;
+    margin: 0;
+    padding:
+        20px 25px 18px;
+    color: var(--chol-marfil);
+    font-family: "Bebas Neue", sans-serif;
+    font-size:
+        clamp(28px, 3vw, 42px);
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-align: left;
+    line-height: 1.1;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(24, 63, 74, 0.98),
+            rgba(24, 63, 74, 0.72),
+            transparent
+        );
+    border-left:
+        5px solid var(--chol-turquesa);
+    border-radius:
+        8px 8px 0 0;
+    text-shadow:
+        0 3px 7px rgba(0, 0, 0, 0.4);
+}
+
+
+/* Rombos */
+
+.origen h2::after {
+    content: "◇ ◆ ◇";
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform:
+        translateY(-50%);
+    color: var(--chol-amarillo);
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    letter-spacing: 4px;
+    opacity: 0.8;
+}
+
+
+/* =========================================================
+   20. TARJETAS
+   ========================================================= */
+
+.parte.espanol,
+.parte.chol1 {
+    position: relative;
+    width: 100%;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(247, 240, 227, 0.98),
+            rgba(255, 250, 241, 0.98)
+        );
+    color: var(--chol-texto);
+    border-radius:
+        0 0 16px 16px;
+    overflow: hidden;
+    box-shadow:
+        var(--sombra-suave);
+    border:
+        1px solid rgba(234, 220, 199, 0.8);
+}
+
+
+/* Banda multicolor superior */
+
+.parte.espanol::before,
+.parte.chol1::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background:
+        linear-gradient(
+            90deg,
+            var(--chol-rosa) 0 20%,
+            var(--chol-morado) 20% 40%,
+            var(--chol-amarillo) 40% 60%,
+            var(--chol-verde) 60% 80%,
+            var(--chol-turquesa) 80% 100%
+        );
+}
+
+
+/* Decoración inferior */
+
+.parte.espanol::after,
+.parte.chol1::after {
+    content: "◇ ◆ ◇";
+    display: block;
+    width: 100%;
+    padding:
+        5px
+        0
+        8px;
+    color: var(--chol-turquesa);
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 5px;
+}
+
+
+/* =========================================================
+   21. TEXTO + IMAGEN
+   ========================================================= */
+
+.prueva {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 32px;
+    margin: 0;
+}
+
+
+/* =========================================================
+   22. PÁRRAFOS
+   ========================================================= */
+
+.prueva p {
+    flex: 1 1 auto;
+    width: auto;
+    margin: 0;
+    padding:
+        5px
+        10px
+        5px
+        5px;
+    color: #293337;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    line-height: 1.85;
+    text-align: justify;
+}
+
+
+/* =========================================================
+   23. CONTENEDOR DE IMAGEN
+   ========================================================= */
+
+.prueva .img-container {
+    flex:
+        0 0 320px;
+    width: 320px;
+    max-width: 320px;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* =========================================================
+   24. IMÁGENES DEL CONTENIDO
+   ========================================================= */
+
+.img-container img,
+.parte.espanol img,
+.parte.chol1 img {
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    max-height: 280px;
+    height: auto;
+    object-fit: contain;
+    padding: 8px;
+    background: #10242b;
+    border:
+        2px solid var(--chol-turquesa);
+    border-radius: 12px;
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.25);
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+/* Hover */
+
+.img-container img:hover {
+    transform:
+        translateY(-4px);
+    box-shadow:
+        0 13px 28px rgba(0, 0, 0, 0.32);
+}
+
+
+/* =========================================================
+   25. PIE DE FOTO
+   ========================================================= */
+
+.origen figcaption {
+    width: 100%;
+    margin-top: 10px;
+    padding:
+        5px
+        8px;
+    color: #5a4635;
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.4;
+    text-align: center;
+}
+
+
+/* =========================================================
+   26. VERSIÓN CH'OL
+   ========================================================= */
+
+.parte.chol1 {
+    display: none;
+    background:
+        linear-gradient(
+            145deg,
+            #f6efe2,
+            #fffaf1
+        );
+}
+
+.parte.chol1 p {
+    color: #293337;
+    text-align: justify;
+}
+
+
+/* =========================================================
+   27. FONDO CH'OL
+   ========================================================= */
+
+.fondo-chol1 {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(24, 63, 74, 0.92),
+            rgba(8, 24, 32, 0.98)
+        );
+}
+
+
+/* =========================================================
+   28. BOTÓN TRADUCIR
+   ========================================================= */
+
+#cambiarVista {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    z-index: 5000;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 125px;
+    padding:
+        11px
+        18px;
+    border:
+        2px solid var(--chol-turquesa);
+    border-radius: 30px;
+    background:
+        linear-gradient(
+            135deg,
+            var(--chol-azul),
+            #102b35
+        );
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    cursor: pointer;
+    box-shadow:
+        0 7px 20px rgba(0, 0, 0, 0.35);
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease;
+}
+
+#cambiarVista:hover {
+    transform:
+        translateY(-3px);
+    background:
+        linear-gradient(
+            135deg,
+            var(--chol-morado),
+            var(--chol-rosa)
+        );
+    border-color:
+        var(--chol-amarillo);
+}
+
+
+/* =========================================================
+   29. BOTÓN VOLVER ARRIBA
+   ========================================================= */
+
+#btnTop {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 5000;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border:
+        2px solid var(--chol-turquesa);
+    border-radius: 50%;
+    outline: none;
+    background:
+        rgba(8, 24, 32, 0.92);
+    color: white;
+    font-size: 21px;
+    cursor: pointer;
+    box-shadow:
+        0 7px 18px rgba(0, 0, 0, 0.35);
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease;
+}
+
+#btnTop:hover {
+    transform:
+        translateY(-4px);
+    background:
+        var(--chol-turquesa);
+    color: #07151a;
+}
+
+#btnTop:active {
+    transform:
+        scale(0.95);
+}
+
+
+/* Clase que utiliza JavaScript */
+
+#btnTop.hidden {
+    display: none;
+}
+
+
+/* =========================================================
+   30. FOOTER / CRÉDITOS
+   ========================================================= */
+
+body > iframe {
+    display: block;
+    width:
+        calc(100% - var(--menu-width));
+    height: 650px;
+    margin:
+        0
+        0
+        0
+        var(--menu-width);
+    padding: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   31. ELEMENTOS GENERALES
+   ========================================================= */
+
+figure {
+    margin: 0;
+}
+
+img {
+    max-width: 100%;
+}
+
+button {
+    font-family: inherit;
+}
+
+
+/* =========================================================
+   32. SELECCIÓN DE TEXTO
+   ========================================================= */
+
+::selection {
+    background:
+        var(--chol-turquesa);
+    color:
+        #07151a;
+}
+
+
+/* =========================================================
+   33. BARRA DE DESPLAZAMIENTO DEL MENÚ
+   ========================================================= */
+
+.navbar::-webkit-scrollbar {
+    width: 5px;
+}
+
+.navbar::-webkit-scrollbar-track {
+    background:
+        #091218;
+}
+
+.navbar::-webkit-scrollbar-thumb {
+    background:
+        linear-gradient(
+            var(--chol-turquesa),
+            var(--chol-morado)
+        );
+    border-radius: 10px;
+}
+
+
+/* =========================================================
+   34. TABLET
+   ========================================================= */
+
+@media only screen and (max-width: 1100px) {
+
+    :root {
+        --menu-width: 215px;
+    }
+
+    .navbar {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .logo img {
+        max-width: 105px;
+    }
+
+    .menu > li {
+        font-size: 16px;
+    }
+
+    .menu li a {
+        font-size: 12px;
+    }
+
+
+    /* PORTADA */
+
+    .header {
+        height: auto;
+        min-height: 0;
+    }
+
+    .header-content.container {
+        padding:
+            7px
+            0
+            0;
+    }
+
+    .portada-seccion {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        max-height: none;
+        aspect-ratio: 4 / 1;
+    }
+
+    .seccion-hero-img {
+        object-fit: contain;
+    }
+
+
+    .header-txt h1 {
+        font-size: clamp(36px, 5vw, 52px);
+    }
+
+    .prueva {
+        gap: 20px;
+        padding: 25px;
+    }
+
+    .prueva .img-container {
+        flex-basis: 280px;
+        width: 280px;
+        max-width: 280px;
+    }
+
+    .img-container img,
+    .parte.espanol img,
+    .parte.chol1 img {
+        max-width: 280px;
+        max-height: 250px;
+    }
+}
+
+
+/* =========================================================
+   35. TABLET PEQUEÑA
+   ========================================================= */
+
+@media only screen and (max-width: 850px) {
+
+    :root {
+        --menu-width: 190px;
+    }
+
+    .navbar {
+        padding-top: 18px;
+    }
+
+    .logo img {
+        max-width: 90px;
+    }
+
+    .logo::after {
+        width: 120px;
+    }
+
+    .menu > li {
+        padding:
+            8px
+            5px
+            12px;
+        font-size: 14px;
+    }
+
+    .menu li a {
+        font-size: 11px;
+    }
+
+    .menu h6 {
+        font-size: 8px;
+    }
+
+    .submenu-content {
+        min-width: 205px;
+        width: 205px;
+    }
+
+
+    /* PORTADA */
+
+    .header {
+        height: auto;
+        min-height: 0;
+    }
+
+    .header-content.container {
+        padding:
+            7px
+            0
+            0;
+    }
+
+    .portada-seccion {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        max-height: none;
+        aspect-ratio: 4 / 1;
+    }
+
+    .seccion-hero-img {
+        object-fit: contain;
+    }
+
+    .header-content.container::before,
+    .header-content.container::after {
+        font-size: 14px;
+        letter-spacing: 4px;
+    }
+
+    .header-content.container::before {
+        top: 10px;
+    }
+
+    .header-content.container::after {
+        bottom: 10px;
+    }
+
+    .header-txt h1 {
+        font-size: 48px;
+        letter-spacing: 5px;
+    }
+
+
+    main {
+        padding:
+            40px
+            25px
+            60px;
+    }
+
+    .prueva {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .prueva p {
+        width: 100%;
+        padding: 0;
+    }
+
+    .prueva .img-container {
+        flex: none;
+        width: 75%;
+        max-width: 330px;
+    }
+
+    .img-container img,
+    .parte.espanol img,
+    .parte.chol1 img {
+        max-width: 330px;
+    }
+}
+
+
+/* =========================================================
+   36. TELÉFONOS
+   ========================================================= */
+
+@media only screen and (max-width: 650px) {
+
+    :root {
+        --menu-width: 160px;
+    }
+
+    .navbar {
+        padding:
+            15px
+            7px
+            25px;
+    }
+
+    .logo {
+        margin-bottom: 15px;
+    }
+
+    .logo img {
+        max-width: 75px;
+    }
+
+    .logo::after {
+        width: 100px;
+        height: 4px;
+    }
+
+    .menu > li {
+        padding:
+            7px
+            3px
+            10px;
+        font-size: 12px;
+    }
+
+    .menu li a {
+        font-size: 10px;
+    }
+
+    .menu h6 {
+        display: none;
+    }
+
+
+    /* SUBMENÚ */
+
+    .submenu-content {
+        left:
+            calc(100% + 1px);
+        min-width: 180px;
+        width: 180px;
+        padding: 7px;
+    }
+
+    .submenu-content li a {
+        font-size: 10px;
+        padding:
+            8px
+            9px;
+    }
+
+
+    /* PORTADA */
+
+    .header {
+        height: auto;
+        min-height: 0;
+    }
+
+    .header-content.container {
+        padding:
+            7px
+            0
+            0;
+    }
+
+    .portada-seccion {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        max-height: none;
+        aspect-ratio: 4 / 1;
+    }
+
+    .seccion-hero-img {
+        object-fit: contain;
+    }
+
+    .header-content.container::before,
+    .header-content.container::after {
+        font-size: 12px;
+        letter-spacing: 3px;
+    }
+
+    .header-content.container::before {
+        top: 8px;
+    }
+
+    .header-content.container::after {
+        bottom: 8px;
+    }
+
+    .header-txt h1 {
+        font-size: 38px;
+        letter-spacing: 4px;
+    }
+
+    .header-txt h1::after {
+        width: 180px;
+        height: 2px;
+        margin-top: 8px;
+    }
+
+
+    main {
+        padding:
+            30px
+            15px
+            50px;
+    }
+
+    .origen {
+        margin-bottom: 30px;
+    }
+
+    .origen h2 {
+        font-size: 28px;
+        padding:
+            16px
+            15px;
+    }
+
+    .origen h2::after {
+        display: none;
+    }
+
+    .prueva {
+        padding:
+            20px
+            16px;
+        gap: 20px;
+    }
+
+    .prueva p {
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+    .prueva .img-container {
+        width: 90%;
+        max-width: 300px;
+    }
+
+    .img-container img,
+    .parte.espanol img,
+    .parte.chol1 img {
+        max-width: 300px;
+        max-height: 240px;
+    }
+
+
+    #cambiarVista {
+        top: 12px;
+        right: 12px;
+        min-width: 95px;
+        padding:
+            8px
+            12px;
+        font-size: 10px;
+    }
+
+
+    #btnTop {
+        right: 15px;
+        bottom: 15px;
+        width: 42px;
+        height: 42px;
+        font-size: 18px;
+    }
+
+
+    body > iframe {
+        height: 650px;
+    }
+}
+
+
+/* =========================================================
+   37. TELÉFONOS MUY PEQUEÑOS
+   ========================================================= */
+
+@media only screen and (max-width: 450px) {
+
+    :root {
+        --menu-width: 135px;
+    }
+
+    .navbar {
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+
+    .logo img {
+        max-width: 60px;
+    }
+
+    .logo::after {
+        width: 80px;
+    }
+
+    .menu > li {
+        font-size: 10px;
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+
+    .menu li a {
+        font-size: 8px;
+    }
+
+    .menu > li:not(:last-child)::after {
+        font-size: 6px;
+        letter-spacing: 1px;
+    }
+
+
+    /* SUBMENÚ */
+
+    .submenu-content {
+        min-width: 160px;
+        width: 160px;
+    }
+
+    .submenu-content li a {
+        font-size: 9px;
+    }
+
+
+    /* PORTADA */
+
+    .header {
+        height: auto;
+        min-height: 0;
+    }
+
+    .header-content.container {
+        padding:
+            7px
+            0
+            0;
+    }
+
+    .portada-seccion {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        max-height: none;
+        aspect-ratio: 4 / 1;
+    }
+
+    .seccion-hero-img {
+        object-fit: contain;
+    }
+
+    .header-content.container::before,
+    .header-content.container::after {
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+
+    .header-content.container::before {
+        top: 6px;
+    }
+
+    .header-content.container::after {
+        bottom: 6px;
+    }
+
+    .header-txt h1 {
+        font-size: 30px;
+        letter-spacing: 3px;
+    }
+
+    .header-txt h1::after {
+        width: 140px;
+        height: 2px;
+        margin-top: 6px;
+    }
+
+
+    main {
+        padding:
+            25px
+            10px
+            40px;
+    }
+
+    .origen h2 {
+        font-size: 24px;
+    }
+
+    .prueva {
+        padding:
+            17px
+            12px;
+    }
+
+    .prueva p {
+        font-size: 12px;
+    }
+
+    .prueva .img-container {
+        width: 100%;
+    }
+
+    .img-container img,
+    .parte.espanol img,
+    .parte.chol1 img {
+        max-width: 100%;
+        max-height: 220px;
+    }
+
+    .origen figcaption {
+        font-size: 10px;
+    }
+
+
+    #cambiarVista {
+        min-width: auto;
+        padding:
+            7px
+            9px;
+        font-size: 9px;
+    }
+
+
+    body > iframe {
+        height: 650px;
+    }
+}
+/* =========================================================
+   38. MENÚ MÓVIL DESPLEGABLE
+   SECCIONES INTERNAS
+   AGREGADO SIN MODIFICAR LOS ESTILOS ANTERIORES
+   ========================================================= */
+
+/* Elementos ocultos en escritorio */
+
+.btn-menu-movil {
+    display: none;
+}
+
+.menu-overlay {
+    display: none;
+}
+
+
+/* Adaptación para teléfonos y tabletas */
+
+@media only screen and (max-width: 767px) {
+
+    /* BOTÓN HAMBURGUESA */
+
+    .btn-menu-movil {
+        display: flex;
+        position: fixed;
+        top: 42px;
+        left: 12px;
+        width: 48px;
+        height: 48px;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(
+            135deg,
+            var(--chol-rosa),
+            var(--chol-morado)
+        );
+        color: #ffffff;
+        border: 2px solid var(--chol-amarillo);
+        border-radius: 8px;
+        font-size: 26px;
+        cursor: pointer;
+        z-index: 1300;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+    }
+
+
+    /* FONDO OSCURO */
+
+    .menu-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.60);
+        z-index: 1100;
+    }
+
+    body.menu-abierto .menu-overlay {
+        display: block;
+    }
+
+
+    /* BARRA LATERAL DESPLEGABLE */
+
+    .header {
+        overflow: visible;
+    }
+
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: min(290px, 85vw);
+        height: 100vh;
+        height: 100dvh;
+        transform: translateX(-105%);
+        transition: transform 0.35s ease;
+        z-index: 1200;
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding: 22px 15px 30px;
+    }
+
+    body.menu-abierto .navbar {
+        transform: translateX(0);
+    }
+
+    body.menu-abierto {
+        overflow: hidden;
+    }
+
+
+    /* CONTENIDO SIN DESPLAZAMIENTO LATERAL */
+
+    .header,
+    main,
+    body > iframe {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    main {
+        padding-top: 30px;
+    }
+
+
+    /* SUBMENÚS PARA PANTALLAS TÁCTILES */
+
+    .submenu:hover > .submenu-content {
+        display: none;
+    }
+
+    .submenu.abierto > .submenu-content {
+        display: block;
+        position: static;
+        width: 100%;
+        min-width: 0;
+        margin-top: 8px;
+        border-radius: 8px;
+        box-shadow: none;
+    }
+
+    .submenu-content li a {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+
+    /* BOTONES FIJOS */
+
+    #cambiarVista {
+        top: 12px;
+        right: 12px;
+    }
+}
+
+
+/* TELÉFONOS PEQUEÑOS */
+
+@media only screen and (max-width: 480px) {
+
+    .btn-menu-movil {
+        top: 38px;
+        left: 10px;
+        width: 44px;
+        height: 44px;
+        font-size: 23px;
+    }
+
+    .navbar {
+        width: min(275px, 85vw);
+    }
+}
+
+/* =========================================================
+   AJUSTE DE ALTURA DEL MENÚ EN LAPTOP
+   ========================================================= */
+
+@media screen and (min-width: 768px) and (max-height: 800px) {
+
+    .navbar {
+        padding-top: 12px;
+        padding-bottom: 15px;
+    }
+
+    .logo {
+        margin-bottom: 10px;
+    }
+
+    .logo img {
+        max-width: 85px;
+        margin-bottom: 7px;
+    }
+
+    .logo::after {
+        width: 120px;
+        height: 4px;
+    }
+
+    .menu > li {
+        padding: 5px 8px 9px;
+    }
+
+    .menu li a {
+        font-size: 12px;
+    }
+
+    .menu h6 {
+        margin-top: 2px;
+        font-size: 8px;
+    }
+
+}
+
+/* =====================================================
+   FESTIVIDADES - TEXTO EN UNA SOLA COLUMNA
+   CONSERVANDO LA VISIBILIDAD DE LOS IDIOMAS
+   ===================================================== */
+
+.origen .parte {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+}
+
+.origen .prueva {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 15px;
+}
+
+.origen .prueva p {
+    display: block;
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: none !important;
+    box-sizing: border-box;
+    text-align: justify;
+}
+
+.origen .prueva .img-container {
+    width: 100%;
+    max-width: 100%;
+    flex: none !important;
+    box-sizing: border-box;
+}

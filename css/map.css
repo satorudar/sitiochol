@@ -1,0 +1,21 @@
+.contenido-con-mapa {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan si no caben en la misma fila */
+    justify-content: space-between; /* Alinea los elementos con un espacio entre ellos */
+    margin: 30px;
+}
+  
+#map {
+    width: 50%; /* Limita el ancho del mapa al 50% del contenedor principal */
+    height: 450px;
+    box-sizing: border-box; /* Incluye el padding en el ancho del contenedor */
+  }
+  
+.informacion {
+    width: 45%; /* Limita el ancho de la información al 50% del contenedor principal */
+    padding: 30px 50px; /* Añade espacio alrededor de la información */
+    background-color: #f0f0f0; /* Cambia el color de fondo según tu preferencia */
+    box-sizing: border-box; /* Incluye el padding en el ancho del contenedor */
+   
+}
+  

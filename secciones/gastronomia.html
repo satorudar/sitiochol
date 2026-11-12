@@ -1,0 +1,1687 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gastronomía</title>
+
+    <link rel="stylesheet" href="../css/seccion.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+
+    <!-- =========================================================
+         DISEÑO EXCLUSIVO DE GASTRONOMÍA
+         ========================================================= -->
+
+    <style>
+
+        /* =====================================================
+           CONTENEDOR GENERAL DE LOS PLATILLOS
+           ===================================================== */
+
+        .comidas {
+
+            width: calc(100% - var(--menu-width));
+
+            margin-left: var(--menu-width);
+
+            padding: 45px 50px 60px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 30px;
+
+            background:
+                radial-gradient(
+                    circle at 15% 20%,
+                    rgba(216, 27, 96, 0.08),
+                    transparent 25%
+                ),
+                radial-gradient(
+                    circle at 85% 80%,
+                    rgba(0, 172, 193, 0.08),
+                    transparent 25%
+                );
+        }
+
+
+        /* =====================================================
+           TARJETA INDIVIDUAL
+           ===================================================== */
+
+        .comida-card {
+
+            width: 100%;
+
+            padding: 20px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #214b58,
+                    #183f4a
+                );
+
+            border: 2px solid var(--chol-turquesa);
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.25);
+
+            position: relative;
+
+            overflow: hidden;
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+        }
+
+
+        /* =====================================================
+           DETALLE SUPERIOR DE COLOR
+           ===================================================== */
+
+        .comida-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 5px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--chol-rosa),
+                    var(--chol-morado),
+                    var(--chol-amarillo),
+                    var(--chol-verde),
+                    var(--chol-turquesa)
+                );
+        }
+
+
+        /* =====================================================
+           EFECTO HOVER
+           ===================================================== */
+
+        .comida-card:hover {
+
+            transform: translateY(-5px);
+
+            border-color: var(--chol-amarillo);
+
+            box-shadow:
+                0 14px 32px rgba(0, 0, 0, 0.35);
+        }
+
+
+        /* =====================================================
+           IMÁGENES
+           ===================================================== */
+
+        .comida-card img {
+
+            display: block;
+
+            width: 100%;
+
+            max-width: 300px;
+
+            height: 220px;
+
+            object-fit: contain;
+
+            padding: 8px;
+
+            margin: 5px auto 18px;
+
+            background: #10242b;
+
+            border: 2px solid var(--chol-amarillo);
+
+            border-radius: 14px;
+
+            box-shadow:
+                0 7px 18px rgba(0, 0, 0, 0.28);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+
+        .comida-card:hover img {
+
+            transform: scale(1.03);
+
+            box-shadow:
+                0 10px 24px rgba(0, 0, 0, 0.35);
+        }
+
+
+        /* =====================================================
+           NOMBRE DEL PLATILLO
+           ===================================================== */
+
+        .comida-card h2 {
+
+            width: 100%;
+
+            margin: 0 0 10px;
+
+            color: var(--chol-amarillo);
+
+            font-family: "Poppins", sans-serif;
+
+            font-size: 22px;
+
+            font-weight: 700;
+
+            line-height: 1.3;
+        }
+
+
+        /* =====================================================
+           DESCRIPCIÓN
+           ===================================================== */
+
+        .comida-card p {
+
+            width: 100%;
+
+            margin: 0;
+
+            color: var(--chol-texto-claro);
+
+            font-family: "Poppins", sans-serif;
+
+            font-size: 15px;
+
+            line-height: 1.7;
+
+            text-align: center;
+        }
+
+
+        /* =====================================================
+           TABLET
+           ===================================================== */
+
+        @media (max-width: 900px) {
+
+            .comidas {
+
+                width: 100%;
+
+                margin-left: 0;
+
+                padding:
+                    30px 20px 45px;
+
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+
+                gap: 20px;
+            }
+
+
+            .comida-card {
+
+                padding: 15px;
+            }
+
+
+            .comida-card img {
+
+                height: 180px;
+
+                max-width: 100%;
+            }
+
+
+            .comida-card h2 {
+
+                font-size: 19px;
+            }
+
+
+            .comida-card p {
+
+                font-size: 13px;
+
+                line-height: 1.55;
+            }
+        }
+
+
+        /* =====================================================
+           TELÉFONO MÓVIL
+           SE MANTIENEN DOS COLUMNAS
+           ===================================================== */
+
+        @media (max-width: 650px) {
+
+            .comidas {
+
+                width: 100%;
+
+                margin-left: 0;
+
+                padding:
+                    25px 10px 40px;
+
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+
+                gap: 12px;
+            }
+
+
+            .comida-card {
+
+                padding: 10px;
+
+                border-radius: 13px;
+
+                border-width: 1.5px;
+            }
+
+
+            .comida-card img {
+
+                width: 100%;
+
+                max-width: 100%;
+
+                height: 125px;
+
+                padding: 4px;
+
+                margin:
+                    3px auto 10px;
+
+                border-radius: 9px;
+
+                border-width: 1.5px;
+            }
+
+
+            .comida-card h2 {
+
+                font-size: 15px;
+
+                line-height: 1.25;
+
+                margin-bottom: 6px;
+            }
+
+
+            .comida-card p {
+
+                font-size: 11px;
+
+                line-height: 1.45;
+            }
+
+
+            .comida-card:hover {
+
+                transform: translateY(-3px);
+            }
+
+
+            .comida-card:hover img {
+
+                transform: scale(1.02);
+            }
+        }
+
+
+        /* =====================================================
+           TELÉFONOS PEQUEÑOS
+           ===================================================== */
+
+        @media (max-width: 400px) {
+
+            .comidas {
+
+                padding:
+                    20px 7px 35px;
+
+                gap: 9px;
+            }
+
+
+            .comida-card {
+
+                padding: 8px;
+
+                border-radius: 11px;
+            }
+
+
+            .comida-card img {
+
+                height: 105px;
+
+                padding: 3px;
+
+                margin-bottom: 8px;
+            }
+
+
+            .comida-card h2 {
+
+                font-size: 13px;
+
+                margin-bottom: 5px;
+            }
+
+
+            .comida-card p {
+
+                font-size: 10px;
+
+                line-height: 1.4;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <!-- BOTÓN DEL MENÚ MÓVIL -->
+    <button
+        id="btnMenuMovil"
+        class="btn-menu-movil"
+        type="button"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+        aria-controls="menuPrincipal"
+    >
+        <i class="fas fa-bars" aria-hidden="true"></i>
+    </button>
+
+    <!-- FONDO OSCURO DEL MENÚ -->
+    <div
+        id="menuOverlay"
+        class="menu-overlay"
+        aria-hidden="true"
+    ></div>
+
+
+    <!-- =========================================================
+         ENCABEZADO
+         ========================================================= -->
+
+    <header class="header">
+
+
+        <!-- =====================================================
+             MENÚ
+             ===================================================== -->
+
+        <nav class="navbar" id="menuPrincipal">
+
+
+            <div class="logo">
+
+                <a href="../index.html">
+
+                    <img
+                        src="../img/logo.webp"
+                        alt="Logo">
+
+                </a>
+
+            </div>
+
+
+            <ul class="menu">
+
+
+                <!-- =================================================
+                     HISTORIA
+                     ================================================= -->
+
+                <li class="submenu">
+
+                    Oño’ty’añ
+                    <br>
+
+                    <h6>Historia</h6>
+
+
+                    <ul class="submenu-content">
+
+
+                        <li>
+
+                            <a href="../secciones/epocaprehispanica.html">
+
+                                Ijulelo’b ajmayajo’b
+
+                                <h6>
+                                    (Época prehispanica)
+                                </h6>
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a href="../secciones/nuevaespaña.html">
+
+                                Tsiji’b España
+
+                                <h6>
+                                    (Nueva España)
+                                </h6>
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a href="../secciones/llegadaatabasco.html">
+
+                                k’otyel tyi Tabasco
+
+                                <h6>
+                                    (Llegada a Tabasco)
+                                </h6>
+
+                            </a>
+
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+
+                <!-- =================================================
+                     CHOLES DE HOY
+                     ================================================= -->
+
+                <li class="submenu">
+
+                    xCh’olo’b
+                    <br>
+                    wäle-ili
+                    <br>
+
+                    <h6>
+                        Choles de hoy
+                    </h6>
+
+
+                    <ul class="submenu-content">
+
+
+                        <li>
+
+                            <a href="../secciones/comunicacionytransporte.html">
+
+                                lakñämi’b yik’oty lakxänwi’
+
+                                <h6>
+                                    (Comunicación y transporte)
+                                </h6>
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a href="../secciones/educacion.html">
+
+                                Pästyä
+
+                                <h6>
+                                    (Educación)
+                                </h6>
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a href="../secciones/serviciospublicos.html">
+
+                                Laktyemk’älbal
+
+                                <h6>
+                                    (Servicios públicos)
+                                </h6>
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a href="../secciones/procesosproductivos.html">
+
+                                Chäbä yom p’ojlisätyel
+
+                                <h6>
+                                    (Procesos productivos)
+                                </h6>
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a href="../secciones/problemassociales.html">
+
+                                Iwolel chumtyäl
+
+                                <h6>
+                                    (Problemas sociales)
+                                </h6>
+
+                            </a>
+
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+
+                <!-- =================================================
+                     FESTIVIDADES
+                     ================================================= -->
+
+                <li class="submenu">
+
+                    Yujilel k’iñ
+                    <br>
+
+                    <h6>
+                        Festividades
+                    </h6>
+
+
+                    <ul class="submenu-content">
+
+
+                        <li>
+
+                            <a href="#">
+
+                                2 de Febrero
+
+                                <h5>
+                                    (Dia de la Candelaria)
+                                </h5>
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a href="#">
+
+                                Cambio de mayordomia
+
+                                <h5>
+                                    (3 de mayo,santa cruz)
+                                </h5>
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a href="#">
+
+                                24 de mayo
+
+                                <h5>
+                                    (Dia de Maria Auxiliadora)
+                                </h5>
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a href="#">
+
+                                1 y 2 de Noviembre
+
+                                <h5>
+                                    (Dia de los muertos)
+                                </h5>
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a href="#">
+
+                                12 de Diciembre
+
+                                <h5>
+                                    (Virgen de Guadalupe)
+                                </h5>
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a href="#">
+
+                                1 y 2 de Noviembre
+
+                                <h5>
+                                    (Dia de los muertos)
+                                </h5>
+
+                            </a>
+
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+
+                <!-- =================================================
+                     ORALIDAD
+                     ================================================= -->
+
+                <li class="submenu">
+
+                    Lajkämbal
+                    <br>
+                    tyi lakty'añ
+                    <br>
+
+                    <h6>
+                        Oralidad
+                    </h6>
+
+
+                    <ul class="submenu-content">
+
+
+                        <li>
+
+                            <a href="../secciones/cuentos.html">
+
+                                Lajkämbal tyi lakty'añ
+
+                                <h5>
+                                    (Narraciones orales)
+                                </h5>
+
+                            </a>
+
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+
+                <!-- =================================================
+                     GASTRONOMÍA
+                     ================================================= -->
+
+                <li class="submenu">
+
+                    Uch’ibäl
+                    <br>
+
+                    <h6>
+                        Gastronomía
+                    </h6>
+
+
+                    <ul class="submenu-content">
+
+
+                        <li>
+
+                            <a href="gastronomia.html">
+
+                                Uch’ibäl tyi ichajp ichajplel
+
+                                <h6>
+                                    (Platillos tipicos)
+                                </h6>
+
+                            </a>
+
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+
+                <!-- =================================================
+                     VOCABULARIO
+                     ================================================= -->
+
+                <li class="submenu">
+
+                    Lakty'añtyak
+                    <br>
+
+                    <h6>
+                        Vocabulario
+                    </h6>
+
+
+                    <ul class="submenu-content">
+
+
+                        <li>
+
+                            <a href="#">
+
+                                <i
+                                    class="fab fa-youtube"
+                                    style="color:#FF0000;">
+                                </i>
+
+                                Registro
+
+                            </a>
+
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+
+                <!-- =================================================
+                     CONTACTO
+                     ================================================= -->
+
+                <li class="submenu">
+
+                    Ajsu’boñel
+
+                    <i class="fas fa-envelope"></i>
+
+                    <br>
+
+                    <h6>
+                        Contacto
+                    </h6>
+
+
+                    <ul class="submenu-content">
+
+
+                        <li>
+
+                            <a
+                                href="https://wa.me/529931353201?text=Hola%20estoy%20interesado%20en%20saber%20más"
+                                target="_blank">
+
+                                <i
+                                    class="fab fa-whatsapp"
+                                    style="color:#25D366;">
+                                </i>
+
+                                WhatsApp
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a
+                                href="https://www.facebook.com/profile.php?id=61551605832940"
+                                target="_blank">
+
+                                <i
+                                    class="fab fa-facebook"
+                                    style="color:#1877F2;">
+                                </i>
+
+                                Facebook
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a
+                                href="mailto:nuestralenguachol@gmail.com"
+                                target="_blank">
+
+                                <i
+                                    class="fas fa-envelope"
+                                    style="color:#AEEEEE;">
+                                </i>
+
+                                Correo
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a
+                                href="https://www.youtube.com/channel/UCw1-uoYB_3AJOigaK3_pUdQ"
+                                target="_blank">
+
+                                <i
+                                    class="fab fa-youtube"
+                                    style="color:#FF0000;">
+                                </i>
+
+                                YouTube
+
+                            </a>
+
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+
+            </ul>
+
+        </nav>
+
+
+        <!-- =========================================================
+             PORTADA DE GASTRONOMÍA
+             ========================================================= -->
+
+        <div class="header-content container">
+
+            <div class="header-text">
+
+                <img
+                    src="../img/platillostipicos.jpeg"
+                    alt="Gastronomía de la cultura Ch'ol de Tabasco"
+                    class="portada-seccion">
+
+            </div>
+
+        </div>
+
+
+    </header>
+
+
+    <!-- =========================================================
+         GASTRONOMÍA
+         DOS COLUMNAS
+         ========================================================= -->
+
+    <section class="comidas">
+
+
+        <!-- 1 -->
+
+        <div class="comida-card">
+
+            <img
+                src="../img/tamales.JPG"
+                alt="Tamales Ch'oles">
+
+            <h2>
+                Tamales Ch'oles
+            </h2>
+
+            <p>
+                Los tamales ch'oles son una delicia hecha con masa de maíz,
+                rellenos de carne de pollo o de res guisada y envueltos
+                en hojas de plátano.
+            </p>
+
+        </div>
+
+
+        <!-- 2 -->
+
+        <div class="comida-card">
+
+            <img
+                src="../img/pozol de cacao.jpeg"
+                alt="Pozol con cacao">
+
+            <h2>
+                Pozol con cacao
+            </h2>
+
+            <p>
+                Bebida tradicional hecha a base de maíz y cacao,
+                refrescante y nutritiva.
+            </p>
+
+        </div>
+
+
+        <!-- 3 -->
+
+        <div class="comida-card">
+
+            <img
+                src="../img/puchero.jpg"
+                alt="Puchero">
+
+            <h2>
+                Puchero
+            </h2>
+
+            <p>
+                El puchero es una comida tipica que consiste
+                en carne de res con verduras.
+            </p>
+
+        </div>
+
+
+        <!-- 4 -->
+
+        <div class="comida-card">
+
+            <img
+                src="../img/frijoles.jpeg"
+                alt="Frijol con arroz">
+
+            <h2>
+                Frijol con arroz
+            </h2>
+
+            <p>
+                Un caldo de frijoles guisados acompañado de arroz blanco.
+            </p>
+
+        </div>
+
+
+        <!-- 5 -->
+
+        <div class="comida-card">
+
+            <img
+                src="../img/tortillas.jpeg"
+                alt="Tortillas hechas a mano">
+
+            <h2>
+                Tortillas hechas a mano
+            </h2>
+
+            <p>
+                Tortillas preparadas a base de maiz y calentadas a fogon.
+            </p>
+
+        </div>
+
+
+        <!-- 6 -->
+
+        <div class="comida-card">
+
+            <img
+                src="../img/castaдa.jpeg"
+                alt="Castañas">
+
+            <h2>
+                Castañas
+            </h2>
+
+            <p>
+                Son las semillas del arbol de castaña herbidas.
+            </p>
+
+        </div>
+
+
+        <!-- 7 -->
+
+        <div class="comida-card">
+
+            <img
+                src="../img/chaya.jpeg"
+                alt="Chaya">
+
+            <h2>
+                Chaya
+            </h2>
+
+            <p>
+                Son las hojas de la planta de chaya, esta tiene
+                diferentes variedades y se preparan a herbor.
+            </p>
+
+        </div>
+
+
+        <!-- 8 -->
+
+        <div class="comida-card">
+
+            <img
+                src="../img/tamales de elote.jpeg"
+                alt="Tamalitos de Elote">
+
+            <h2>
+                Tamalitos de Elote
+            </h2>
+
+            <p>
+                Platillo tpico de la region a base de una masa de elotes,
+                envuelto en hoja de elotes y hervido.
+            </p>
+
+        </div>
+
+
+        <!-- 9 -->
+
+        <div class="comida-card">
+
+            <img
+                src="../img/torta de elote.jpeg"
+                alt="Torta de Elote">
+
+            <h2>
+                Torta de Elote
+            </h2>
+
+            <p>
+                Platillo tipico a base de una masa de elote horneado.
+            </p>
+
+        </div>
+
+
+        <!-- 10 -->
+
+        <div class="comida-card">
+
+            <img
+                src="../img/malanga.jpeg"
+                alt="Malanga">
+
+            <h2>
+                Malanga
+            </h2>
+
+            <p>
+                Platillo hecho a base de herbor,
+                especialmente para acompañar el desayuno.
+            </p>
+
+        </div>
+
+
+        <!-- 11 -->
+
+        <div class="comida-card">
+
+            <img
+                src="../img/dulce de coco.jpeg"
+                alt="Dulce de coco">
+
+            <h2>
+                Dulce de coco
+            </h2>
+
+            <p>
+                Comida dulce hecha de coco con azucar,
+                esta puede ser acompañada de pozol.
+            </p>
+
+        </div>
+
+
+        <!-- 12 -->
+
+        <div class="comida-card">
+
+            <img
+                src="../img/dulce de papaya.jpeg"
+                alt="Dulce de papaya">
+
+            <h2>
+                Dulce de papaya
+            </h2>
+
+            <p>
+                Comida dulce hecha de papaya con azucar,
+                esta puede ser acompañada de pozol.
+            </p>
+
+        </div>
+
+
+        <!-- 13 -->
+
+        <div class="comida-card">
+
+            <img
+                src="../img/caracol.jpeg"
+                alt="Caracol">
+
+            <h2>
+                Caracol
+            </h2>
+
+            <p>
+                Platillo creado con caracoles de rio y platano verde.
+            </p>
+
+        </div>
+
+
+        <!-- 14 -->
+
+        <div class="comida-card">
+
+            <img
+                src="../img/tostada.jpeg"
+                alt="Tostadas">
+
+            <h2>
+                Tostadas
+            </h2>
+
+            <p>
+                Tortilla tostada elaborada de maiz tierno.
+            </p>
+
+        </div>
+
+
+        <!-- 15 -->
+
+        <div class="comida-card">
+
+            <img
+                src="../img/tortilla de calabaza.jpeg"
+                alt="Empanada de calabaza">
+
+            <h2>
+                Empanada de calabaza
+            </h2>
+
+            <p>
+                Es una tortilla doblada hecha con semillas de calabaza
+                triturada y el relleno es de frijoles fritos.
+            </p>
+
+        </div>
+
+
+        <!-- 16 -->
+
+        <div class="comida-card">
+
+            <img
+                src="../img/tortilla de frijol.jpeg"
+                alt="Tortilla de frijol">
+
+            <h2>
+                Tortilla de frijol
+            </h2>
+
+            <p>
+                Tortilla hecha a base de maza revuelta con frijoles.
+            </p>
+
+        </div>
+
+
+        <!-- 17 -->
+
+        <div class="comida-card">
+
+            <img
+                src="../img/platanitos.jpeg"
+                alt="Platanitos fritos">
+
+            <h2>
+                Platanitos fritos
+            </h2>
+
+            <p>
+                Platanidos preparados aplastados y fritos.
+            </p>
+
+        </div>
+
+
+        <!-- 18 -->
+
+        <div class="comida-card">
+
+            <img
+                src="../img/chayote.jpeg"
+                alt="Chayotes sancochados">
+
+            <h2>
+                Chayotes sancochados
+            </h2>
+
+            <p>
+                Chayotes hechos a herbor.
+            </p>
+
+        </div>
+
+
+        <!-- 19 -->
+
+        <div class="comida-card">
+
+            <img
+                src="../img/huevo asado.jpeg"
+                alt="Huevo asado">
+
+            <h2>
+                Huevo asado
+            </h2>
+
+            <p>
+                Comida hecha de huevo revuelto que se pone
+                a asar en el comal.
+            </p>
+
+        </div>
+
+
+        <!-- 20 -->
+
+        <div class="comida-card">
+
+            <img
+                src="../img/pescado.jpeg"
+                alt="Pescado en mone">
+
+            <h2>
+                Pescado en mone
+            </h2>
+
+            <p>
+                Comida elaborada de pescado, hierva santa (momo),
+                platano y otros complementos, esta se coloca
+                en el fogon y se deja asando.
+            </p>
+
+        </div>
+
+
+        <!-- 21 -->
+
+        <div class="comida-card">
+
+            <img
+                src="../img/pozol blanco.jpeg"
+                alt="Pozol blanco">
+
+            <h2>
+                Pozol blanco
+            </h2>
+
+            <p>
+                Bebida tradicional hecha a base de maíz,
+                refrescante y nutritiva.
+            </p>
+
+        </div>
+
+
+        <!-- 22 -->
+
+        <div class="comida-card">
+
+            <img
+                src="../img/quelite.jpeg"
+                alt="Quelite">
+
+            <h2>
+                Quelite
+            </h2>
+
+            <p>
+                Hojas de una planta, esta es una de las variedades
+                de la chaya, esta se prepara hirviendola.
+            </p>
+
+        </div>
+
+
+        <!-- 23 -->
+
+        <div class="comida-card">
+
+            <img
+                src="../img/empanada de huevo.jpeg"
+                alt="Empanada de huevo">
+
+            <h2>
+                Empanada de huevo
+            </h2>
+
+            <p>
+                Bebida tradicional hecha a base de maíz,
+                refrescante y nutritiva.
+            </p>
+
+        </div>
+
+
+        <!-- 24 -->
+
+        <div class="comida-card">
+
+            <img
+                src="../img/tamales de frijol.jpeg"
+                alt="Tamalitos de frijol">
+
+            <h2>
+                Tamalitos de frijol
+            </h2>
+
+            <p>
+                Comida tipica preparada de maza con relleno
+                de frijoles e hierba santa (momo).
+            </p>
+
+        </div>
+
+
+        <!-- 25 -->
+
+        <div class="comida-card">
+
+            <img
+                src="../img/pollo con arroz.jpeg"
+                alt="Caldo de pollo con arroz">
+
+            <h2>
+                Caldo de pollo con arroz
+            </h2>
+
+            <p>
+                Platillo tipico preparado con pollo,
+                verduras y arroz.
+            </p>
+
+        </div>
+
+
+        <!-- 26 -->
+
+        <div class="comida-card">
+
+            <img
+                src="../img/caldo de pollo.jpeg"
+                alt="Caldo blanco">
+
+            <h2>
+                Caldo blanco
+            </h2>
+
+            <p>
+                Caldo de pollo sancochado.
+            </p>
+
+        </div>
+
+
+        <!-- 27 -->
+
+        <div class="comida-card">
+
+            <img
+                src="../img/pescado frito.jpeg"
+                alt="Pescado frito">
+
+            <h2>
+                Pescado frito
+            </h2>
+
+            <p>
+                Pescado Frito acompañado de ensalada
+                de lechuga y cebolla con chile.
+            </p>
+
+        </div>
+
+
+        <!-- 28 -->
+
+        <div class="comida-card">
+
+            <img
+                src="../img/elote.jpeg"
+                alt="Elotes hervidos">
+
+            <h2>
+                Elotes herbidos
+            </h2>
+
+            <p>
+                Elote herbido embarrado de mayonesa
+                y bañado de chile en polvo.
+            </p>
+
+        </div>
+
+
+        <!-- 29 -->
+
+        <div class="comida-card">
+
+            <img
+                src="../img/chanchamitos.jpeg"
+                alt="Chanchamitos">
+
+            <h2>
+                Chanchamitos
+            </h2>
+
+            <p>
+                Creado con maza y relleno con carne deshebrada,
+                es como los tamales pero pequeño.
+            </p>
+
+        </div>
+
+
+        <!-- 30 -->
+
+        <div class="comida-card">
+
+            <img
+                src="../img/chinin.jpeg"
+                alt="Chinin">
+
+            <h2>
+                Chinin
+            </h2>
+
+            <p>
+                Fruta que se da en las zonas ch'oles,
+                se convirtio en uno de sus alimentos base de temporada.
+            </p>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =========================================================
+         PIE DE PÁGINA
+         ========================================================= -->
+
+    <iframe
+        src="../footer.html"
+        width="100%"
+        height="500px"
+        frameborder="0">
+    </iframe>
+
+
+    <!-- SCRIPT DEL MENÚ MÓVIL -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const botonMenu = document.getElementById("btnMenuMovil");
+        const menuOverlay = document.getElementById("menuOverlay");
+        const navbarMovil = document.getElementById("menuPrincipal");
+
+        if (!botonMenu || !menuOverlay || !navbarMovil) {
+            return;
+        }
+
+        const iconoMenu = botonMenu.querySelector("i");
+
+        function abrirMenu() {
+            document.body.classList.add("menu-abierto");
+
+            botonMenu.setAttribute("aria-expanded", "true");
+            botonMenu.setAttribute("aria-label", "Cerrar menú");
+            menuOverlay.setAttribute("aria-hidden", "false");
+
+            iconoMenu.classList.remove("fa-bars");
+            iconoMenu.classList.add("fa-xmark");
+        }
+
+        function cerrarMenu() {
+            document.body.classList.remove("menu-abierto");
+
+            botonMenu.setAttribute("aria-expanded", "false");
+            botonMenu.setAttribute("aria-label", "Abrir menú");
+            menuOverlay.setAttribute("aria-hidden", "true");
+
+            iconoMenu.classList.remove("fa-xmark");
+            iconoMenu.classList.add("fa-bars");
+
+            navbarMovil.querySelectorAll(".submenu.abierto")
+                .forEach(function (submenu) {
+                    submenu.classList.remove("abierto");
+                });
+        }
+
+        botonMenu.addEventListener("click", function () {
+            if (document.body.classList.contains("menu-abierto")) {
+                cerrarMenu();
+            } else {
+                abrirMenu();
+            }
+        });
+
+        menuOverlay.addEventListener("click", cerrarMenu);
+
+        navbarMovil.addEventListener("click", function (evento) {
+
+            const enlace = evento.target.closest("a");
+
+            if (enlace) {
+                cerrarMenu();
+                return;
+            }
+
+            const submenu = evento.target.closest("li.submenu");
+
+            if (
+                submenu &&
+                submenu.parentElement.classList.contains("menu") &&
+                window.innerWidth <= 767
+            ) {
+                evento.stopPropagation();
+                submenu.classList.toggle("abierto");
+            }
+        });
+
+        document.addEventListener("keydown", function (evento) {
+            if (evento.key === "Escape") {
+                cerrarMenu();
+            }
+        });
+
+        window.addEventListener("resize", function () {
+            if (window.innerWidth > 767) {
+                cerrarMenu();
+            }
+        });
+
+    });
+    </script>
+
+</body>
+
+</html>

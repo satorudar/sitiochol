@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Choles de Tabasco</title>
+    <link rel="shortcut icon" href="img/logo.webp" type="image/x-icon" />
+    <link rel="stylesheet" href="css/map.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkVxhczAwJC_TxZzbRFR3NaGvfz1-bqkM&callback=initMap"
+      async
+      defer
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <style>
+      /* =========================================================
+         BOTÓN ÚNICO DE TRADUCCIÓN
+         ========================================================= */
+      .boton-traduccion-contenedor {
+        position: fixed;
+        top: 18px;
+        right: 25px;
+        z-index: 9999;
+      }
+      #btnIdioma {
+        border: 2px solid #fbc02d;
+        background: linear-gradient(
+          135deg,
+          #7b1fa2,
+          #d81b60,
+          #00acc1
+        );
+        color: #ffffff;
+        padding: 11px 22px;
+        border-radius: 30px;
+        font-family: "Poppins", sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow:
+          0 6px 18px rgba(0, 0, 0, 0.30),
+          0 0 12px rgba(251, 192, 45, 0.20);
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+      #btnIdioma:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow:
+          0 10px 25px rgba(0, 0, 0, 0.35),
+          0 0 18px rgba(251, 192, 45, 0.35);
+      }
+      #btnIdioma i {
+        margin-right: 8px;
+      }
+      /* =========================================================
+         ELEMENTOS DE TRADUCCIÓN
+         ========================================================= */
+      .traduccion-es {
+        display: none;
+      }
+      body.modo-espanol .chol-visible {
+        display: none !important;
+      }
+      body.modo-espanol .traduccion-es {
+        display: block;
+      }
+      body.modo-espanol .traduccion-es-inline {
+        display: inline;
+      }
+      /* =========================================================
+         TÍTULO DEL MAPA EN ESPAÑOL
+         ========================================================= */
+      .traduccion-es.h1chol {
+        font-size: 2.2rem;
+        line-height: 1.2;
+        text-align: center;
+        white-space: normal;
+        width: 100%;
+        box-sizing: border-box;
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+      /* =========================================================
+         LEYENDAS DE LAS DOS FOTOGRAFÍAS
+         ========================================================= */
+      .image-with-caption {
+        text-align: center;
+      }
+      .image-with-caption img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .image-with-caption figcaption {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      /* =========================================================
+         BOTÓN EN DISPOSITIVOS PEQUEÑOS
+         ========================================================= */
+      @media (max-width: 650px) {
+        .boton-traduccion-contenedor {
+          top: 12px;
+          right: 12px;
+        }
+        #btnIdioma {
+          padding: 9px 15px;
+          font-size: 12px;
+        }
+        #btnIdioma i {
+          margin-right: 5px;
+        }
+        /* Título del mapa en celular */
+        .traduccion-es.h1chol {
+          font-size: 1.55rem;
+          line-height: 1.25;
+          padding-left: 12px;
+          padding-right: 12px;
+        }
+        /* Leyendas centradas en celular */
+        .image-with-caption figcaption {
+          text-align: center;
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- =========================================================
+         BOTÓN DEL MENÚ PARA DISPOSITIVOS MÓVILES
+         ========================================================= -->
+    <button
+      id="btnMenuMovil"
+      class="btn-menu-movil"
+      type="button"
+      aria-label="Abrir menú"
+      aria-expanded="false"
+      aria-controls="menuPrincipal"
+    >
+      <i class="fas fa-bars" aria-hidden="true"></i>
+    </button>
+    <!-- FONDO OSCURO AL ABRIR EL MENÚ -->
+    <div
+      id="menuOverlay"
+      class="menu-overlay"
+      aria-hidden="true"
+    ></div>
+    <!-- =========================================================
+         BOTÓN ÚNICO DE TRADUCCIÓN
+         ========================================================= -->
+    <div class="boton-traduccion-contenedor">
+      <button id="btnIdioma" type="button">
+        <i class="fas fa-language"></i>
+        <span id="textoBoton">
+          Traducir al español
+        </span>
+      </button>
+    </div>
+    <!-- =========================================================
+         ENCABEZADO
+         ========================================================= -->
+    <header class="header">
+      <nav class="navbar" id="menuPrincipal">
+        <div class="logo">
+          <a href="index.html">
+            <img
+              src="img/logo.webp"
+              alt="Logo"
+            />
+          </a>
+        </div>
+        <!-- =====================================================
+             MENÚ ORIGINAL
+             ===================================================== -->
+        <ul class="menu">
+          <li class="submenu">
+            Oño’ty’añ <br />
+            <h6>Historia</h6>
+            <ul class="submenu-content">
+              <li>
+                <a href="./secciones/epocaprehispanica.html">
+                  Ijulelob ajmayajob
+                  <h6>
+                    (Epóca prehispanica)
+                  </h6>
+                </a>
+              </li>
+              <li>
+                <a href="./secciones/nuevaespaña.html">
+                  Tsijib España
+                  <h6>
+                    (Nueva España)
+                  </h6>
+                </a>
+              </li>
+              <li>
+                <a href="./secciones/llegadaatabasco.html">
+                  k’otyel tyi Tabasco
+                  <h6>
+                    (Llegada a Tabasco)
+                  </h6>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="submenu">
+            xCh’olo’b <br />
+            wäle-ili <br />
+            <h6>
+              Choles de hoy
+            </h6>
+            <ul class="submenu-content">
+              <li>
+                <a href="./secciones/comunicacionytransporte.html">
+                  lakñämi’b yik’oty lakxänwi’
+                  <h6>
+                    (Comunicación y transporte)
+                  </h6>
+                </a>
+              </li>
+              <li>
+                <a href="./secciones/educacion.html">
+                  Pästyä
+                  <h6>
+                    (Educación)
+                  </h6>
+                </a>
+              </li>
+              <li>
+                <a href="./secciones/serviciospublicos.html">
+                  Laktyemk’älbal
+                  <h6>
+                    (Servicios públicos)
+                  </h6>
+                </a>
+              </li>
+              <li>
+                <a href="./secciones/procesosproductivos.html">
+                  Chäbä yom p’ojlisätyel
+                  <h6>
+                    (Procesos productivos)
+                  </h6>
+                </a>
+              </li>
+              <li>
+                <a href="./secciones/problemassociales.html">
+                  Iwolel chumtyäl
+                  <h6>
+                    (Problemas sociales)
+                  </h6>
+                </a>
+              </li>
+            </ul>
+          </li>
+          
+<li class="submenu">
+
+    Yujilel k’iñ<br />
+
+    <h6>Festividades</h6>
+
+    <ul class="submenu-content">
+
+        <li>
+            <a href="./secciones/festividades.html#candelaria">
+                2 de febrero
+                <h5>(Día de la Candelaria)</h5>
+            </a>
+        </li>
+
+        <li>
+            <a href="./secciones/festividades.html#santa-cruz">
+                3 de mayo
+                <h5>(Día de la Santa Cruz)</h5>
+            </a>
+        </li>
+
+        <li>
+            <a href="./secciones/festividades.html#cambio-mayordomia">
+                Cambio de mayordomía
+                <h5>(Víspera de María Auxiliadora)</h5>
+            </a>
+        </li>
+
+        <li>
+            <a href="./secciones/festividades.html#maria-auxiliadora">
+                24 de mayo
+                <h5>(Día de María Auxiliadora)</h5>
+            </a>
+        </li>
+
+        <li>
+            <a href="./secciones/festividades.html#dia-muertos">
+                1 y 2 de noviembre
+                <h5>(Día de Muertos)</h5>
+            </a>
+        </li>
+
+        <li>
+            <a href="./secciones/festividades.html#guadalupe">
+                12 de diciembre
+                <h5>(Virgen de Guadalupe)</h5>
+            </a>
+        </li>
+
+    </ul>
+
+</li>
+
+          <li class="submenu">
+            Lajkämbal <br />
+            tyi lakty'añ<br />
+            <h6>
+              Oralidad
+            </h6>
+            <ul class="submenu-content">
+              <li>
+                <a href="./secciones/cuentos.html">
+                  Lajkämbal tyi lakty'añ
+                  <h5>
+                    (Narraciones orales)
+                  </h5>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="submenu">
+            Uch’i'bäl<br />
+            <h6>
+              Gastronomía
+            </h6>
+            <ul class="submenu-content">
+              <li>
+                <a href="./secciones/gastronomia.html">
+                  Uch’i'bäl tyi ichajp ichajplel
+                  <h6>
+                    (Platillos tipicos)
+                  </h6>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="submenu">
+            Lakty'añtyak<br />
+            <h6>
+              Vocabulario
+            </h6>
+            <ul class="submenu-content">
+              <li>
+                <a href="./secciones/vocabulario.html">
+                  Registro
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="submenu">
+            Ajsu’boñel
+            <i class="fas fa-envelope"></i>
+            <br />
+            <h6>
+              Contacto
+            </h6>
+            <ul class="submenu-content">
+              <li>
+                <a
+                  href="https://wa.me/529931353201?text=Hola%20estoy%20interesado%20en%20saber%20más"
+                  target="_blank"
+                >
+                  <i
+                    class="fab fa-whatsapp"
+                    style="color: #25d366"
+                  ></i>
+                  WhatsApp
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.facebook.com/profile.php?id=61551605832940"
+                  target="_blank"
+                >
+                  <i
+                    class="fab fa-facebook"
+                    style="color: #1877f2"
+                  ></i>
+                  Facebook
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:nuestralenguachol@gmail.com"
+                  target="_blank"
+                >
+                  <i
+                    class="fas fa-envelope"
+                    style="color: #aeeeee"
+                  ></i>
+                  Correo
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.youtube.com/channel/UCw1-uoYB_3AJOigaK3_pUdQ"
+                  target="_blank"
+                >
+                  <i
+                    class="fab fa-youtube"
+                    style="color: #ff0000"
+                  ></i>
+                  YouTube
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <!-- =======================================================
+           HERO
+           ======================================================= -->
+      <div class="header-content">
+        <div class="header-img">
+          <h1>
+            <span class="ityped"></span>
+          </h1>
+          <script
+            type="text/javascript"
+            src="ityped.js"
+          ></script>
+          <script type="text/javascript">
+            window.ityped.init(
+              document.querySelector(".ityped"),
+              {
+                strings: [
+                  "Uts’atyix la’julel",
+                  "Lakty’añ Tabasco",
+                  "Ch’oles de Tabasco",
+                ],
+                loop: true,
+              }
+            );
+          </script>
+          <h2 class="chol-visible">
+            Woli k-p'ayik'et cha'añ mi a-wilan jini ñoj uts'at bäl
+            i-cuxtälel lak-ch'olob tyi Tabasco.
+          </h2>
+          <h2 class="traduccion-es">
+            Explora la riqueza cultural de los Ch'oles de Tabasco
+          </h2>
+          <p class="textohome chol-visible">
+            Tyi mal jini witsil lum tyi Tabasco, México, añ jini
+            ch’ujul yik’oty p’it’il i-cuxtälel lak-ch’ol.
+            Jini ch’olob, jiñi i-ymä’tye’el tyi jini wi’ixix bäl
+            mayaob, tsa’ix i-k'elboniyob i-ba tyi jini ñoj ñuk bäl
+            k’iñob, woli i-joltan i-ty’añ, i-melbal yik’oty
+            i-ts'äktyälel. Woli k-p'ayik'etob cha'añ mi a-wilan
+            yik’oty mi a-ñushyañ jini ñoj uts'at bäl i-cuxtälel
+            lak-ch’ol tyi jini i-yejtalil woli bäl i-puk i-k’aba’
+            lak-cuxtälel.
+          </p>
+          <p class="textohome traduccion-es">
+            En el centro de la región montañosa de Tabasco, México,
+            se encuentra la cultura Ch'ol, que es ancestral y vibrante.
+            Los Ch'oles, cuya descendencia se remonta a los antiguos
+            mayas, han mantenido su identidad única a lo largo de los
+            siglos, manteniendo en pie sus costumbres, relaciones
+            ancestrales y lingüísticas. Te invitamos a explorar y
+            saborear la rica herencia de los Ch'oles a través de esta
+            plataforma que busca difundir su cultura.
+          </p>
+        </div>
+      </div>
+    </header>
+        <!-- =========================================================
+         HISTORIA ENRAIZADA
+         ========================================================= -->
+    <div class="historiaenraizada">
+      <div class="columna-izquierda">
+        <h2 class="chol-visible">
+          Yälol oño’ty’añ iwa’tyä kuxtyäl iñuklel alMayajob
+        </h2>
+        <p class="chol-visible">
+          Iñuklel jiñi ajCh’ol laja mi itsuyob ibä yik’oty
+          iñukle ajMayajo’b. tyi ja’bil precolonbina, tyi
+          ilumilel ba’ lomtyältyak, jiñäch tyi ik’eleyob bajche’
+          tyi p’ojlimajle yambä lumaltyak, che’ je’el bajche’
+          tyimejli ñuki kolem otyotyäl ba’ tyi yäk’äyob ibä tyi
+          käñol. Che’ñak tyi ityempäyob ibä jiñi ye’tyele
+          Ajmayajob, jiñi ajCH’olob tyi isäkläyo’b tyi eñtyäl
+          tyi Tabasco, ba’ tyi käyleyob tyi chumtyäl k’äle
+          wäle ili.
+        </p>
+        <h2 class="traduccion-es">
+          Historia enraizada en la Grandeza Maya
+        </h2>
+        <p class="traduccion-es">
+          La historia de los Ch'oles se entrelaza con la grandeza
+          de la civilización maya. En la época precolombina, las
+          tierras bajas mayas fueron testigos de un florecimiento
+          de ciudades-estado interconectadas y complejas estructuras
+          sociales. Con la disolución del Imperio Maya Clásico,
+          los antepasados Ch'oles migraron hacia las tierras altas
+          y bajas de Tabasco, estableciendo un vínculo duradero con
+          la región que sigue siendo evidente en su cultura actual.
+        </p>
+      </div>
+      <div class="columna-derecha">
+        <img
+          src="img/logo2.webp"
+          alt=""
+        />
+        <figcaption class="chol-visible">
+          Logo ch'ol melbil tyi Martín Mariano Hernández Tena
+          "aka" Ala de Cuervo.
+        </figcaption>
+        <figcaption class="traduccion-es">
+          Logo ch'ol diseñado por Martín Mariano Hernández Tena
+          "aka" Ala de Cuervo.
+        </figcaption>
+      </div>
+    </div>
+    <!-- =========================================================
+         TARJETAS INFORMATIVAS
+         ========================================================= -->
+    <section class="container">
+      <!-- TARJETA 1 -->
+      <div class="card">
+        <div class="targeta">
+          <div class="content">
+            <h3 class="chol-visible">
+              Ipäty’älel yik’oty bajche’ tyi ñäñ-äyo’b
+            </h3>
+            <p class="chol-visible">
+              Che’eñak tyi k’otyiyo’b jiñi aj-Españolesjo’btyi
+              siglo XVI, tyi tyejchi yambä iyälol jiñi ajCH’olo’b.
+              machbi tyi ise’e yochbiyo’b bajche’ kostumpre jiñi
+              ajkaxlañob, tsä’ächbi ikuchuyob iwokolel, jiñcha’añ
+              ma’añ isätyäyob iyokety’añ iyañtyakbä icha’leyalob.
+              jiñi xkaxlañob yik’otyob xCH’olob lajabi tyi
+              iñopbeñob ibä chuyestyak icha’leñob k’älä wa’li.
+            </p>
+            <div class="traduccion-es">
+              <h3>
+                Resistencia y Adaptación
+              </h3>
+              <p>
+                La llegada de los colonizadores españoles en el
+                siglo XVI marcó un punto de inflexión en la historia
+                Ch'ol. A pesar de la presión para abandonar sus
+                creencias y adoptar nuevas costumbres, los Ch'oles
+                demostraron una increíble resistencia al mantener
+                elementos esenciales de su identidad cultural.
+                La influencia española se fusionó con las tradiciones
+                Ch'oles, creando un mosaico cultural único que se
+                celebra hasta el día de hoy.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- TARJETA 2 -->
+      <div class="card">
+        <div class="targeta">
+          <div class="content">
+            <h3 class="chol-visible">
+              Lakty’añ Ch’ol: baki tyilemo’b jiñi xch’olo’b
+            </h3>
+            <p class="chol-visible">
+              jiñi lakty’añ Ch’ol, jiñich lajal yikoty yambä ty’añ
+              xmaya, weñ añ k´äjñibal jiñich yik’oty añ weñ
+              isujmilel muk’bä yijlel bajche’ ajkolelob ichä´ich
+              mi bij majle tyi lakpatyi, mi ñatyañla mejli tyi
+              mulawil weñ añ iwokolel ijujunp´ej k’iñ yäk´el tyi
+              kolel jiñich muk’bä weñ albäl pejtyilel oraj tyi
+              laklumal. Tyi lak ty’añ, mi weñ sujmisañ iwento
+              xñoxok, iñatyiñtyel bajche’ mi ñusañob k´iñ bajche
+              tyi yuts’utylel pañimil.
+            </p>
+            <div class="traduccion-es">
+              <h3>
+                Lengua Ch'ol: Un Vínculo con el Pasado
+              </h3>
+              <p>
+                El idioma Ch'ol, parte de la familia lingüística
+                maya, es un tesoro lingüístico que ha sido
+                transmitido de generación en generación. Aunque
+                enfrenta desafíos en un mundo cada vez más
+                globalizado, sigue siendo una parte integral de la
+                vida cotidiana de la comunidad. A través de la
+                lengua, se transmiten cuentos ancestrales,
+                sabiduría tradicional y el profundo vínculo con la
+                tierra y la naturaleza.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- TARJETA 3 -->
+      <div class="card">
+        <div class="targeta">
+          <div class="content">
+            <h3 class="chol-visible">
+              Yeslelo’b chä’bäyestyak icha’leño’b ajCH’olob
+            </h3>
+            <p class="chol-visible">
+              Jiñich muchbä weñ ñämälbä iweñ chaleñob Tyi
+              chumliyob jiñi xch’ol weñ ka´bä mi cha’leñob tyi
+              chumlilob tyi lumal tyi yuk’el isoñ, bajche’ mi
+              yi’beñob soñ yiko’tyi tyi pislelob jujuñtyikil tyi
+              chumlilob mi päsob bajche’ mi chumtyälob tyi malil
+              ilumal tyi tyañob añob xkolelob weñ kolelob yik’otyob
+              tyi malil ilumal tyi yotyoty tyi lumal tyi pejtyelel
+              chumulob tyi Jiñichbä mukbä weñ ch’ujutyesañob
+              jujunp’ej ja’ mi weñ cha’leñob tse’ñal tyi k’iñijel
+              tyi uch’el yik’oty tyi malil klesya.
+            </p>
+            <div class="traduccion-es">
+              <h3>
+                Expresiones culturales Ch'oles
+              </h3>
+              <p>
+                La cultura Ch'ol se manifiesta en una variedad de
+                formas artísticas y expresiones culturales. Desde
+                la música tradicional y la danza hasta la artesanía
+                y la vestimenta distintiva, cada aspecto refleja la
+                rica historia y cosmovisión Ch'ol. Los festivales y
+                ceremonias tradicionales son momentos de conexión
+                con las raíces y oportunidades para compartir
+                la alegría de pertenecer a esta comunidad única.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- =========================================================
+         INVITACIÓN / VIAJE
+         ========================================================= -->
+    <div class="uneteanosotros">
+      <h2 class="chol-visible">
+        Laklaja cha’leñla xämbal
+      </h2>
+      <p class="chol-visible">
+        lajkomoñ käñe’la jiñi lakchumlikbäl bajche joñañla
+        xch´olombäla wä’ tyi esonk’eloñi’b lajkomoñ käñe’la
+        weñ añ k’otyaxbä chäbä mi iñik’i mejlel añ tyi ityojle
+        laklumal, che’ je’el chäbäyestyak mi ip’ol lum, tye’,
+        ak’ cha’añ mi tyäk’ilañob ibä. Jiñ cha’añ mik su’beñety,
+        la’ cha’añ mi akäñe’bajche’ wa’a kuxul ilumalo’b
+        xch’olob tyi Tabasku.
+      </p>
+      <div class="traduccion-es">
+        <h2>
+          Únete a Nosotros en este Viaje
+        </h2>
+        <p>
+          Te invitamos a explorar más sobre la cultura Ch'ol a través
+          de nuestra plataforma. Descubre historias fascinantes,
+          sumérgete en la belleza de las expresiones artísticas y
+          profundiza en la conexión única que los Ch'oles tienen con
+          su tierra y su historia. Únete a nosotros en este viaje de
+          descubrimiento y aprecio por la riqueza cultural de los
+          Ch'oles en el estado de Tabasco.
+        </p>
+      </div>
+      <div class="image-container">
+        <figure class="image-with-caption">
+          <img
+            src="img/caminando.jpeg"
+            alt=""
+          />
+          <figcaption class="chol-visible">
+            K'iñälij cha'añ I-k'ak'el Mayordomo.
+          </figcaption>
+          <figcaption class="traduccion-es">
+            Festival Cambio de Mayordomo.
+          </figcaption>
+        </figure>
+        <figure class="image-with-caption">
+          <img
+            src="img/caminando2.jpeg"
+            alt=""
+          />
+          <figcaption class="chol-visible">
+            I-bijlel tyi i-lumal lak-ch'olob.
+          </figcaption>
+          <figcaption class="traduccion-es">
+            Camino a comunidad CH'ol.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+    <!-- =========================================================
+         GALERÍA
+         ========================================================= -->
+    <h1 class="h1chol chol-visible">
+      Ilok’omlel iyeslel ajCH’olob
+    </h1>
+    <h1 class="h1chol traduccion-es">
+      Fotografías CH'oles
+    </h1>
+    <div class="galeria">
+      <div class="container">
+        <br />
+        <div class="box">
+          <span style="--i: 1">
+            <img src="img/11galeria.jpg" alt="" />
+          </span>
+          <span style="--i: 2">
+            <img src="img/12galeria.jpg" alt="" />
+          </span>
+          <span style="--i: 3">
+            <img src="img/13galeria.jpg" alt="" />
+          </span>
+          <span style="--i: 4">
+            <img src="img/14galeria.jpg" alt="" />
+          </span>
+          <span style="--i: 5">
+            <img src="img/15galeria.jpg" alt="" />
+          </span>
+          <span style="--i: 6">
+            <img src="img/16galeria.jpg" alt="" />
+          </span>
+          <span style="--i: 7">
+            <img src="img/17galeria.jpg" alt="" />
+          </span>
+          <span style="--i: 8">
+            <img src="img/18galeria.jpg" alt="" />
+          </span>
+        </div>
+        <div class="btns">
+          <div class="btn prev"></div>
+          <div class="btn next"></div>
+        </div>
+      </div>
+      <script>
+        let prev =
+          document.querySelector(".prev");
+        let next =
+          document.querySelector(".next");
+        let box =
+          document.querySelector(".box");
+        let dagrees = 0;
+        prev.addEventListener(
+          "click",
+          function () {
+            dagrees += 45;
+            box.style =
+              `transform: perspective(1000px) rotateY(${dagrees}deg)`;
+          }
+        );
+        next.addEventListener(
+          "click",
+          function () {
+            dagrees -= 45;
+            box.style =
+              `transform: perspective(1000px) rotateY(${dagrees}deg)`;
+          }
+        );
+      </script>
+    </div>
+    <!-- =========================================================
+         TÍTULO DEL MAPA
+         ========================================================= -->
+    <h1 class="h1chol chol-visible">
+      Ijuñilel baki wa’a chumulob ajch’olob
+    </h1>
+    <h1 class="h1chol traduccion-es">
+      Mapa de localización de las comunidades Ch'oles
+    </h1>
+    <br />
+    <!-- =========================================================
+         MAPA
+         ========================================================= -->
+    <div class="contenido-con-mapa">
+      <div id="map"></div>
+      <div class="informacion">
+        <h2 class="chol-visible">
+          I-yejtalil ba' añob i-lumal lak-ch'olob
+        </h2>
+        <p class="chol-visible">
+          Jiñi i-yejtalil ba' añob i-lumal lak-ch'olob tyi Tabasco,
+          jiñäch junp'ejl e'tyel c'ax iñukbä cha'añ mi i-p'ujtsel
+          i-yeslel jiñi lak-lumal. Ili yejtalil mi i-yäke' tyi käñol
+          ba' añob i-lumal lak-ch'olob tyi municipios tyi Tacotalpa,
+          Macuspana, Tenosique yik'oty Balancán.
+          <br /><br />
+          Jiñi lak-yejtalil ba' mi mejlel lak-ñi'k'an, mi i-yäke'
+          tyi k'elol jiñi kuxulbä i-lumal lak-ch'olob tyi estado tyi
+          Tabasco. Añ i-ñatibal cha'añ mi i-p'ujtsel jiñi weñbä
+          i-yeslel yik'oty i-p'ojleb jiñi lumaltyak, che' je'el mi
+          i-yäk' tyi k'elol jiñi e'tyel mi i-melob cha'añ ma'anic
+          mi i-säjt'el i-yeslel. Mi i-yäk' ik'ti'il cha'añ mi
+          lak-k'elan che' cha'añ ñumen tyi 74 i-lumal lak-ch'olob
+          tyi Tabasco.
+          <br /><br />
+          Och-eñ tyi k'elol jiñi melemechbä i-tyasol yik’oty käñe'
+          jiñi cabäl ch'i'bal tsa'bä i-yäk'ä i-p'ojel i-yeslel jiñi
+          lak-lumal. K'iñäliñ yik'otyonla jiñi i-yeslel ma'añix
+          yambä lajalbä tyi i-lumal lak-ch'olob tyi Tabasco.
+          ¡K'ele' yik'oty t'uchtyañ!
+        </p>
+        <h2 class="traduccion-es">
+          Mapa de localización de las comunidades Ch'oles
+        </h2>
+        <p class="traduccion-es">
+          El mapa de localización de las comunidades Ch'oles de
+          Tabasco es una herramienta fundamental para la difusión
+          de la cultura de este pueblo indígena. Este mapa muestra
+          la ubicación de las comunidades Ch'oles en los municipios
+          de Tacotalpa, Macuspana, Tenosique y Balancán.
+          <br /><br />
+          Nuestro mapa interactivo destaca las vibrantes comunidades
+          Ch'oles en el estado de Tabasco Y tiene como objetivo
+          difundir la rica cultura y herencia de estas comunidades,
+          resaltando sus ubicaciones y destacando los esfuerzos de
+          preservación cultural en curso. Brinda la oportunidad de
+          explorar más de 74 comunidades Ch'oles en Tabasco.
+          <br /><br />
+          Sumérgete en la autenticidad de sus tradiciones y descubre
+          la diversidad que ha dado forma a la riqueza cultural de la
+          región. Celebra con nosotros la herencia única de las
+          comunidades Ch'oles de Tabasco. ¡Explora y disfruta!
+        </p>
+      </div>
+      <!-- =======================================================
+           MAPA INTERACTIVO
+           ======================================================= -->
+      <script>
+        function initMap() {
+          var locations = [
+            {
+              lat: 17.576016,
+              lng: -92.817181,
+              name: "Villa Luz, Tabasco",
+            },
+            {
+              lat: 17.49486,
+              lng: -92.817706,
+              name: "Emiliano Zapata, Tabasco",
+            },
+            {
+              lat: 17.588014,
+              lng: -92.848616,
+              name: "Ceiba 2da. Secc., Tabasco",
+            },
+            {
+              lat: 17.545177,
+              lng: -92.802428,
+              name: "Lázaro Cárdenas, Tabasco",
+            },
+            {
+              lat: 17.395045,
+              lng: -92.737647,
+              name: "Mexiquito, Tabasco",
+            },
+            {
+              lat: 17.409439,
+              lng: -92.754051,
+              name: "Caridad Guerrero, Tabasco",
+            },
+            {
+              lat: 17.445809,
+              lng: -92.761218,
+              name: "Arroyo Chispa, Tabasco",
+            },
+            {
+              lat: 17.473108,
+              lng: -92.812568,
+              name: "Zunú y Patastal, Tabasco",
+            },
+            {
+              lat: 17.499566,
+              lng: -92.657775,
+              name: "Xicoténcatl, Tabasco",
+            },
+            {
+              lat: 17.499566,
+              lng: -92.657775,
+              name: "Pomoca, Tabasco",
+            },
+            {
+              lat: 17.510098,
+              lng: -92.77476,
+              name: "Oxolotán, Tabasco",
+            },
+            {
+              lat: 17.510098,
+              lng: -92.77476,
+              name: "Graciano Sánchez, Tabasco",
+            },
+            {
+              lat: 17.502056,
+              lng: -92.75931,
+              name: "Tapijulapa, Tabasco",
+            },
+            {
+              lat: 17.361663,
+              lng: -92.71096,
+              name: "Buenos Aires, Tabasco",
+            },
+            {
+              lat: 17.422904,
+              lng: -92.740126,
+              name: "Francisco I Madero 2da. Sección, Tabasco",
+            },
+            {
+              lat: 17.422904,
+              lng: -92.740126,
+              name: "Noypac, Tabasco",
+            },
+            {
+              lat: 17.456057,
+              lng: -92.706352,
+              name: "Yajalón Río Seco, Tabasco",
+            },
+            {
+              lat: 17.46352,
+              lng: -92.68242,
+              name: "La Raya Zaragoza, Tabasco",
+            },
+            {
+              lat: 17.46352,
+              lng: -92.68242,
+              name: "Arroyo Seco Miraflores, Tabasco",
+            },
+            {
+              lat: 17.445809,
+              lng: -92.761218,
+              name: "El Barrial, Tabasco",
+            },
+            {
+              lat: 17.473108,
+              lng: -92.812568,
+              name: "Tacotalpa, Tabasco",
+            },
+            {
+              lat: 17.485164,
+              lng: -92.621869,
+              name: "Agua Blanca, Tabasco",
+            },
+            {
+              lat: 17.460894,
+              lng: -91.371439,
+              name: "Certeza, Tabasco",
+            },
+            {
+              lat: 17.387959,
+              lng: -91.481764,
+              name: "Clamchejé, Tabasco",
+            },
+            {
+              lat: 17.256828,
+                            lng: -91.067038,
+              name: "Sueños de Oro, Tabasco",
+            },
+            {
+              lat: 17.252709,
+              lng: -91.026397,
+              name: "El Ceibo, Tabasco",
+            },
+            {
+              lat: 17.427368,
+              lng: -91.488615,
+              name: "San Carlos, Tabasco",
+            },
+            {
+              lat: 17.411716,
+              lng: -91.563492,
+              name: "Arena de Hidalgo, Tabasco",
+            },
+            {
+              lat: 17.4422,
+              lng: -91.51386,
+              name: "Cerro Norte, Tabasco",
+            },
+            {
+              lat: 17.302637,
+              lng: -91.167897,
+              name: "Bella Vista, Tabasco",
+            },
+            {
+              lat: 17.302637,
+              lng: -91.167897,
+              name: "Francisco I. Madero Cortazar, Tabasco",
+            },
+            {
+              lat: 17.418785,
+              lng: -91.024268,
+              name: "Santa Cruz, Tabasco",
+            },
+            {
+              lat: 17.273588,
+              lng: -91.398408,
+              name: "Niños Héroes, Tabasco",
+            },
+            {
+              lat: 17.303295,
+              lng: -91.385726,
+              name: "Francisco I. Madero Ríos, Tabasco",
+            },
+            {
+              lat: 17.288606,
+              lng: -91.335623,
+              name: "Cortijo Nuevo 1ra. Secc., Tabasco",
+            },
+            {
+              lat: 17.257697,
+              lng: -91.136163,
+              name: "San Francisco, Tabasco",
+            },
+            {
+              lat: 17.278323,
+              lng: -91.159004,
+              name: "Miguel Hidalgo, Tabasco",
+            },
+            {
+              lat: 17.279542,
+              lng: -91.177887,
+              name: "El Repasto, Tabasco",
+            },
+            {
+              lat: 17.307119,
+              lng: -91.249985,
+              name: "El Bejucal, Tabasco",
+            },
+            {
+              lat: 17.589438,
+              lng: -92.478759,
+              name: "Melchor Ocampo 1ra. Secc., Tabasco",
+            },
+            {
+              lat: 17.62433,
+              lng: -92.411274,
+              name: "San José, Tabasco",
+            },
+            {
+              lat: 17.590927,
+              lng: -92.423574,
+              name: "Chivalito 4ta. Secc., Tabasco",
+            },
+            {
+              lat: 17.6458,
+              lng: -92.422401,
+              name: "Zopo Sur",
+            },
+            {
+              lat: 17.827618,
+              lng: -92.455747,
+              name: "Zopo Norte",
+            },
+            {
+              lat: 17.630847,
+              lng: -92.53872,
+              name: "El Congo, Tabasco",
+            },
+            {
+              lat: 17.623618,
+              lng: -92.49706,
+              name: "Caparroso 2da. Secc., Tabasco",
+            },
+            {
+              lat: 17.654567,
+              lng: -92.47896,
+              name: "Caparroso 1ra. Secc., Tabasco",
+            },
+            {
+              lat: 17.827618,
+              lng: -92.455747,
+              name: "Palomas, Tabasco",
+            },
+            {
+              lat: 17.577526,
+              lng: -92.452398,
+              name: "Melchor Ocampo 2da. Secc., Tabasco",
+            },
+            {
+              lat: 17.578189,
+              lng: -92.428926,
+              name: "Melchor Ocampo 3ra. Secc., Tabasco",
+            },
+            {
+              lat: 17.890875,
+              lng: -91.437895,
+              name: "Brisas del Carrizal",
+            },
+            {
+              lat: 17.821967,
+              lng: -91.666215,
+              name: "La Pimienta, Tabasco",
+            },
+            {
+              lat: 17.890875,
+              lng: -91.437895,
+              name: "San Judas Tadeo, Balancán",
+            },
+            {
+              lat: 17.778703,
+              lng: -91.218212,
+              name: "San Juan, Balancán",
+            },
+            {
+              lat: 17.768547,
+              lng: -91.556964,
+              name: "Tierra y Libertad, Balancán",
+            },
+            {
+              lat: 17.616376,
+              lng: -91.362189,
+              name: "Alianza Balancán, Balancán",
+            },
+            {
+              lat: 17.577101,
+              lng: -91.350831,
+              name: "El Bilín, Balancán",
+            },
+            {
+              lat: 17.819002,
+              lng: -91.279205,
+              name: "Caudillos del Sur, Balancán",
+            },
+            {
+              lat: 17.604609,
+              lng: -91.354365,
+              name: "Epimenio Mendoza, Balancán",
+            },
+            {
+              lat: 17.487896,
+              lng: -91.009736,
+              name: "Francisco I. Madero, Balancán",
+            },
+            {
+              lat: 17.273588,
+              lng: -91.398408,
+              name: "Niños Héroes, Tabasco",
+            },
+            {
+              lat: 17.303295,
+              lng: -91.385726,
+              name: "Francisco I. Madero Ríos, Tabasco",
+            },
+            {
+              lat: 17.257697,
+              lng: -91.136163,
+              name: "San Francisco, Tabasco",
+            },
+            {
+              lat: 17.278323,
+              lng: -91.159004,
+              name: "Miguel Hidalgo, Tabasco",
+            },
+            {
+              lat: 17.279542,
+              lng: -91.177887,
+              name: "El Repasto, Tabasco",
+            },
+            {
+              lat: 17.307119,
+              lng: -91.249985,
+              name: "El Bejucal, Tabasco",
+            },
+            {
+              lat: 17.589438,
+              lng: -92.478759,
+              name: "Melchor Ocampo 1ra. Secc., Tabasco",
+            },
+            {
+              lat: 17.361663,
+              lng: -91.354365,
+              name: "Nicolás Bravo, Balancán",
+            },
+            {
+              lat: 17.736435,
+              lng: -91.800913,
+              name: "Santa Beatriz, Emiliano Zapata",
+            },
+            {
+              lat: 17.252709,
+              lng: -91.026397,
+              name: "El Cuyo, Tabasco",
+            },
+            {
+              lat: 17.427368,
+              lng: -91.488615,
+              name: "Gregorio Méndez Magaña, Tabasco",
+            },
+            {
+              lat: 17.411716,
+              lng: -91.563492,
+              name: "La Cuchilla, Tabasco",
+            },
+            {
+              lat: 17.4422,
+              lng: -91.51386,
+              name: "Graciano Sánchez, Tabasco",
+            },
+            {
+              lat: 17.319855,
+              lng: -91.100338,
+              name: "Puxcatán, Tabasco",
+            },
+            {
+              lat: 17.302637,
+              lng: -91.167897,
+              name: "Guayal, Tabasco",
+            }
+          ];
+          var map = new google.maps.Map(
+            document.getElementById("map"),
+            {
+              zoom: 8,
+              center: {
+                lat: 17.736435,
+                lng: -91.800913
+              },
+            }
+          );
+          locations.forEach(
+            function (location) {
+              var marker =
+                new google.maps.Marker({
+                  position: {
+                    lat: location.lat,
+                    lng: location.lng
+                  },
+                  map: map,
+                  title: location.name,
+                });
+              marker.addListener(
+                "click",
+                function () {
+                  map.setZoom(15);
+                  map.setCenter(
+                    marker.getPosition()
+                  );
+                }
+              );
+            }
+          );
+        }
+      </script>
+    </div>
+    <!-- =========================================================
+         FOOTER
+         ========================================================= -->
+    <iframe
+      src="footer.html"
+      width="100%"
+      height="500px"
+      frameborder="0"
+    ></iframe>
+    <!-- =========================================================
+         BOTÓN IR ARRIBA
+         ========================================================= -->
+    <button
+      id="btnTop"
+      class="hidden"
+    >
+      <i class="fas fa-chevron-up"></i>
+    </button>
+    <script src="arriba.js"></script>
+    <!-- =========================================================
+         SISTEMA ÚNICO DE TRADUCCIÓN
+         ========================================================= -->
+    <script>
+      const btnIdioma =
+        document.getElementById("btnIdioma");
+      const textoBoton =
+        document.getElementById("textoBoton");
+      let modoEspanol = false;
+      btnIdioma.addEventListener(
+        "click",
+        function () {
+          modoEspanol =
+            !modoEspanol;
+          if (modoEspanol) {
+            document.body.classList.add(
+              "modo-espanol"
+            );
+            textoBoton.textContent =
+              "Ver en Ch’ol";
+          } else {
+            document.body.classList.remove(
+              "modo-espanol"
+            );
+            textoBoton.textContent =
+              "Traducir al español";
+          }
+        }
+      );
+    </script>
+    <!-- =========================================================
+         FUNCIONAMIENTO DEL MENÚ DESPLEGABLE MÓVIL
+         ========================================================= -->
+    <script>
+      const btnMenuMovil = document.getElementById("btnMenuMovil");
+      const menuOverlay = document.getElementById("menuOverlay");
+      const navbarMovil = document.querySelector(".navbar");
+      /* Abrir o cerrar el menú */
+      function alternarMenuMovil() {
+        const abierto = document.body.classList.toggle("menu-abierto");
+        btnMenuMovil.setAttribute(
+          "aria-expanded",
+          String(abierto)
+        );
+        btnMenuMovil.setAttribute(
+          "aria-label",
+          abierto ? "Cerrar menú" : "Abrir menú"
+        );
+        const icono = btnMenuMovil.querySelector("i");
+        icono.classList.toggle("fa-bars", !abierto);
+        icono.classList.toggle("fa-xmark", abierto);
+      }
+      /* Cerrar el menú */
+      function cerrarMenuMovil() {
+        document.body.classList.remove("menu-abierto");
+        btnMenuMovil.setAttribute("aria-expanded", "false");
+        btnMenuMovil.setAttribute("aria-label", "Abrir menú");
+        const icono = btnMenuMovil.querySelector("i");
+        icono.classList.remove("fa-xmark");
+        icono.classList.add("fa-bars");
+        /* Cerrar también los submenús */
+        document.querySelectorAll(".menu > .submenu.abierto")
+          .forEach(function(item) {
+            item.classList.remove("abierto");
+            item.setAttribute("aria-expanded", "false");
+          });
+      }
+      /* Evento del botón hamburguesa */
+      btnMenuMovil.addEventListener(
+        "click",
+        alternarMenuMovil
+      );
+      /* Cerrar al tocar el fondo oscuro */
+      menuOverlay.addEventListener(
+        "click",
+        cerrarMenuMovil
+      );
+      /* Control de los submenús y enlaces */
+      navbarMovil.addEventListener(
+        "click",
+        function(event) {
+          if (!window.matchMedia("(max-width: 767px)").matches) {
+            return;
+          }
+          /* Cerrar al seleccionar un enlace */
+          const enlace = event.target.closest(".submenu-content a");
+          if (enlace) {
+            cerrarMenuMovil();
+            return;
+          }
+          /* Abrir o cerrar la categoría seleccionada */
+          const item = event.target.closest(".menu > .submenu");
+          if (!item) {
+            return;
+          }
+          const submenu = item.querySelector(".submenu-content");
+          if (!submenu) {
+            return;
+          }
+          const abierto = item.classList.toggle("abierto");
+          item.setAttribute(
+            "aria-expanded",
+            String(abierto)
+          );
+        }
+      );
+      /* Cerrar al presionar Escape */
+      document.addEventListener(
+        "keydown",
+        function(event) {
+          if (event.key === "Escape") {
+            cerrarMenuMovil();
+          }
+        }
+      );
+      /* Cerrar automáticamente si se cambia a computadora */
+      window.addEventListener(
+        "resize",
+        function() {
+          if (window.innerWidth > 767) {
+            cerrarMenuMovil();
+          }
+        }
+      );
+    </script>
+  </body>
+</html>

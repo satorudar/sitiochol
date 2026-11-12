@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario - Aprendiendo Ch'ol</title>
+    <style>
+        
+        body {
+            font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+            margin: 0;
+            padding: 20px;
+            background-color: #E6F3F7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .profile-container {
+            background-color: #ffffff;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            display: flex;
+            gap: 40px;
+            max-width: 900px;
+            width: 90%;
+            align-items: flex-start;
+        }
+
+        .user-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 30%;
+            flex-shrink: 0;
+        }
+
+        .avatar-display {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background-color: #FFD166;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 5rem;
+            color: #fff;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            border: 5px solid white;
+        }
+        
+        .avatar-display img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .user-info h2 {
+            font-size: 1.8rem;
+            color: #2A9D8F;
+            margin: 10px 0;
+            word-break: break-word;
+        }
+        
+        .user-role {
+            font-size: 1.2rem;
+            color: #F4A261;
+            font-weight: bold;
+        }
+
+        .profile-form { width: 70%; }
+        
+        .profile-form h2 {
+            font-size: 2.5rem;
+            color: #333;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .progress-section { margin-bottom: 25px; }
+        
+        .progress-bar-container {
+            background-color: #e0e0e0;
+            border-radius: 15px;
+            height: 30px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background-color: #7EE081;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: width 1s ease-in-out;
+        }
+
+        .badges-section { margin-bottom: 30px; }
+        .badges-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: flex-start;
+        }
+
+        .badge {
+            background-color: #ddd; 
+            color: #777;
+            padding: 8px 12px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            opacity: 0.6;
+            transition: all 0.3s;
+        }
+
+        .badge.unlocked {
+            background-color: #FFC04C;
+            color: #fff; 
+            opacity: 1;
+            transform: scale(1.05);
+            box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+            border: 2px solid #fff;
+        }
+        
+        .badge.final {
+            background: linear-gradient(45deg, #FF5E5E, #FF9933);
+            display: none; 
+        }
+        .badge.final.unlocked {
+            display: flex;
+            animation: bounce 1s infinite alternate;
+        }
+
+        @keyframes bounce { to { transform: translateY(-5px); } }
+
+        .form-fields {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        input[type="file"] {
+            background: white;
+            font-size: 0.9rem;
+        }
+
+        .button-group { display: flex; gap: 20px; }
+        
+        .button-group button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .save-button { background-color: #2A9D8F; color: #fff; }
+        .reset-button { background-color: #ccc; color: #555; }
+        .save-button:hover { transform: translateY(-2px); }
+
+        @media (max-width: 768px) {
+            .profile-container { flex-direction: column; padding: 20px; }
+            .user-info, .profile-form { width: 100%; }
+            .user-info { border-bottom: 1px solid #eee; padding-bottom: 20px; }
+            .form-fields { grid-template-columns: 1fr; }
+            .badges-container { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="user-info">
+            <div class="avatar-display" id="avatarDisplay">🦊</div>
+            <h2 id="aliasDisplay">Aventurero</h2>
+            <p id="ageDisplay">8-10 años</p>
+            <p class="user-role" id="rangoDisplay">Aprendiz</p> </div>
+
+        <form class="profile-form" id="profileForm">
+            <h2>Mi Perfil</h2>
+            
+            <div class="progress-section">
+                <h3>Mi Avance</h3>
+                <p style="font-size: 0.9rem; margin: 5px 0 5px 0;">
+                    <span id="temasCompletados">0</span>/16 Temas completados
+                </p>
+                <div class="progress-bar-container" title="¡Haz click aquí para probar el avance!">
+                    <div class="progress-bar" id="progressBar" style="width: 0%;">0%</div>
+                </div>
+            </div>
+
+            <div class="badges-section">
+                <h3>Mis Insignias</h3>
+                <div class="badges-container">
+                    <div class="badge" id="badge-fam">🏡 Familia</div>
+                    <div class="badge" id="badge-viv">🌎 Donde Vivo</div>
+                    <div class="badge" id="badge-esc">🎒 Escuela</div>
+                    <div class="badge" id="badge-gus">🎨 Gustos</div>
+                    <div class="badge" id="badge-cue">👤 Mi Cuerpo</div>
+                    <div class="badge final" id="badge-final">👑 Gran Maestro Ch'ol</div>
+                </div>
+            </div>
+
+            <div class="form-fields">
+                <div class="form-group">
+                    <label for="alias">Alias (Visible)</label>
+                    <input type="text" id="alias" placeholder="Escribe tu nombre..." maxlength="12">
+                </div>
+                <div class="form-group">
+                    <label for="age">Rango de Edad</label>
+                    <select id="age">
+                        <option value="5-7">5-7 años</option>
+                        <option value="8-10" selected>8-10 años</option>
+                        <option value="11-13">11-13 años</option>
+                        <option value="14+">14+ años</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="avatar">Avatar (Dibujo)</label>
+                    <select id="avatar">
+                        <option value="🦊" selected>🦊 Zorro</option>
+                        <option value="🐆">🐆 Jaguar</option>
+                        <option value="🐒">🐒 Mono</option>
+                        <option value="🦜">🦜 Loro</option>
+                        <option value="🦉">🦉 Búho</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="upload-image">O sube tu foto 📸</label>
+                    <input type="file" id="upload-image" accept="image/png, image/jpeg, image/jpg">
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button type="submit" class="save-button" id="saveButton">Guardar Cambios</button>
+                <button type="button" class="reset-button" id="resetButton">Reiniciar</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Referencias
+    const elements = {
+        aliasInput: document.getElementById('alias'),
+        ageSelect: document.getElementById('age'),
+        avatarSelect: document.getElementById('avatar'),
+        fileInput: document.getElementById('upload-image'), 
+        aliasDisplay: document.getElementById('aliasDisplay'),
+        ageDisplay: document.getElementById('ageDisplay'),
+        avatarDisplay: document.getElementById('avatarDisplay'),
+        progressBar: document.getElementById('progressBar'),
+        temasCountLabel: document.getElementById('temasCompletados')
+    };
+
+    let fotoBase64 = null; 
+
+    fetch('backend/api/user.php?action=estadisticas')
+        .then(res => res.json())
+        .then(stats => {
+            if(stats.error) return;
+            let porcentajeReal = Math.min(stats.puntos_totales, 100); 
+            elements.progressBar.style.width = porcentajeReal + '%';
+            elements.progressBar.textContent = Math.round(porcentajeReal) + '%';
+            if(elements.temasCountLabel) elements.temasCountLabel.textContent = stats.temas_completados;
+            
+        });
+
+    fetch('backend/api/user.php?action=datos&t=' + new Date().getTime())
+    .then(res => res.json())
+        .then(user => {
+            if(user.error) {
+                console.log("No logueado");
+                return; 
+            }
+
+            elements.aliasInput.value = user.alias;
+            elements.aliasDisplay.textContent = user.alias;
+            elements.ageSelect.value = user.rango_edad || '8-10';
+            
+            const esAvatarDefault = (!user.avatar || user.avatar === '🦊' || user.avatar === '?');
+            
+            if (esAvatarDefault && user.foto_perfil_url) {
+                elements.avatarDisplay.innerHTML = `<img src="${user.foto_perfil_url}" style="width:100%;height:100%;object-fit:cover;">`;
+                elements.avatarSelect.value = '🦊'; 
+            } else {
+                const emoji = user.avatar || '🦊';
+                elements.avatarDisplay.textContent = emoji;
+                elements.avatarDisplay.innerHTML = emoji; 
+                elements.avatarSelect.value = emoji;
+            }
+        });
+
+    const fileInput = document.querySelector('input[type="file"]');
+    if(fileInput) {
+        fileInput.addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    fotoBase64 = e.target.result;
+                    elements.avatarDisplay.innerHTML = `<img src="${fotoBase64}" style="width:100%;height:100%;object-fit:cover;">`;
+                    elements.avatarSelect.value = '🦊'; 
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+
+    document.getElementById('profileForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const data = {
+            alias: elements.aliasInput.value,
+            rango_edad: elements.ageSelect.value,
+            avatar: elements.avatarSelect.value
+        };
+
+        if (fotoBase64) {
+            data.foto_custom = fotoBase64;
+        }
+
+        fetch('backend/api/profile.php', {
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .then(resp => {
+            if(resp.success) {
+                
+                elements.aliasDisplay.textContent = elements.aliasInput.value;
+                
+                const edadTexto = elements.ageSelect.options[elements.ageSelect.selectedIndex].text;
+                elements.ageDisplay.textContent = edadTexto;
+
+                if (fotoBase64) {
+                    elements.avatarDisplay.innerHTML = `<img src="${fotoBase64}" style="width:100%;height:100%;object-fit:cover;">`;
+                } else {
+                    const emojiSeleccionado = elements.avatarSelect.value;
+                    
+                    elements.avatarDisplay.innerHTML = emojiSeleccionado; 
+                    elements.avatarDisplay.textContent = emojiSeleccionado;
+                }
+
+                alert("¡Datos actualizados correctamente!");
+            } else {
+                alert("Error al guardar: " + (resp.error || "Desconocido"));
+                console.error(resp);
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            alert("Error de conexión al guardar.");
+        });
+    });
+});
+</script>
+
+</body>
+</html>

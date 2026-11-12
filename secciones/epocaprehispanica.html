@@ -1,0 +1,1537 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Identidad Lingüística Ch'ol</title>
+
+    <link rel="stylesheet" href="../css/seccion.css" />
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+
+        /* =====================================================
+           CONTROL DE IDIOMA
+           ===================================================== */
+
+        /* La página inicia mostrando Ch'ol */
+        .parte.chol1 {
+            display: block;
+        }
+
+        /* La versión española permanece oculta */
+        .parte.espanol {
+            display: none;
+        }
+
+        /* Al activar español */
+        body.modo-espanol .parte.chol1 {
+            display: none;
+        }
+
+        body.modo-espanol .parte.espanol {
+            display: block;
+        }
+
+
+        /* =====================================================
+           BOTÓN DE TRADUCCIÓN
+           MISMO DISEÑO DEL INDEX
+           ===================================================== */
+
+        #cambiarVista {
+            position: fixed;
+            top: 18px;
+            right: 25px;
+            z-index: 9999;
+
+            border: 2px solid #fbc02d;
+
+            background: linear-gradient(
+                135deg,
+                #7b1fa2,
+                #d81b60,
+                #00acc1
+            );
+
+            color: #ffffff;
+
+            padding: 11px 22px;
+
+            border-radius: 30px;
+
+            font-family: "Poppins", sans-serif;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 6px 18px rgba(0, 0, 0, 0.30),
+                0 0 12px rgba(251, 192, 45, 0.20);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+
+        #cambiarVista:hover {
+            transform: translateY(-3px) scale(1.02);
+
+            box-shadow:
+                0 10px 25px rgba(0, 0, 0, 0.35),
+                0 0 18px rgba(251, 192, 45, 0.35);
+        }
+
+
+        #cambiarVista i {
+            margin-right: 8px;
+        }
+
+
+        /* =====================================================
+           AJUSTES PARA CELULAR
+           ===================================================== */
+
+        @media (max-width: 650px) {
+
+            #cambiarVista {
+                top: 12px;
+                right: 12px;
+
+                padding: 9px 15px;
+
+                font-size: 12px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         BOTÓN DEL MENÚ PARA CELULAR
+         ===================================================== -->
+
+    <button
+        id="btnMenuMovil"
+        class="btn-menu-movil"
+        type="button"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+        aria-controls="menuPrincipal">
+
+        <i class="fas fa-bars" aria-hidden="true"></i>
+
+    </button>
+
+
+    <!-- =====================================================
+         FONDO OSCURO CUANDO EL MENÚ ESTÁ ABIERTO
+         ===================================================== -->
+
+    <div
+        id="menuOverlay"
+        class="menu-overlay"
+        aria-hidden="true">
+    </div>
+
+
+
+    <!-- =====================================================
+         ENCABEZADO
+         ===================================================== -->
+
+    <header class="header">
+
+
+        <!-- =================================================
+             MENÚ
+             ================================================= -->
+
+        <nav class="navbar" id="menuPrincipal">
+
+
+            <div class="logo">
+
+                <a href="../index.html">
+
+                    <img
+                        src="../img/logo.webp"
+                        alt="Logo">
+
+                </a>
+
+            </div>
+
+
+            <ul class="menu">
+
+
+                <!-- ================= HISTORIA ================= -->
+
+                <li class="submenu">
+
+                    Oño’ty’añ
+
+                    <br>
+
+                    <h6>Historia</h6>
+
+
+                    <ul class="submenu-content">
+
+
+                        <li>
+
+                            <a href="../secciones/epocaprehistorica.html">
+
+                                Ijulelo’b ajmayajo’b
+
+                                <h6>
+                                    (Epóca prehispanica)
+                                </h6>
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a href="../secciones/nuevaespaña.html">
+
+                                Tsiji’b España
+
+                                <h6>
+                                    (Nueva España)
+                                </h6>
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a href="../secciones/llegadaatabasco.html">
+
+                                k’otyel tyi Tabasco
+
+                                <h6>
+                                    (Llegada a Tabasco)
+                                </h6>
+
+                            </a>
+
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+
+
+                <!-- ============== CHOLES DE HOY ============== -->
+
+                <li class="submenu">
+
+                    xCh’olo’b
+
+                    <br>
+
+                    wäle-ili
+
+                    <br>
+
+                    <h6>Choles de hoy</h6>
+
+
+                    <ul class="submenu-content">
+
+
+                        <li>
+
+                            <a href="../secciones/comunicacionytransporte.html">
+
+                                lakñämi’b yik’oty lakxänwi’
+
+                                <h6>
+                                    (Comunicación y transporte)
+                                </h6>
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a href="../secciones/educacion.html">
+
+                                Pästyä
+
+                                <h6>
+                                    (Educación)
+                                </h6>
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a href="../secciones/serviciospublicos.html">
+
+                                Laktyemk’älbal
+
+                                <h6>
+                                    (Servicios públicos)
+                                </h6>
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a href="../secciones/procesosproductivos.html">
+
+                                Chäbä yom p’ojlisätyel
+
+                                <h6>
+                                    (Procesos productivos)
+                                </h6>
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a href="../secciones/problemassociales.html">
+
+                                Iwolel chumtyäl
+
+                                <h6>
+                                    (Problemas sociales)
+                                </h6>
+
+                            </a>
+
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+
+
+                <!-- ================= FESTIVIDADES ================= -->
+
+                <li class="submenu">
+
+                    Yujilel k’iñ
+
+                    <br>
+
+                    <h6>Festividades</h6>
+
+
+                    <ul class="submenu-content">
+
+
+                        <li>
+
+                            <a href="#">
+
+                                2 de Febrero
+
+                                <h5>
+                                    (Dia de la Candelaria)
+                                </h5>
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a href="#">
+
+                                Cambio de mayordomia
+
+                                <h5>
+                                    (3 de mayo,santa cruz)
+                                </h5>
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a href="#">
+
+                                24 de mayo
+
+                                <h5>
+                                    (Dia de Maria Auxiliadora)
+                                </h5>
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a href="#">
+
+                                1 y 2 de Novimbre
+
+                                <h5>
+                                    (Dia de los muertos)
+                                </h5>
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a href="#">
+
+                                12 de Diciembre
+
+                                <h5>
+                                    (Virgen de Guadalupe)
+                                </h5>
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a href="#">
+
+                                1 y 2 de Noviembre
+
+                                <h5>
+                                    (Dia de los muertos)
+                                </h5>
+
+                            </a>
+
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+
+
+                <!-- ================= ORALIDAD ================= -->
+
+                <li class="submenu">
+
+                    Lajkämbal
+
+                    <br>
+
+                    tyi lakty'añ
+
+                    <br>
+
+                    <h6>Oralidad</h6>
+
+
+                    <ul class="submenu-content">
+
+
+                        <li>
+
+                            <a href="../secciones/cuentos.html">
+
+                                Lajkämbal tyi lakty'añ
+
+                                <h5>
+                                    (Narraciones orales)
+                                </h5>
+
+                            </a>
+
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+
+
+                <!-- ================= GASTRONOMÍA ================= -->
+
+                <li class="submenu">
+
+                    Uch’ibäl
+
+                    <br>
+
+                    <h6>Gastronomía</h6>
+
+
+                    <ul class="submenu-content">
+
+
+                        <li>
+
+                            <a href="gastronomia.html">
+
+                                Uch’ibäl tyi ichajp ichajplel
+
+                                <h6>
+                                    (Platillos tipicos)
+                                </h6>
+
+                            </a>
+
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+
+
+                <!-- ================= VOCABULARIO ================= -->
+
+                <li class="submenu">
+
+                    Lakty'añtyak
+
+                    <br>
+
+                    <h6>Vocabulario</h6>
+
+
+                    <ul class="submenu-content">
+
+
+                        <li>
+
+                            <a href="#">
+
+                                <i
+                                    class="fab fa-youtube"
+                                    style="color:#FF0000;">
+                                </i>
+
+                                Registro
+
+                            </a>
+
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+
+
+                <!-- ================= CONTACTO ================= -->
+
+                <li class="submenu">
+
+                    Ajsu’boñel
+
+                    <i class="fas fa-envelope"></i>
+
+                    <br>
+
+                    <h6>Contacto</h6>
+
+
+                    <ul class="submenu-content">
+
+
+                        <li>
+
+                            <a
+                                href="https://wa.me/529931353201?text=Hola%20estoy%20interesado%20en%20saber%20más"
+                                target="_blank">
+
+                                <i
+                                    class="fab fa-whatsapp"
+                                    style="color:#25D366;">
+                                </i>
+
+                                WhatsApp
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a
+                                href="https://www.facebook.com/profile.php?id=61551605832940"
+                                target="_blank">
+
+                                <i
+                                    class="fab fa-facebook"
+                                    style="color:#1877F2;">
+                                </i>
+
+                                Facebook
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a
+                                href="mailto:nuestralenguachol@gmail.com"
+                                target="_blank">
+
+                                <i
+                                    class="fas fa-envelope"
+                                    style="color:#AEEEEE;">
+                                </i>
+
+                                Correo
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a
+                                href="https://www.youtube.com/channel/UCw1-uoYB_3AJOigaK3_pUdQ"
+                                target="_blank">
+
+                                <i
+                                    class="fab fa-youtube"
+                                    style="color:#FF0000;">
+                                </i>
+
+                                YouTube
+
+                            </a>
+
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+
+            </ul>
+
+        </nav>
+
+
+
+        <!-- =================================================
+             PORTADA / IMAGEN REPRESENTATIVA
+             ================================================= -->
+
+        <div class="header-content container">
+
+            <div class="header-text">
+
+                <img
+                    src="../img/epocaprehispanica.jpeg"
+                    alt="Época prehispánica de la cultura Ch'ol"
+                    class="portada-seccion">
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         CONTENIDO PRINCIPAL
+         ===================================================== -->
+
+    <main>
+
+
+
+        <!-- =================================================
+             1. ORIGEN DE LA LENGUA
+             VERSIÓN CH'OL
+             ================================================= -->
+
+        <div class="origen">
+
+            <div class="parte chol1">
+
+                <h2>
+                    Ityejchiba yik’oty tyi bej ñu’äma laktya’añ CH’ol.
+                </h2>
+
+
+                <div class="prueva">
+
+                    <p>
+                        Jiñi ityejchi’ba lakty’añ CH’ol mi ñip yik’oty maya che’bä
+                        bajche’ ili ty’añ mi su’beñob ilok’om maya o Nab’ee Maya’Tziij
+                        (Thompson, 1938; Morley, 1946; Schumman, 1973). Che’ bajche’ mi
+                        yäl jiñi oño’ty’añ, jiñi ilok’om maya tyi tyejchi iyälel tyi
+                        ixiñil ijol-ilok’i’k’iñ (noroeste) jiñi Guatemala che’ jiñi tyi
+                        bej kaji ipukma ibä tyi ilumal maya ya’ tyi Guatemala, Belice,
+                        Honduras yik’oty tyi iyok mulawil(sur) Mexco (Thompson, 1956).
+                        Ilibä ty’añ ya’ba’ tyi ñuk-äma che’bä bajche’ lujunp’ej
+                        icha’k’al tyi mujch’ ty’añ ty’oxolbä ty’oxolbä tyi chämp’ej:
+                        lok’i’k’iñ(oriental), ochi’k’iñ (occidental), yukateca yik’oty
+                        huasteka. Jiñi CH’ol tyi tyejchi tyi ty’oxi’bal ochi’k’iñ
+                        (occidental) che’ bajche’ tyi yajñib sajty’oxtyäl jiñi cholañ
+                        ya’ ixäk’ tyi iyäk’ä ibä jiñi CH’ol. Tyi malil jiñi ixäk’ ya’añ
+                        je’el jiñi tzeltañañojob (ya’ ba’añ xtseltalob yik’oty
+                        xtsotsilob) yik’oty cholañ (ya’ ba’añ xch’olob, xchoñtalob
+                        yik’oty xchortijob) (Josserand, 1975; Thompson, 1938).
+                    </p>
+
+
+                    <div class="img-container">
+
+                        <img
+                            src="../img/mapa.jpeg"
+                            alt="Identidad Lingüística Ch'ol" />
+
+                        <figcaption>
+                            imagen de mapa de epoca prehispanica
+                        </figcaption>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             2. LA MEDIA LUNA CHOLANA
+             VERSIÓN CH'OL
+             ================================================= -->
+
+        <div class="origen">
+
+            <div class="parte chol1">
+
+                <h2>
+                    I-lumal Ch’ol yik’oty i-xämbal
+                </h2>
+
+
+                <div class="prueva">
+
+                    <p>
+                        Li xchumtyälob ta’bä ip’ojlisäyob ibä ya’ tyi lumaläl, tyi
+                        ch’ok-ä yambä ajty’añob jiñä ajCh’olanojob, yä’äch tyi käyleyob
+                        tyi chumtyäl tyi joktyälel ilum Xmayajob, ya’bä käyleñ tyi
+                        iñojpa’lel Grijalva, tyi ityojbil ochi’k’iñ (oeste) motagua.
+                        Tyi ityojel pasi’ k’iñ. che’je’el yik’oty xiñtyuk’ulel ilum
+                        ajYukatañob, ya’bä käylem tyi sur, junp’ej lum, käñälbä a
+                        tsikwentujob yi’k’oty xkäñjuñob tyi ty’añ, ili käñbilbä
+                        icha’añob xiñtyuku ujCholana. La tyi tsi’ñtsabä ajñiyib jiñtyo
+                        li ajkolembi pañimilob tyi käjyiyob che’ñak tyi wejts’iyob majle
+                        li xmayajob de tyi itsiklel 1100 clásico D.C., tyi ochiyob yañob
+                        kixtyañojob. Li yambä kixtyañojob ta’bä pojbeñtyiyob ilumal ,
+                        yik’otyob ajcholob. Tyi tsätsä lojk’iyob cha’añ mi majlelob tyi
+                        joktyäle ya’bä käylem tyi lum Usumancita, Grijalba yik’oty tyi
+                        Jatate (Gpetz y Morli), 1950; Thompson.
+                    </p>
+
+
+                    <div class="img-container">
+
+                        <img
+                            src="../img/medialuna.jpeg"
+                            alt="Identidad Lingüística Ch'ol" />
+
+                        <figcaption>
+                            Tierras bajas a las que se desplazaron los ch'oles
+                            alrededor del 1100 a.c.
+                        </figcaption>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             3. IDENTIDAD LINGÜÍSTICA
+             VERSIÓN CH'OL
+             ================================================= -->
+
+        <div class="origen">
+
+            <div class="parte chol1">
+
+                <h2>
+                    Lakty’añ Ch’ol: baki tyilemo’b jiñi xch’olo’b
+                </h2>
+
+
+                <div class="prueva">
+
+                    <p>
+                        Li xchumtyälob ta’bä ip’ojlisäyob ibä ya’ tyi lumaläl, tyi
+                        ch’ok-ä yambä ajty’añob jiñä ajCh’olanojob, yä’äch tyi käyleyob
+                        tyi chumtyäl tyi joktyälel ilum Xmayajob, ya’bä käyleñ tyi
+                        iñojpa’lel Grijalva, tyi ityojbil ochi’k’iñ (oeste) motagua.
+                        Tyi ityojel pasi’ k’iñ. che’je’el yik’oty xiñtyuk’ulel ilum
+                        ajYukatañob, ya’bä käylem tyi sur, junp’ej lum, käñälbä a
+                        tsikwentujob yi’k’oty xkäñjuñob tyi ty’añ, ili käñbilbä
+                        icha’añob xiñtyuku ujCholana. La tyi tsi’ñtsabä ajñiyib jiñtyo
+                        li ajkolembi pañimilob tyi käjyiyob che’ñak tyi wejts’iyob majle
+                        li xmayajob de tyi itsiklel 1100 clásico D.C., tyi ochiyob yañob
+                        kixtyañojob. Li yambä kixtyañojob ta’bä pojbeñtyiyob ilumal,
+                        yik’otyob ajcholob. Tyi tsätsä lojk’iyob cha’añ mi majlelob tyi
+                        joktyäle ya’bä käylem tyi lum Usumancita, Grijalba yik’oty tyi
+                        Jatate (Gpetz y Morli), 1950; Thompson.
+                    </p>
+
+
+                    <div class="img-container">
+
+                        <img
+                            src="../img/identidad.jpeg"
+                            alt="Identidad Lingüística Ch'ol" />
+
+                        <figcaption>
+                            I-mujch’ilel Maya: Jiñi Ch’ol tyilel tyi
+                            ityojbil ochi’k’iñ yik’oty jiñi rama cholana.
+                        </figcaption>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             4. P’OLMÄLEL
+             VERSIÓN CH'OL
+             ================================================= -->
+
+        <div class="origen">
+
+            <div class="parte chol1">
+
+                <h2>
+                    P’olmälel yik’oty lakty’añ CH’ol
+                </h2>
+
+
+                <div class="prueva">
+
+                    <p>
+                        Jiñi troñel ñoj albilbä tyi its’ijbo’ xMayajob jiñ me ik´äñ
+                        isubo’ bajche’ me imajlel k’iñ ja’bilel tyak, bajche’ ikuxtyalel
+                        wiñik, ñi’iwuty yik’oty bajche’ki yom kuchol yik’oty bajche’
+                        mi ity’uñ majlel ibijletyal.
+                        Che’ bajche’ ili me ilok’el tyi utsbä itroñel pejtyel añ
+                        isujmlel cha’añ mej ich’ujutyesañ mu’o’bä tyi troñel. Che’ jiñi
+                        pejtyel año’bä imajchilo’ me ichajpaño’b. Jiñi p’olmalo’b
+                        jaychapo’b. Ili p’olmal me ichoño’ ats’am añbä tyi Chiapas,
+                        yik’oty tyi yucatan me ich’ämo’ tyälel chili Tabasco ba’añ
+                        chumulo’ jiñi ajch’olo’b yik’oty käkäw, pislel patyälbä tyi
+                        tyiñum, pinturajtyak cha’añ ikextyaño’ its’ijbal, yetsel
+                        tye’otyak bajche’ pom cha’añ ikuktyälelo’ bi’tyä jawä’tye’
+                        mu’bä yä’beño’ yetse’ tyaj, yetsel tyaj cha’añ buts’iyatyak,
+                        puytyak añbä its’ijbal yik’oty ajmajtyañ troñelo’b,
+                        (Mendizabal 1946).
+                        Cha’añ ili me ik’äño’b bij, ja’ tyi Tabasco me iñumelo’b tyi
+                        majli’ k’iñ, yik’oty tyi sur, ya’ tyi ñojpa’ me iñumelo’b ba’
+                        ñojtye’el cha’ añ me ik’otyelo’b ba’ joktyäl tyi chiapas,
+                        me iñumelob ya’ tyi Tacotalpa cha’añ me ik’otyelo’b ba’
+                        ñojtye’el tyi chiapas, ya’ iñumelob ya’ tyi Tabasco tyi ñojpa’
+                        ajmäñ p’olmalob ( lee 1978, p. 63).
+                        Ba’ yo keñ inumi’ob wa’ tyi ñojpa’lel Tabasco cha’añ ka’bäl
+                        ñojpa’ ya’ tyi Tabasco jiñcha’añ ajp’olmalo’b me ipätyo’
+                        ijuku; yik’o’ty yaj kuchijelo; me ich’ämo’b majlel cha’bajk’
+                        läjäñ k’al ip’olmalo; cha’ añ ma’añ me isätyo’b ibijlel
+                        ajmäñ p’olmalob me ika cho’pisil tyi tye’o’b ya’ ba’ me
+                        iñumelo’ majlel tyi ja’ che’ mi ilok’elob majle tyi Tabasco
+                        chili Yucatán, che’bi mi imajlelob me iletsaño’b yik’oty me
+                        iju’sañob oromento, cha’añ me ipäso’b ibijlel majlelbä
+                        muk’o’b tyi juku’b me ipätyob buts’ tyi pejtyel tyi’ja’
+                        cha’añ i päsob majlel bij.( Diaz,1939).
+                    </p>
+
+
+                    <div class="img-container">
+
+                        <img
+                            src="../img/comerciante.jpeg"
+                            alt="Identidad Lingüística Ch'ol" />
+
+                        <figcaption>
+                            I-juñilel Maya yik’oty i-yejtalil junp’ej ajp’olmal
+                            tyi i-ñojlel.
+                        </figcaption>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             5. INTERPRETACIONES
+             VERSIÓN CH'OL
+             ================================================= -->
+
+        <div class="origen">
+
+            <div class="parte chol1">
+
+                <h2>
+                    Tyi ichajp ichajplel bajche’ mi ik’ejlema jiñi ty’añäl
+                </h2>
+
+
+                <div class="prueva">
+
+                    <p>
+                        Tyi pejtyelel lak ty'añ, mu'bä ipejkañob antropología yik’oty
+                        arqueología mi ipäsob cha’p'ej pensal bajche' mi ik'äñob lakty'añ
+                        CH'ol. Junp'ej juñi mi ipensaliñob li lakty'añ CH'ol jiñ muk'bä
+                        iweñ k'äñob. Mi ik'äñob tyi resal imi ik'äño' tyi ts'ijb jiñ cha'añ
+                        tyi ajli ke weñ k'uxbil yik’oty ch'ujul jiñi lakty'añ CH'ol, de
+                        jiñi ty'añ mi ilok'el yambä pensal ke jiñi CH'ol tyi lok'i
+                        yambätyak ty'añ cha'añ bajche' mi ik'äñob tyi yambätyak pamil
+                        machbä iyujilob jiñi ty'añ CH'ol. Ili pensal añ ipätyäyob
+                        itroñel bajche' jiñi xFrancisco Morán (1695) yik’oty x-Alfonso
+                        de Escobar jiñi ñaxañbä mi iyäl ke jiñi ty'añ cholti jiñ
+                        wajalixbä lak ty'añ CH'ol muk' bä ipejkañob tyi Verapaz
+                        (Guatemala) che'ñak tyi k'otyiyob jiñi xkaxlaño'b. Jiñi yambä
+                        pensal mi iyäl ke jiñi wajalixbä CH'ol che' yu'bil mi
+                        ipejkañtyel bajche' jiñi lacandon. Yambätyak xts'ijbo'b mi
+                        iyälob ke li CH'ol tyi yäk'ä imuch'kiño'b ibä bajche' jiñiyo'b
+                        cahabonero, lanquiñeros, chesiqueños, chortíes yik’oty toqueguas
+                        (loqueguas) jiñiyob toqueguas, xfray Francisco Ximénez mi iyäle'
+                        ke che' tyi k'otyiyob jiñi xchumtyälob tyi ityi' ñojpa' ulua mu'bä
+                        isu'beñtyelob toqueguas ( loquehuas) mi iyälob ke tyälemob de CH'ol.
+                        Añtyak yambä peñsaltyak cha'añ jiñi ajCH'olo'b. Xsheptak (2007)
+                        mi ichäkiñ ibä cha'añ ik'a'bisañ jump'ej k'aba' lumal y mi iyäl
+                        ke ili ty'añ tyälem tyi ijol ik'aba' ojlilob kixtyañojob chumulo'b
+                        bä tyi pam lum tyi Guatemala. Tyi yujtyi'lel ili pensal mi
+                        iyälob ke tyälem tyi luxkujk ts'ijb ajkolonealesjob, baki li ty'añ
+                        CH'ol tyälemtyak tyi ijol ik'aba' yañtyakbä kixtyañojob weñ
+                        k'uxbilo'bä tyi ilumalob. Che' bajche' mi iyäl ili tsa'bä ipätyä
+                        ili juñ mi iyäl ke ili ty'añ jiñ ik'aba'ob juñmujch'o'b
+                        kixtyañojob weñ uts'atybä chumulo'b imach jiñik jiñi
+                        kixtyañojob p'ump'umjaxbä chumulob.
+                    </p>
+
+
+                    <div class="img-container">
+
+                        <img
+                            src="../img/diversasinterpretaciones.jpeg"
+                            alt="Identidad Lingüística Ch'ol" />
+
+                        <figcaption>
+                            I-yejtalil ts’ijb tyi Palenque. Mi iñoptyel ke
+                            jiñi ty’añ tyi Ch’ol.
+                        </figcaption>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             VERSIÓN ESPAÑOLA
+             ===================================================== -->
+
+
+        <!-- =================================================
+             1. ORIGEN DE LA LENGUA
+             ================================================= -->
+
+        <div class="origen">
+
+            <div class="parte espanol">
+
+                <h2>
+                    Origen y Evolución de la Lengua Ch'ol
+                </h2>
+
+
+                <div class="prueva">
+
+                    <p>
+                        El origen de la lengua ch’ol se vincula al maya a partir de un
+                        idioma identificado como protomaya, o Nab’ee Maya’Tziij
+                        (Thompson, 1938; Morley, 1946; Schumman, 1973). De acuerdo con
+                        las referencias históricas, el protomaya se habló inicialmente
+                        en el noroeste de Guatemala para posteriormente extenderse hacia
+                        una amplia zona conocida como el área Maya integrado por
+                        Guatemala, Belice, Honduras y la parte sur de México (Thompson,
+                        1956). De esta lengua evolucionaron cerca de treinta lenguas más
+                        agrupadas en cuatro divisiones: oriental, occidental, yukateka y
+                        wuasteka. El ch’ol se originó a partir de la división occidental
+                        que dio lugar a la subdivisión del cholán a donde se adscribe la
+                        rama ch’ol. Dentro de esta rama se encuentra el tzeltalano
+                        (conformados por el grupo tzeltal y tzotzil) y el cholán (donde
+                        se ubica el grupo ch’ol, chontal y chortí) (Josserand, 1975;
+                        Thompson, 1938).
+                    </p>
+
+
+                    <div class="img-container">
+
+                        <img
+                            src="../img/mapa.jpeg"
+                            alt="Identidad Lingüística Ch'ol" />
+
+                        <figcaption>
+                            imagen de mapa de epoca prehispanica
+                        </figcaption>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             2. LA MEDIA LUNA CHOLANA
+             ================================================= -->
+
+        <div class="origen">
+
+            <div class="parte espanol">
+
+                <h2>
+                    La Media Luna Cholana y Migraciones
+                </h2>
+
+
+                <div class="prueva">
+
+                    <p>
+                        Las poblaciones que dieron lugar a la rama cholana ocuparon las
+                        Tierras Bajas Mayas, desde el río Grijalva al oeste hasta el río
+                        Motagua al este, incluyendo la mitad sur de la península de
+                        Yucatán; una tierra que historiadores y lingüistas reconocen
+                        como la media luna cholana. En este espacio se desarrollaron
+                        hasta que los centros urbanos fueron abandonados con la caída de
+                        los Mayas del Clásico, alrededor del 1100 d. c., dando lugar al
+                        dominio de otros grupos. Los grupos vencidos, entre ellos los
+                        antiguos ch’oles, fueron obligados a salir hacia las tierras
+                        bajas siguiendo los ríos Usumacinta, Grijalva y Jatate (Goetz y
+                        Morli, 1950; Thompson 1956).
+                    </p>
+
+
+                    <div class="img-container">
+
+                        <img
+                            src="../img/medialuna.jpeg"
+                            alt="Identidad Lingüística Ch'ol" />
+
+                        <figcaption>
+                            Tierras bajas a las que se desplazaron los ch'oles
+                            alrededor del 1100 a.c.
+                        </figcaption>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             3. IDENTIDAD LINGÜÍSTICA
+             ================================================= -->
+
+        <div class="origen">
+
+            <div class="parte espanol">
+
+                <h2>
+                    La Identidad Lingüística Ch'ol
+                </h2>
+
+
+                <div class="prueva">
+
+                    <p>
+                        Esta ubicación coincide con la expuesta en la obra de Stoll
+                        (1884) quien establece que se desarrollaron como agrupación
+                        lingüística y cultural dentro de áreas ubicadas en la media
+                        luna cholana y las tierras bajas mayas. Un lugar que se
+                        caracterizó por ser multicultural y multiétnico, con un vasto
+                        imperio comercial que le permitía entrar en contacto con otros
+                        grupos culturales vinculado a otras zonas étnicas como
+                        Nicaragua, las tierras altas de Guatemala y el resto de las
+                        tierras bajas mayas. Sin duda, un contexto rico en contactos
+                        culturales y lingüísticos. Desde esta posición ventajosa, los
+                        ch’oles conformaron una nación poderosa con una lengua
+                        claramente diferenciada. Entre los vecinos de los ch’oles se
+                        encontraban otras naciones hermanas como el chontal, el chortí
+                        y el yucateko, entre los cuales ostentaban gran importancia
+                        política, económica y cultural. La razón de ser de este
+                        prestigio fue su principal actividad económica, el comercio,
+                        que le proveía de un alto estatus entre las culturas
+                        mesoamericanas.
+                    </p>
+
+
+                    <div class="img-container">
+
+                        <img
+                            src="../img/identidad.jpeg"
+                            alt="Identidad Lingüística Ch'ol" />
+
+                        <figcaption>
+                            Familia Maya: El ch'ol pertenece a la Divición
+                            Occidental,Rama cholana.tzeltalana,grupo cholano.
+                        </figcaption>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             4. P’OLMÄLEL
+             ================================================= -->
+
+        <div class="origen">
+
+            <div class="parte espanol">
+
+                <h2>
+                    El Comercio y la Lengua Ch'ol
+                </h2>
+
+
+                <div class="prueva">
+
+                    <p>
+                        Era una actividad tan renombrada que en los glifos mayas se
+                        representaba el tiempo y el espacio a partir de la figura de un
+                        hombre, su carga y el camino. De esta forma se resaltaba el
+                        valor de la actividad más allá del mero interés material para
+                        concebirse como símbolo divino que honraba a quienes se
+                        dedicaban a ella. De allí que muchas familias nobles lo
+                        ejercieran. Entre la mercancía que se comerciaba se podía
+                        encontrar infinidad de especies y formas. Estas iban desde sal
+                        de Chiapas y de Yucatán que se exportaba para Tabasco y las
+                        áreas del Chol Manche hasta cacao, ropa de algodón, colores para
+                        teñir, tintura para el cuerpo, teas, resma de pino para
+                        sahumerios, cuentas coloradas de caracoles y esclavos
+                        (Mendizábal, 1946). Para ello se utilizaban rutas
+                        interregionales que conectaban el Tabasco central con el Oeste y
+                        Sur ya fuera a través de la ruta costera de Tabasco, la Sierra
+                        y/o del río Grijalva hacia la depresión central de Chiapas, la
+                        ruta Tacotalpa a los altos de Chiapas, y el sistema integral de
+                        todas éstas, llamada la ruta Fluvial de Complejo Ribereño de
+                        Mercado de Tabasco (Lee 1978, p. 63). Las rutas más comunes
+                        fueron las fluviales debido a la hidrología del estado por lo
+                        que los comerciantes se hacían de grandes canoas, además de sus
+                        tamemes, para transportar hasta mil kilogramos de mercancía. Se
+                        colocaban señales en los árboles para acertar el camino de
+                        navegación de Tabasco a Yucatán y por tierra existía un código de
+                        señales en la cual se subían y bajaban banderas para dar
+                        instrucción a quienes navegaban o usaban humaredas colocadas
+                        unas tras otras para enviar un mensaje a los navegantes (Díaz,
+                        1939).
+                    </p>
+
+
+                    <div class="img-container">
+
+                        <img
+                            src="../img/comerciante.jpeg"
+                            alt="Identidad Lingüística Ch'ol" />
+
+                        <figcaption>
+                            Calendario Maya con glifo de un comerciante en el centro.
+                        </figcaption>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             5. INTERPRETACIONES
+             ================================================= -->
+
+        <div class="origen">
+
+            <div class="parte espanol">
+
+                <h2>
+                    Diversas Interpretaciones Lingüísticas
+                </h2>
+
+
+                <div class="prueva">
+
+                    <p>
+                        Dentro del rubro lingüístico, los estudios antropológicos y
+                        arqueológicos muestran dos tendencias en cuanto al uso del ch’ol.
+                        Una de ellas es la consideración del ch’ol como una lengua de
+                        alto estatus. Su uso en ceremonias religiosas y en la escritura
+                        de estelas permitió que fuera considerada como lengua culta y de
+                        prestigio. De esta consideración se desprende una segunda
+                        vertiente que sugiere que el ch’ol dio lugar al surgimiento de
+                        otras lenguas por su uso constante en otros contextos. Esta
+                        hipótesis ha sido difundida en trabajos como el de Francisco
+                        Morán (1695) y Alfonso de Escobar. El primero plantea que la
+                        lengua cholti constituye una antigua versión del ch’ol hablado en
+                        Verapaz (Guatemala) a la llegada de los españoles, mientras que
+                        el segundo argumenta que el ch’ol antiguo se relaciona
+                        directamente con el lacandón. Otros escritores incluso afirman
+                        que el ch’ol ha dado origen a otras agrupaciones como el
+                        cahabonero, lanquineros, chesiqueños, chortíes y toqueguas
+                        (loqueguas). En el caso de los toqueguas, fray Francisco Ximénez
+                        llega a esta conclusión a raíz de la existencia de una población
+                        cerca del río Ulúa denominada toqueguas (o loquehuas) quienes se
+                        autoadscribían como pertenecientes a la nación Chol. Por otra
+                        parte, existen otras teorías en cuanto al ch’ol. Sheptak (2007),
+                        por ejemplo, se opone a la consideración de la palabra ch’ol para
+                        nombrar a una nación y en su lugar argumenta que esta palabra se
+                        relaciona directamente al apellido o linaje de ciertos personajes
+                        de las tierras altas de Guatemala. Esta conclusión se desprende
+                        del análisis que hace de algunos manuscritos coloniales donde la
+                        palabra ch’ol aparece junto a otros apellidos de importancia.
+                        Así, el autor señala que el vocablo apunta más a un rango social
+                        que a una identidad lingüística.
+                    </p>
+
+
+                    <div class="img-container">
+
+                        <img
+                            src="../img/diversasinterpretaciones.jpeg"
+                            alt="Identidad Lingüística Ch'ol" />
+
+                        <figcaption>
+                            Ejemplo de escritura encontrada en Palenque. Se cree
+                            que la lengua usada es el ch'ol.
+                        </figcaption>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             BOTÓN TRADUCIR
+             ===================================================== -->
+
+        <button
+            id="cambiarVista"
+            type="button">
+
+            <i class="fas fa-language"></i>
+
+            <span id="textoIdioma">
+                Traducir al español
+            </span>
+
+        </button>
+
+
+
+        <!-- =====================================================
+             JAVASCRIPT DE TRADUCCIÓN
+             ===================================================== -->
+
+        <script>
+
+            const botonIdioma =
+                document.getElementById("cambiarVista");
+
+            const textoIdioma =
+                document.getElementById("textoIdioma");
+
+            let modoEspanol = false;
+
+
+            botonIdioma.addEventListener("click", function () {
+
+                modoEspanol = !modoEspanol;
+
+
+                if (modoEspanol) {
+
+                    document.body.classList.add("modo-espanol");
+
+                    textoIdioma.textContent =
+                        "Ver en Ch’ol";
+
+                } else {
+
+                    document.body.classList.remove("modo-espanol");
+
+                    textoIdioma.textContent =
+                        "Traducir al español";
+
+                }
+
+            });
+
+        </script>
+
+
+
+        <!-- =====================================================
+             BOTÓN SUBIR
+             ===================================================== -->
+
+        <button
+            id="btnTop"
+            class="hidden">
+
+            <i class="fas fa-chevron-up"></i>
+
+        </button>
+
+
+        <script src="../arriba.js"></script>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <iframe src="../footer.html"></iframe>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT DEL MENÚ MÓVIL
+         ===================================================== -->
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const botonMenu =
+                document.getElementById("btnMenuMovil");
+
+            const menuOverlay =
+                document.getElementById("menuOverlay");
+
+            const navbarMovil =
+                document.getElementById("menuPrincipal");
+
+
+            if (!botonMenu || !menuOverlay || !navbarMovil) {
+                return;
+            }
+
+
+            const iconoMenu = botonMenu.querySelector("i");
+
+
+            function abrirMenu() {
+
+                document.body.classList.add("menu-abierto");
+
+                botonMenu.setAttribute("aria-expanded", "true");
+
+                botonMenu.setAttribute("aria-label", "Cerrar menú");
+
+                menuOverlay.setAttribute("aria-hidden", "false");
+
+                iconoMenu.classList.remove("fa-bars");
+
+                iconoMenu.classList.add("fa-xmark");
+
+            }
+
+
+            function cerrarMenu() {
+
+                document.body.classList.remove("menu-abierto");
+
+                botonMenu.setAttribute("aria-expanded", "false");
+
+                botonMenu.setAttribute("aria-label", "Abrir menú");
+
+                menuOverlay.setAttribute("aria-hidden", "true");
+
+                iconoMenu.classList.remove("fa-xmark");
+
+                iconoMenu.classList.add("fa-bars");
+
+
+                navbarMovil.querySelectorAll(".submenu.abierto")
+                    .forEach(function (submenu) {
+
+                        submenu.classList.remove("abierto");
+
+                    });
+
+            }
+
+
+            botonMenu.addEventListener("click", function () {
+
+                if (document.body.classList.contains("menu-abierto")) {
+
+                    cerrarMenu();
+
+                } else {
+
+                    abrirMenu();
+
+                }
+
+            });
+
+
+            menuOverlay.addEventListener("click", cerrarMenu);
+
+
+            navbarMovil.addEventListener("click", function (evento) {
+
+                const enlace = evento.target.closest("a");
+
+
+                if (enlace) {
+
+                    cerrarMenu();
+
+                    return;
+
+                }
+
+
+                const submenu = evento.target.closest(".menu > .submenu");
+
+
+                if (submenu && window.innerWidth <= 767) {
+
+                    evento.stopPropagation();
+
+                    submenu.classList.toggle("abierto");
+
+                }
+
+            });
+
+
+            document.addEventListener("keydown", function (evento) {
+
+                if (evento.key === "Escape") {
+
+                    cerrarMenu();
+
+                }
+
+            });
+
+
+            window.addEventListener("resize", function () {
+
+                if (window.innerWidth > 767) {
+
+                    cerrarMenu();
+
+                }
+
+            });
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>

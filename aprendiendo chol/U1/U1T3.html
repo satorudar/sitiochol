@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Tema 3: Familia</title>
+    
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/enhanced-styles.css">
+
+    <style>
+
+        button.primary {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        button.primary.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .opt {
+            min-width: 140px; 
+            padding: 15px; 
+            border-radius: 20px;
+            background: #fff;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px; 
+            cursor: pointer;
+            border: 4px solid #E0E0E0;
+            transition: all .2s;
+        }
+        
+        .opt:hover:not(.disabled) {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .opt.disabled {
+            opacity: 0.7;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        .opt img {
+            width: 110px; 
+            height: 110px; 
+            border-radius: 12px;
+            object-fit: cover;
+        }
+
+        .word-to-build-display {
+            font-size: clamp(1.2rem, 4vw, 1.8rem); 
+            font-weight: bold;
+            color: var(--accent);
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .current-word-display {
+            font-size: clamp(2rem, 8vw, 3rem); 
+            min-height: 60px;
+            margin-top: 15px;
+            border-bottom: 4px solid var(--ok);
+            padding-bottom: 5px;
+            color: var(--ok);
+            letter-spacing: 10px;
+            font-family: monospace;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .letter-tray {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .letter-button {
+            width: 50px;
+            height: 50px;
+            background-color: #FFF8E1;
+            border: 3px solid #FFC107;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: #FF6F00;
+            transition: transform 0.1s, background 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 0 #FFA000;
+        }
+
+        .letter-button:active {
+            transform: translateY(4px);
+            box-shadow: 0 0 0 #FFA000;
+        }
+
+        .letter-button.disabled { 
+            opacity: 0.4; 
+            pointer-events: none; 
+            background-color: #E0E0E0;
+            border-color: #BDBDBD;
+            box-shadow: none;
+            transform: translateY(4px);
+        }
+
+        .matching-click-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            max-width: 700px;
+            padding: 25px;
+            background-color: #FFF; 
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 4px solid #E0E0E0;
+        }
+
+        .matching-card {
+            background-color: #F5F5F5;
+            border-radius: 15px;
+            padding: 15px 20px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 4px 0 rgba(0,0,0,0.1);
+            border: 2px solid #E0E0E0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 60px;
+        }
+
+        .matching-card:hover:not(.matched):not(.selected) {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+            background-color: #FFF;
+        }
+
+        .matching-card.selected {
+            border-color: var(--accent);
+            background-color: #E3F2FD;
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .matching-card.matched {
+            background-color: var(--ok);
+            color: white;
+            pointer-events: none;
+            cursor: default;
+            box-shadow: none;
+            border-color: var(--ok);
+            animation: pop 0.3s ease-out;
+        }
+
+        .matching-card.shaking {
+            animation: shake 0.5s;
+            border-color: var(--bad) !important;
+            background-color: #FFEBEE !important;
+            color: var(--bad);
+        }
+
+        @keyframes pop {
+            0% { transform: scale(0.8); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .questions-stack, .answers-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex: 1;
+        }
+
+        .stack-title {
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--text-color);
+            margin-bottom: 10px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @media (min-width: 700px) {
+            .matching-click-container {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app" role="application" aria-label="Prototipo actividades para primaria">
+        <header>
+            <h1 id="title">Mini-Clase: Familia</h1>
+            <div style="display: flex; gap: 10px;">
+                <button class="ghost" onclick="goHome()" style="font-weight: 500; padding: 10px;">🏠 Inicio</button> 
+                <button class="primary" id="nextBtn" onclick="next()">Siguiente</button>
+            </div>
+        </header>
+
+        <main class="stage-area" id="stageArea"></main>
+
+        <div class="controls" id="controlsArea"></div>
+
+        <footer>Prototipo educativo · Tema 3: Familia</footer>
+    </div>
+    
+    <div class="ground-sim"></div>
+
+    <script src="../assets/js/sound-effects.js"></script>
+
+<script>
+    const TEMA_ID = 3;
+    const MAIN_SCREEN_URL = '../U1/U1FAM.html';
+    const TOTAL_ACTIVITY_POINTS = 40; 
+
+    let stage1Attempts = 0;
+    const stage1MaxAttempts = 2;
+    
+    let stage2Attempts = 0;
+    const stage2MaxAttempts = 2;
+
+    let stage3Attempts = 0;
+    const stage3MaxAttempts = 2;
+
+    function goHome() {
+        soundSystem.play('whoosh');
+        setTimeout(() => {
+            window.location.href = MAIN_SCREEN_URL;
+        }, 200);
+    }
+
+    const stages = [renderStage0, renderStage1, renderStage2, renderStage3_word_builder, renderStage4_matching, renderStage5_final]; 
+    let currentStage = 0;
+    let feedbackEl = null; 
+    const titleEl = document.getElementById('title');
+    const nextBtn = document.getElementById('nextBtn');
+    const controlsArea = document.getElementById('controlsArea');
+    
+    let stageProgress = new Array(stages.length).fill(false); 
+    let userScore = 0;
+
+    function setStageComplete(isComplete = true) {
+        if (isComplete && !stageProgress[currentStage]) {
+             if(currentStage >= 1 && currentStage <= 4) { 
+                 userScore += 10; 
+             }
+        }
+        stageProgress[currentStage] = isComplete;
+        nextBtn.classList.toggle('active', isComplete);
+    }
+
+    function clearFeedback(){ 
+        if(feedbackEl) feedbackEl.textContent = ""; 
+    }
+    
+    function setFeedback(text, kind){
+        if(!feedbackEl) return;
+        feedbackEl.textContent = text;
+        if(kind === 'ok'){ feedbackEl.style.color = 'var(--ok)' }
+        else if(kind === 'bad'){ feedbackEl.style.color = 'var(--bad)' }
+        else { feedbackEl.style.color = 'var(--text-color)' }
+    }
+
+    function renderControls(html = '') {
+        controlsArea.innerHTML = `<div id="feedback" class="feedback"></div>${html}`;
+        feedbackEl = document.getElementById('feedback');
+    }
+
+    function disableOptions(selector) {
+        document.querySelectorAll(selector).forEach(el => {
+            el.classList.add('disabled');
+        });
+    }
+
+    function next(){ 
+        if (!stageProgress[currentStage]) {
+            setFeedback("¡Termina esta parte antes de continuar!", 'bad');
+            soundSystem.play('error');
+            return;
+        }
+        
+        soundSystem.play('whoosh');
+
+        if (currentStage === 5) {
+            setTimeout(() => {
+                alert(`✅ Tema Terminado. Volviendo...`);
+                window.location.href = MAIN_SCREEN_URL; 
+            }, 300);
+            return; 
+        }
+
+        currentStage++;
+        if (currentStage >= stages.length) {
+            currentStage = stages.length - 1; 
+        }
+        render(); 
+    }
+
+    function speakText(text, lang='es-ES'){
+        if(!window.speechSynthesis) return;
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = lang;
+        window.speechSynthesis.cancel();
+        window.speechSynthesis.speak(u);
+    }
+    
+    function playAudio(audioFilename, text, lang = 'cho') {
+        const audioUrl = `../assets/audio/${audioFilename}`; 
+        const audio = new Audio(audioUrl);
+        
+        audio.play()
+            .then(() => {
+                setFeedback(`🔊 Reproduciendo: "${text}"`, 'neutral');
+            })
+            .catch(e => {
+                console.error(`❌ Error al cargar o reproducir "${audioUrl}": ${e.message}`);
+                speakText(text, lang); 
+                setFeedback(`[TTS] No se encontró el audio real. Reproduciendo: "${text}"`, 'neutral');
+            });
+    }
+
+    function createAudioButton(text, audioFilename, lang = 'cho') {
+        const btn = document.createElement('button');
+        btn.className = 'ghost audio-btn';
+        btn.innerHTML = '🔊 Reproducir Audio';
+        btn.onclick = () => { playAudio(audioFilename, text, lang); };
+        return btn;
+    }
+
+    function render(){ 
+        clearFeedback(); 
+        setStageComplete(false);
+        const container = document.getElementById('stageArea'); 
+        container.innerHTML=''; 
+
+        const titles = [
+            'Mini-Clase: La Familia', 
+            'Actividad 1: Escucha y Selecciona', 
+            'Actividad 2: Lee y Selecciona', 
+            'Actividad 3: Forma la Palabra',
+            'Actividad 4: Unir Preguntas',
+            '¡Tema Terminado!' 
+        ];
+        titleEl.textContent = titles[currentStage];
+
+        stages[currentStage](container);
+        
+        if (currentStage === 0 || currentStage === 5) { 
+            setStageComplete(true);
+        }
+    }
+
+    function renderStage0(container){
+        const videoHtml = `
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/RUTAS_PENDIENTES?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+            <p style="text-align:center; max-width: 600px; margin-top: 20px;">
+                ¡Mira el video para aprender sobre la familia en Ch'ol! Presiona "Siguiente" para empezar.
+            </p>
+        `;
+        container.innerHTML = videoHtml;
+        setStageComplete(true);
+        renderControls();
+    }
+
+    const stage1Data = [
+        { audio: "Kmam o Ña'", filename: "mama.mp3", correct: "mama.png", options: ["mama.png", "hermano.png", "abuelo.png"], text: "Mamá" },
+        { audio: "Pap o Tyaty", filename: "papa.mp3", correct: "papa.png", options: ["papa.png", "tia.png", "tio.png"], text: "Papá" },
+        { audio: "K´ermañu", filename: "hermano.mp3", correct: "hermano.png", options: ["papa.png", "hermano.png", "mama.png"], text: "Hermano" },
+        { audio: "Ko'", filename: "abuela.mp3", correct: "abuela.png", options: ["abuela.png", "abuelo.png", "tio.png"], text: "Abuela" },
+        { audio: "Yum", filename: "abuelo.mp3", correct: "abuelo.png", options: ["hermano.png", "abuelo.png", "tia.png"], text: "Abuelo" },
+    ];
+    let currentRound1 = 0; 
+
+    function checkAnswer1(selectedImage, currentData, allOptionsElements, selectedElement) {
+        if (selectedImage === currentData.correct) {
+            setFeedback('¡Muy bien! ¡Correcto!', 'ok');
+            handleCorrectAnswer(selectedElement);
+            
+            stage1Attempts = 0;
+            currentRound1++;
+            setTimeout(() => {
+                renderStage1(document.getElementById('stageArea'));
+            }, 1500);
+        } else {
+            stage1Attempts++;
+            if(stage1Attempts < stage1MaxAttempts) {
+                handleIncorrectAnswer(selectedElement);
+                setFeedback(`Incorrecto. Te quedan ${stage1MaxAttempts - stage1Attempts} intentos.`, 'bad');
+                
+                setTimeout(() => {
+                    allOptionsElements.forEach(el => {
+                        el.classList.remove('disabled', 'bad');
+                        el.style.pointerEvents = 'auto';
+                    });
+                    setFeedback('Intenta de nuevo...', 'neutral');
+                }, 1500);
+
+            } else {
+                handleIncorrectAnswer(selectedElement);
+                setFeedback(`Incorrecto. La respuesta correcta era: ${currentData.text}`, 'bad');
+                
+                allOptionsElements.forEach(el => {
+                    if (el.dataset.img === currentData.correct) {
+                        el.classList.add('ok');
+                    }
+                });
+                
+                stage1Attempts = 0;
+                currentRound1++;
+                setTimeout(() => {
+                    renderStage1(document.getElementById('stageArea'));
+                }, 2500);
+            }
+        }
+    }
+
+    function renderStage1(container) {
+        if (currentRound1 >= stage1Data.length) {
+            container.innerHTML = `<h2 style="color: var(--ok);">¡Felicidades! Completaste las 5 rondas.</h2>`;
+            setStageComplete(true);
+            renderControls();
+            earnStar(container);
+            return;
+        }
+
+        const currentData = stage1Data[currentRound1];
+        const attemptsInfo = stage1MaxAttempts > 1 ? `(Tienes ${stage1MaxAttempts} intentos)` : '';
+
+        container.innerHTML = `<p class="stage0-info">Ronda ${currentRound1 + 1} de ${stage1Data.length}: Escucha y selecciona el miembro de la familia. ${attemptsInfo}</p>`;
+
+        const audioBtn = createAudioButton(currentData.audio, currentData.filename, 'cho'); 
+        
+        renderControls();
+
+        const buttonWrapper = document.createElement('div');
+        buttonWrapper.style.cssText = "display: flex; gap: 15px; justify-content: center; margin-bottom: 20px;";
+        buttonWrapper.appendChild(audioBtn);
+
+        const feedbackEl = document.getElementById('feedback');
+        if (controlsArea) {
+            controlsArea.insertBefore(buttonWrapper, feedbackEl.nextSibling); 
+        }
+        
+        const row = document.createElement('div');
+        row.className = 'options-row';
+        currentData.options.sort(() => Math.random() - 0.5); 
+
+        currentData.options.forEach(opt => {
+            const b = document.createElement('div');
+            b.className = 'opt';
+            b.dataset.img = opt; 
+            
+            b.innerHTML = `<img src="../assets/img/${opt}" alt="Opción"/>`;
+
+            b.onclick = (e) => {
+                const allOptions = document.querySelectorAll('.opt');
+                disableOptions('.opt');
+                
+                if (opt === currentData.correct) {
+                    b.classList.add('ok');
+                } else {
+                    b.classList.add('bad');
+                }
+                
+                checkAnswer1(opt, currentData, allOptions, b);
+            };
+            row.appendChild(b);
+        });
+
+        container.appendChild(row);
+        setStageComplete(false); 
+    }
+
+    const stage2Data = [
+        { phrase: "Mi papá es alto.<p> Jiñi chañ li tyaty", correct: "papa.png", options: ["papa.png", "mama.png", "niño.png"], text: "Papá" },
+        { phrase: "El es mi hermano.<p>Jiñi ili kermañu", correct: "hermano_mayor.png", options: ["hermano_mayor.png", "niña.png", "tio.png"], text: "Hermano" },
+        { phrase: "Ella es mi abuela.<p>Jiñi ili jko´", correct: "abuela_cocinando.png", options: ["abuela_cocinando.png", "abuelo.png", "niño.png"], text: "Abuela" },
+        { phrase: "El es mi tio.<p>Jiñi ili kichañ", correct: "casa_amarilla.png", options: ["casa_amarilla.png", "abuela.png", "tia.png"], text: "Tío" },
+        { phrase: "Ella es mi mamá.<p>Jiñi ili kmam ", correct: "mama_abrazando.png", options: ["mama_abrazando.png", "papa.png", "niña.png"], text: "Mamá" },
+    ];
+    let currentRound2 = 0;
+
+    function checkAnswer2(selectedImage, currentData, allOptionsElements, selectedElement) {
+        if (selectedImage === currentData.correct) {
+            setFeedback('¡Muy bien! ¡Correcto!', 'ok');
+            handleCorrectAnswer(selectedElement);
+            
+            stage2Attempts = 0;
+            currentRound2++;
+            setTimeout(() => {
+                renderStage2(document.getElementById('stageArea'));
+            }, 1500);
+        } else {
+            stage2Attempts++;
+            if(stage2Attempts < stage2MaxAttempts) {
+                handleIncorrectAnswer(selectedElement);
+                setFeedback(`Incorrecto. Te quedan ${stage2MaxAttempts - stage2Attempts} intentos.`, 'bad');
+                
+                setTimeout(() => {
+                    allOptionsElements.forEach(el => {
+                        el.classList.remove('disabled', 'bad');
+                        el.style.pointerEvents = 'auto';
+                    });
+                    setFeedback('Lee bien y vuelve a intentar...', 'neutral');
+                }, 1500);
+            } else {
+                handleIncorrectAnswer(selectedElement);
+                setFeedback(`Incorrecto. La imagen correcta era: ${currentData.text}`, 'bad');
+                
+                allOptionsElements.forEach(el => {
+                    if (el.dataset.img === currentData.correct) {
+                        el.classList.add('ok');
+                    }
+                });
+                
+                stage2Attempts = 0;
+                currentRound2++;
+                setTimeout(() => {
+                    renderStage2(document.getElementById('stageArea'));
+                }, 2500);
+            }
+        }
+    }
+
+    function renderStage2(container) {
+        if (currentRound2 >= stage2Data.length) {
+            container.innerHTML = `<h2 style="color: var(--ok);">¡Felicidades! Completaste las 5 rondas.</h2>`;
+            setStageComplete(true);
+            renderControls();
+            earnStar(container);
+            return;
+        }
+
+        const currentData = stage2Data[currentRound2];
+        const attemptsInfo = stage2MaxAttempts > 1 ? `(Tienes ${stage2MaxAttempts} intentos)` : '';
+
+        container.innerHTML = `
+            <p class="stage0-info">Ronda ${currentRound2 + 1} de ${stage2Data.length}: Lee la frase y selecciona la imagen. ${attemptsInfo}</p>
+            <div style="font-size: 1.4rem; font-weight: bold; color: var(--text-color); margin-bottom: 25px; padding: 15px; background: #fff; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-align:center;">
+                ${currentData.phrase}
+            </div>
+        `;
+        
+        renderControls(); 
+        
+        const row = document.createElement('div');
+        row.className = 'options-row';
+        currentData.options.sort(() => Math.random() - 0.5); 
+
+        currentData.options.forEach(opt => {
+            const b = document.createElement('div');
+            b.className = 'opt';
+            b.dataset.img = opt; 
+            
+            b.innerHTML = `<img src="../assets/img/${opt}" alt="Opción"/>`;
+
+            b.onclick = (e) => {
+                const allOptions = document.querySelectorAll('.opt');
+                disableOptions('.opt');
+                
+                if (opt === currentData.correct) {
+                    b.classList.add('ok');
+                } else {
+                    b.classList.add('bad');
+                }
+                
+                checkAnswer2(opt, currentData, allOptions, b);
+            };
+            row.appendChild(b);
+        });
+
+        container.appendChild(row);
+        setStageComplete(false); 
+    }
+
+    const stage3Data = [
+        { word: "YUM", image: "abuelo.png", letters: "KOYLAPMZUNE" },
+        { word: "KMAM", image: "mama.png", letters: "KMSMSAEA" }, 
+        { word: "ALO", image: "niño.png", letters: "LIFAGOE" }, 
+        { word: "IXIK", image: "niña.png", letters: "IRXIMAK" }, 
+        { word: "KICHAÑ", image: "tio.png", letters: "KIPCHRSAÑT" },
+    ];
+    let currentRound3 = 0;
+    let currentAttempt3 = ""; 
+
+    function checkBuilderComplete(correctWord, container) {
+        if (currentAttempt3 === correctWord) {
+            setFeedback('¡Palabra Correcta!', 'ok');
+            soundSystem.play('success');
+            
+            stage3Attempts = 0;
+            currentRound3++;
+            
+            document.querySelectorAll('.letter-button').forEach(el => el.classList.add('disabled'));
+
+            setTimeout(() => {
+                currentAttempt3 = ""; 
+                renderStage3_word_builder(container);
+            }, 1500);
+        } else if (currentAttempt3.length === correctWord.length) {
+            stage3Attempts++;
+            
+            if (stage3Attempts < stage3MaxAttempts) {
+                setFeedback(`Incorrecto. Te quedan ${stage3MaxAttempts - stage3Attempts} intentos. ¡Intenta de nuevo!`, 'bad');
+                soundSystem.play('error');
+                
+                setTimeout(() => {
+                    currentAttempt3 = ""; 
+                    renderStage3_word_builder(container); 
+                }, 1500);
+
+            } else {
+                setFeedback(`Incorrecto. La palabra correcta es: ${correctWord}`, 'bad');
+                soundSystem.play('error');
+                
+                const display = document.getElementById('currentWord');
+                display.textContent = correctWord;
+                display.style.color = "var(--bad)";
+                
+                document.querySelectorAll('.letter-button').forEach(el => el.classList.add('disabled'));
+                
+                stage3Attempts = 0;
+                currentRound3++;
+                
+                setTimeout(() => {
+                    currentAttempt3 = "";
+                    renderStage3_word_builder(container);
+                }, 2500);
+            }
+        }
+    }
+
+    function handleLetterClick(letter, correctWord, container) {
+        soundSystem.play('click');
+        const letterButtons = document.querySelectorAll('.letter-button');
+        let clickedButton = null;
+        
+        
+        for(const btn of letterButtons) {
+            if (btn.textContent === letter && !btn.classList.contains('disabled')) {
+                clickedButton = btn;
+                break;
+            }
+        }
+
+        if (currentAttempt3.length < correctWord.length && clickedButton) {
+            currentAttempt3 += letter;
+            document.getElementById('currentWord').textContent = currentAttempt3;
+            
+            clickedButton.classList.add('disabled'); 
+            
+            if (currentAttempt3.length === correctWord.length) {
+                checkBuilderComplete(correctWord, container);
+            }
+        }
+    }
+
+    function handleLetterClickExact(btn, letter, correctWord, container) {
+        soundSystem.play('click');
+        if (currentAttempt3.length < correctWord.length && !btn.classList.contains('disabled')) {
+            currentAttempt3 += letter;
+            document.getElementById('currentWord').textContent = currentAttempt3;
+            btn.classList.add('disabled');
+            
+            if (currentAttempt3.length === correctWord.length) {
+                checkBuilderComplete(correctWord, container);
+            }
+        }
+    }
+
+    function renderStage3_word_builder(container) {
+        if (currentRound3 >= stage3Data.length) {
+            container.innerHTML = `<h2 style="color: var(--ok);">¡Felicidades! Formaste ${stage3Data.length} palabras.</h2>`;
+            setStageComplete(true);
+            renderControls();
+            earnStar(container);
+            return;
+        }
+
+        const currentData = stage3Data[currentRound3];
+        currentAttempt3 = ""; 
+        const attemptsInfo = stage3MaxAttempts > 1 ? `(Tienes ${stage3MaxAttempts} intentos)` : '';
+
+        container.innerHTML = `
+            <p class="stage0-info">Ronda ${currentRound3 + 1} de ${stage3Data.length}: Forma la palabra correctamente. ${attemptsInfo}</p>
+            <div style="text-align:center;">
+                <img src="../assets/img/${currentData.image}" alt="Palabra a formar" style="width: 140px; height: 140px; border-radius: 15px; margin-bottom: 10px; border: 4px solid var(--accent); box-shadow: 0 5px 15px rgba(0,0,0,0.1);"/>
+            </div>
+            
+            <div style="text-align: center; width: 100%;">
+                <div class="word-to-build-display">Palabra Objetivo: ${currentData.word}</div>
+                <div id="currentWord" class="current-word-display"></div>
+            </div>
+            
+            <div id="letterTray" class="letter-tray"></div>
+        `;
+        
+        renderControls();
+        
+        const letterTray = document.getElementById('letterTray');
+        const letterArray = currentData.letters.split('');
+        
+        letterArray.sort(() => Math.random() - 0.5); 
+        
+        letterArray.forEach(letter => {
+            const btn = document.createElement('button');
+            btn.className = 'letter-button';
+            btn.textContent = letter;
+            btn.onclick = function() { handleLetterClickExact(this, letter, currentData.word, container); };
+            letterTray.appendChild(btn);
+        });
+        
+        setStageComplete(false); 
+    }
+
+    const stage4Data = [
+        { q: "Mamá", a: "kmam o Ña'’" },
+        { q: "Papá", a: "Pap o Tyaty" },
+        { q: "Hermano", a: "K´ermañu" },
+        { q: "Abuela", a: "Ko'" },
+        { q: "Abuelo", a: "Yum" }
+    ];
+
+    let selectedQuestion = null;
+    let selectedAnswer = null;
+    let matchedPairs = 0;
+
+    function renderStage4_matching(container) {
+        container.innerHTML = `
+            <p class="stage0-info">Une correctamente cada palabra con su traducción.</p>
+
+            <div class="matching-click-container">
+                <div class="questions-stack">
+                    <div class="stack-title">Español</div>
+                    ${stage4Data.map((item, i) => `
+                        <div class="matching-card" data-type="q" data-index="${i}">
+                            ${item.q}
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div class="answers-stack">
+                    <div class="stack-title">Ch'ol</div>
+                    ${stage4Data.map((item, i) => `
+                        <div class="matching-card" data-type="a" data-index="${i}">
+                            ${item.a}
+                        </div>
+                    `).sort(() => Math.random() - 0.5).join('')}
+                </div>
+            </div>
+        `;
+
+        renderControls();
+
+        const cards = container.querySelectorAll('.matching-card');
+        matchedPairs = 0;
+        selectedQuestion = null;
+        selectedAnswer = null;
+
+        cards.forEach(card => {
+            card.onclick = () => handleMatchClick(card, container);
+        });
+
+        setStageComplete(false);
+    }
+
+    function handleMatchClick(card, container) {
+        soundSystem.play('click');
+        const type = card.dataset.type;
+
+        if (type === 'q') {
+            if (selectedQuestion) selectedQuestion.classList.remove('selected');
+            selectedQuestion = card;
+            card.classList.add('selected');
+            return;
+        }
+
+        if (type === 'a') {
+            if (!selectedQuestion) {
+                setFeedback("Primero selecciona una palabra en Español.", "bad");
+                visualEffects.shake(card);
+                return;
+            }
+
+            selectedAnswer = card;
+
+            if (selectedQuestion.dataset.index === selectedAnswer.dataset.index) {
+                selectedQuestion.classList.add('matched');
+                selectedAnswer.classList.add('matched');
+                selectedQuestion.classList.remove('selected');
+
+                matchedPairs++;
+                setFeedback("¡Muy bien! Coincidencia correcta.", "ok");
+                soundSystem.play('success');
+
+                selectedQuestion = null;
+                selectedAnswer = null;
+
+                if (matchedPairs === stage4Data.length) {
+                    setTimeout(() => {
+                        container.innerHTML = `<h2 style="color: var(--ok);">¡Excelente! Completaste la actividad.</h2>`;
+                        setStageComplete(true);
+                        earnStar(container);
+                    }, 800);
+                }
+
+            } else {
+                selectedAnswer.classList.add('shaking');
+                selectedQuestion.classList.add('shaking');
+                setFeedback("Esa no es la respuesta correcta.", "bad");
+                soundSystem.play('error');
+
+                setTimeout(() => {
+                    selectedAnswer.classList.remove('shaking');
+                    selectedQuestion.classList.remove('shaking');
+                    selectedQuestion.classList.remove('selected');
+                    selectedQuestion = null;
+                    selectedAnswer = null;
+                }, 800);
+            }
+        }
+    }
+
+    function renderStage5_final(container) {
+        container.innerHTML = `
+            <div style="text-align: center; padding: 40px; border: 5px dashed var(--ok); border-radius: 20px; background-color: rgba(255,255,255,0.9);">
+                <h2 style="color: var(--ok); font-size: 2.5rem; margin-bottom: 20px;">🎉 ¡Tema 3 Completado! 🎉</h2>
+                <p style="font-size: 1.5rem; font-weight: bold;">Puntuación: ${userScore}/${TOTAL_ACTIVITY_POINTS}</p>
+                <p style="margin-top: 15px;">¡Has terminado todas las actividades de Familia! ¡Excelente trabajo!</p>
+                <p>Presiona "Siguiente" para volver a la pantalla principal.</p>
+            </div>
+        `;
+        
+        try {
+            if (window.visualEffects && typeof window.visualEffects.confetti === 'function') {
+                window.visualEffects.confetti();
+            } else if (typeof celebrateLevelComplete === 'function') {
+                celebrateLevelComplete();
+            }
+        } catch (e) {
+            console.log("Efectos visuales no disponibles");
+        }
+
+        guardarProgresoEnBD();
+        setStageComplete(true);
+        renderControls();
+    }
+
+    function guardarProgresoEnBD() {
+        fetch('../../backend/api/progress.php', { 
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                tema_id: TEMA_ID,
+                completado: true
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Progreso guardado:", data);
+            if(data.success && window.collectCoin) {
+                collectCoin();
+            }
+        })
+        .catch(error => console.error('Error al guardar:', error));
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        render();
+    });
+</script>
+</body>
+</html>
